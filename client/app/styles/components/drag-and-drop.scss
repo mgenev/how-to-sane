@@ -1,0 +1,15 @@
+.dropzone {
+    .basket {
+        min-height: 200px;
+        border-radius: 10px;
+        background: #eee;
+        padding: 4px;
+        border: 2px solid #fff;
+        &.drag-enter {
+            background: #ccc;
+        }
+        &.dragging {
+            border: 2px dashed #777;
+        }
+    }
+}
