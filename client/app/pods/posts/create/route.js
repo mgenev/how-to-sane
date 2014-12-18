@@ -6,8 +6,7 @@ export default Ember.Route.extend({
     },
     actions: {
         createPost: function(model) {
-            var _this = this;
-            model.save().then(post => _this.transitionTo('posts.post', post));
+            model.save().then(post => this.transitionTo('posts.post', post));
         }
     }
 });
