@@ -15,6 +15,16 @@ Router.map(function() {
             path: 'create'
         });
     });
+
+    this.resource('templates', function() {
+        this.route('template', {
+            path: ':template_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
 });
 
 export default Router;
