@@ -2,10 +2,12 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "$",
+    "-Promise",
+    "fileUploader"
   ],
-  "browser": true,
-  "boss": true,
+  "browser" : true,
+  "boss" : true,
   "curly": true,
   "debug": false,
   "devel": true,
@@ -28,5 +30,5 @@
   "white": false,
   "eqnull": true,
   "esnext": true,
-  "unused": true
+  "unused": "vars"
 }
