@@ -25,9 +25,7 @@ export default Ember.Object.extend(Ember.Evented, {
         set(this, 'isUploading', true);
         $.each(files, function(index, value) {
 
-            data = self.setupFormData(value);
-            data.append('record', JSON.stringify(record));
-
+            data = self.setupFormData(value, record);
             self.ajax(url, data, type).then(function(respData) {
 
                 self.didUpload(respData);

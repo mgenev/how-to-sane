@@ -6,10 +6,6 @@ module.exports = {
         var record = JSON.parse(req.body.record);
         var file = req.file('upload');
 
-        // console.log('MODEL', model);
-        console.log('====  THE FORMATTED RECORD ==== ', record);
-        console.log('====  THE KEY  =====', Object.keys(record)[0]);
-
         file.upload({
             dirname: '../../uploads'
         }, function(err, uploadedFiles) {
@@ -24,12 +20,8 @@ module.exports = {
 
         // TODO user name should be part of  the folder when we have users
 
-        var record = JSON.parse(req.body.record);
+        var record = JSON.parse(req.body.template);
         var file = req.file('upload');
-
-        console.log('====  THE FORMATTED RECORD ==== ', record);
-        console.log('====  THE TEMPLATE OBJECT ==== ', record.template);
-        console.log('====  THE KEY  =====', Object.keys(record)[0]);
 
         // var originalFileName = file._files[0].stream.filename;
 
@@ -38,10 +30,9 @@ module.exports = {
         }, function(err, uploadedFiles) {
             if (err) return res.send(500, err);
 
-            record.template.filePath = uploadedFiles[0].fd;
+            record.filePath = uploadedFiles[0].fd;
 
-            Template.create(record.template).exec(function(err, newTemplate) {
-                console.log('NEW TEMPLATE', newTemplate);
+            Template.create(record).exec(function(err, newTemplate) {
                 return res.json({
                    template: newTemplate
                 });

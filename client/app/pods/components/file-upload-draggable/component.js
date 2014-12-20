@@ -16,22 +16,16 @@ export default Ember.Component.extend(DroppableMixin, {
     uploadFiles: function() {
         var uploaded = 0;
         var files = this.get('files');
-
-        console.log('files', files);
-
         var total = this.get('total') + files.length;
-        this.set('total', total);
 
-        console.log('TOTAL up ', total);
+        this.set('total', total);
 
         var uploader = this.fileUploader;
         uploader.url = this.get('url');
         uploader.paramName = 'upload';
 
         var uploadRecord = {};
-        uploadRecord[this.get('type')] = this.get('record')._attributes;
-
-        console.log('THE RECORD', uploadRecord);
+        uploadRecord[this.get('type')] = JSON.stringify(this.get('record')._attributes);
 
         if (!Ember.isEmpty(files)) {
             uploader.upload(files, uploadRecord);
