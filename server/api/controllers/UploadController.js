@@ -3,8 +3,8 @@ var actionUtil = require('../blueprints/_util/actionUtil');
 module.exports = {
     upload: function(req, res) {
 
-        var record = JSON.parse(req.body.record);
-        var file = req.file('upload');
+        // var record = JSON.parse(req.body.record);
+        var file = req.file('file_data');
 
         file.upload({
             dirname: '../../uploads'
