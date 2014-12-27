@@ -25,6 +25,8 @@ Router.map(function() {
             path: 'create'
         });
     });
+  this.route('media');
+  this.route('media/upload');
 });
 
 export default Router;
