@@ -25,8 +25,12 @@ Router.map(function() {
             path: 'create'
         });
     });
-  this.route('media');
-  this.route('media/upload');
+
+    this.route('media', function() {
+        this.route('upload', {
+            path: 'upload'
+        });
+    });
 });
 
 export default Router;
