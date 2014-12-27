@@ -1,4 +1,16 @@
 {{outlet}}
-<h2>Upload your pictures</h2>
-Album "New" each etc...
-{{bootstrap-fileinput url="/api/v1/uploads/photo"}}
+
+{{#modal-dialog}}
+	<div class="modal-header">
+		<span class="h2">Upload your pictures</span>
+		<span {{action "closeModal"}} class="btn glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+	</div>
+	<div class="modal-body">	
+		<p>{Placeholder: Album "New" each etc...}</p>
+		{{bootstrap-fileinput url="/api/v1/uploads/photo"}}
+	</div>
+	<div class="modal-footer">
+	    <button class="btn btn-info" {{action "closeModal"}}>
+	    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done</button>
+	</div>
+{{/modal-dialog}}
