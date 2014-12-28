@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    action: "closeModal",
+    action: 'closeModal',
     didInsertElement: function() {
         var self = this;
         var modal = $('#modalDialog').modal({

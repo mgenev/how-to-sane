@@ -31,6 +31,8 @@ Router.map(function() {
             path: 'upload'
         });
     });
+  this.resource('albums', function() { });
+  this.resource('photos', function() { });
 });
 
 export default Router;
