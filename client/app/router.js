@@ -31,8 +31,36 @@ Router.map(function() {
             path: 'upload'
         });
     });
-  this.resource('albums', function() { });
-  this.resource('photos', function() { });
+
+    this.resource('albums', function() {
+        this.route('album', {
+            path: ':album_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
+
+    this.resource('photos', function() {
+        this.route('photo', {
+            path: ':photo_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
+
+    this.resource('users', function() {
+        this.route('user', {
+            path: ':user_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
 });
 
 export default Router;
