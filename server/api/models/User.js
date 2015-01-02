@@ -13,12 +13,6 @@ var bcrypt = require('bcrypt');
  	attributes: {
  		firstName: 'STRING',
  		lastName: 'STRING',
- 		age: {
- 			type: 'INTEGER',
- 			max: 150,
- 			min: 0
- 		},
- 		phoneNumber: 'STRING',
  		username: {
 			type: 'EMAIL', // Email type will get validated by the ORM
 			required: true,
@@ -35,9 +29,6 @@ var bcrypt = require('bcrypt');
 		password: {
 	    	type: 'string',
 	    	required: true
-	    },
-		fullName: function() {
-		    return this.firstName + ' ' + this.lastName;
 	    },
 	    isAdmin: function(){
 	    	return this.userType == 3;
@@ -60,11 +51,11 @@ var bcrypt = require('bcrypt');
 	},
 	beforeCreate: function(user, cb) {
 		bcrypt.genSalt(10, function(err, salt) {
-			bcrypt.hash(user.password, salt, function(){}, function(err, hash) {
+			bcrypt.hash(user.password, salt, function(err, hash) {
 				if (err) {
 					console.log(err);
 					cb(err);
-				}else{
+				} else {
 					user.password = hash;
 					cb(null, user);
 				}

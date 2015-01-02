@@ -22,25 +22,21 @@ module.exports = {
     login: function(req, res) {
         passport.authenticate('local', function(err, user, info) {
             if ((err) || (!user)) {
-                res.send({
-                    success: false,
-                    message: 'invalidPassword'
+                res.badRequest({
+                    error: 'invalidPassword'                    
                 });
                 return;
             } else {
                 if (err) {
-                    res.send({
-                        success: false,
-                        message: 'unknownError',
-                        error: err
+                    res.badRequest({
+                        error: 'unknownError: ' + err
                     });
                 } else {
                     
                     var token = jwt.sign(user, secret, { expiresInMinutes: 60*24 });
                     res.send({
-                        success: true,
                         user: user,
-                        token: token
+                        access_token: token
                     });
                 }
             }
@@ -53,6 +49,5 @@ module.exports = {
             success: true,
             message: 'logoutSuccessful'
         });
-    },
-    _config: {}
+    }
 };

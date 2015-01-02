@@ -1,2 +1,9 @@
 {{outlet}}
 <h1>This is the index page</h1>
+
+{{#if session.isAuthenticated}}
+  <a {{ action 'invalidateSession' }}>Logout</a>
+{{else}}
+  {{! show login panel component}}
+  {{login-panel}}
+{{/if}}
