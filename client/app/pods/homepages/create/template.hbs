@@ -1,0 +1,43 @@
+{{outlet}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+			<form class="form-horizontal">
+				<div class="row">
+					<h4>Create Homepage</h4>
+				</div>
+				 <span>Selected Template: {{homepageTemplate.name}}</span>
+					{{!-- {{view Ember.Select
+				 		content=controllers.homepages.templates
+				 		value=model.homepageTemplate
+		       			optionValuePath="content._id"
+		       			optionLabelPath="content.name" 
+		       			selection=model.homepageTemplate
+		       			prompt="Please a select a template"
+					}}
+				 </div> --}}
+				 <div class="row">
+					<div class="controls">
+							{{input type="text" value=name id="name" placeholder="Title"}}
+							Url slug: {{slug}}				
+					</div>
+				</div>
+				<div class="row">
+					<div class="control-group">
+						<div class="controls">
+							{{textarea id="pageContent" value=pageContent cols="60" rows="20" placeholder="Homepage Content"}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="control-group">
+						<div class="controls">
+							<button class="btn" {{action 'createHomepage'}}>Create homepage</button>
+						</div>
+					</div>		
+				</div> 
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+{{outlet}}
+<div class="row bump">
+   <div class="small-12 large-6 columns">
+      <div class="row">
+         <div class="profile-card">
+            <div class="small-12 large-4 columns">
+               <a href="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg">
+                  <img src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg" alt="profile image"> </a>
+            </div>
+            <div class="small-12 large-8 columns">
+              
+              {{#unless isEditing}}
+                <h4>{{name}} <span>{{tagline}}</span></h4>
+                <p><i class="fi-mail"></i><span> {{email}}</span></p>
+                <p><i class="fi-social-twitter"></i>{{username}}</p>
+                <p><i class="fi-web"></i>{{website}}</p>
+              {{else}}
+                <div class="large-6 columns">
+                  <label>Name
+                    {{input type="text" value=name}}
+                  </label>
+                </div>
+                <div class="large-6 columns">
+                  <label>Tagline
+                    {{input type="text" value=tagline}}
+                  </label>
+                </div>
+                <p>
+                <label>Email
+                  {{input type="text" value=email}}
+                </label>
+                </p>
+                <label>Username
+                  <p>{{input type="text" value=username}}</p>
+                </label>
+                <label>Website
+                  <p>{{input type="text" value=website}}</p>
+                </label>
+              {{/unless}}
+              
+            </div>
+            <div class="row collapse">
+               <ul class="button-group even-3">
+                  <li><a href="#" class="button"> Posts <span>432 </span></a></li>
+                  <li><a href="#" class="button"> Missions <span>432 </span></a></li>
+                  <li><a href="#" class="button"> Photos <span>432 </span></a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="columns large-12 bump">
+    <div class="row">
+    	<div class="large-6 columns">
+        {{#unless isEditing}}
+    		  <div class="button expand" {{action 'editProfile'}}>Edit Profile</div>
+        {{else}}
+          <div class="button expand" {{action 'saveEdit'}}>Save</div>
+        {{/unless}}
+    	</div>
+    	<div class="large-6 columns">
+
+        {{#if isEditing}} 
+          <div class="button expand" {{action 'cancelEdit'}}>Cancel</div>
+        {{else}}
+
+          {{#unless currentUser}}
+            <div class="button expand">Send Message</div>
+          {{else}}
+          
+            {{#unless isVendor}}
+              <div class="button expand">{{#link-to 'vendors.create' tagName='div'}}Become Vendor{{/link-to}}</div>  
+            {{/unless}}
+
+          {{/unless}}     
+        {{/if}}  
+    	</div>
+    </div>
+</div>
+
+<div class="columns large-12">
+    <div class="row">
+      <h3>List of Vendors</h3>
+    </div>
+    {{#each vendor in vendors}}
+    <div class="row">
+      <h4>Name: {{vendor.name}}</h4>
+      <h6>Desc: {{vendor.description}}</h6>
+    </div>
+    {{/each}}
+</div>

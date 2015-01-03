@@ -1,0 +1,18 @@
+{{yield}}
+<div class="status-picker">
+	<div class="row">
+		<div {{action 'pickState' 'anxiety'}} class="col-xs-4 anxiety"><span>Anxiety</span></div>
+		<div {{action 'pickState' 'arousal'}} class="col-xs-4 arousal"><span>Arousal</span></div>
+		<div {{action 'pickState' 'flow'}}class="col-xs-4 flow"><span>Flow</span></div>
+	</div>
+	<div class="row">
+		<div {{action 'pickState' 'worry'}} class="col-xs-4 worry"><span>Worry</span></div>
+		<div class="col-xs-4 feel"><span>How do you feel?</span></div>
+		<div {{action 'pickState' 'control'}}class="col-xs-4 control"><span>Control</span></div>
+	</div>
+	<div class="row">
+		<div {{action 'pickState' 'apathy'}} class="col-xs-4 apathy"><span>Apathy</span></div>
+		<div {{action 'pickState' 'boredom'}} class="col-xs-4 boredom"><span>Boredom</span></div>
+		<div {{action 'pickState' 'relaxation'}} class="col-xs-4 relaxation"><span>Relaxation</span></div>
+	</div>
+</div>

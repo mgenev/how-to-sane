@@ -1,0 +1,69 @@
+.status-picker {
+    position: relative;
+    div {
+        // border: 1px solid lightgrey;
+        min-height: 33vh;
+        text-align: center;
+        cursor: pointer;
+        span {
+            bottom: 50%;
+            left: 20%;
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .anxiety {
+        background-color: hsla(0, 83%, 79%, 0.7);
+        &:hover {
+            background-color: hsla(0, 83%, 79%, 1);
+        }
+    }
+    .arousal {
+        background-color: hsla(47, 87%, 77%, 0.7);
+        &:hover {
+            background-color: hsla(47, 87%, 77%, 1);
+        }
+    }
+    .flow {
+        background-color: hsla(60, 78%, 72%, 0.7);
+        &:hover {
+            background-color: hsla(60, 78%, 72%, 1);
+        }
+    }
+    .worry {
+        background-color: hsla(261, 40%, 79%, 0.7);
+        &:hover {
+            background-color: hsla(261, 40%, 79%, 1);
+        }
+    }
+    .feel {
+        background-color: white;
+        cursor: default;
+    }
+    .control {
+        background-color: hsla(72, 89%, 72%, 0.7);
+        &:hover {
+            background-color: hsla(72, 89%, 72%, 1);
+        }
+    }
+    .apathy {
+        background-color: hsla(216, 67%, 68%, 0.7);
+        &:hover {
+            background-color: hsla(216, 67%, 68%, 1);
+        }
+    }
+    .boredom {
+        background-color: hsla(169, 53%, 76%, 0.7);
+        &:hover {
+            background-color: hsla(169, 53%, 76%, 1);
+        }
+    }
+    .relaxation {
+        background-color: hsla(120, 89%, 70%, 0.7);
+
+        &:hover {
+            background-color: hsla(120, 89%, 70%, 1);
+        }
+    }
+}

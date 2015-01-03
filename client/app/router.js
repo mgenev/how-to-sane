@@ -61,7 +61,34 @@ Router.map(function() {
             path: 'create'
         });
     });
-  this.route('login');
+
+    this.route('feed', function() {
+        this.route('status', {
+            path: 'status'
+        });
+    });
+
+    this.resource('vendors', function() {
+        this.route('vendor', {
+            path: ':vendor_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
+
+    this.resource('homepages', function() {
+        this.route('homepage', {
+            path: ':homepage_id'
+        });
+
+        this.route('create', {
+            path: 'create'
+        });
+    });
+
+    this.route('login');
 });
 
 export default Router;
