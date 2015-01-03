@@ -61,6 +61,7 @@ Router.map(function() {
             path: 'create'
         });
     });
+  this.route('login');
 });
 
 export default Router;

@@ -20,7 +20,7 @@ var secret = 'RS#$09qu43f09qfj94qf*&H#(R';
 
 module.exports = {
     login: function(req, res) {
-        passport.authenticate('local', function(err, user, info) {
+        passport.authenticate('local', {session: false}, function(err, user, info) {
             if ((err) || (!user)) {
                 res.badRequest({
                     error: 'invalidPassword'                    
