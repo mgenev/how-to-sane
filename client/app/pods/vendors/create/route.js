@@ -6,8 +6,15 @@ export default Ember.Route.extend({
     },
     actions: {
         createVendor: function(model) {
-            // TODO think of the best way to obtain the user here
-        	model.save().then(vendor => this.transitionTo('users.user', vendor.user));
+
+            var userSession = this.container.lookup('simple-auth-session:main');
+            var userId = userSession.get('user')[0].id;
+
+            var user = this.store.find('user', userId).then(function(result) {
+                model.set('user', result);
+                user = result;
+                return model.save();
+            }).then(() => this.transitionTo('users.user', user));
         }
     }
 });
