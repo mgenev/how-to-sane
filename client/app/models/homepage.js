@@ -8,7 +8,7 @@ export default DS.Model.extend({
     homepageTemplate: DS.attr(),
 
     // attributes
-    name: DS.attr('string'),
+    title: DS.attr('string'),
     pageContent: DS.attr('string'),
     urlSegment: DS.attr('string'),
 

@@ -6,7 +6,7 @@
     </div>
 	{{#each model as |vendor|}}
 		<h3>{{vendor.name}}</h3>
-		<h4>belongs to: {{vendor.user.name}}</h4>
+		<h4>belongs to: {{vendor.user.firstName}}&nbsp;{{vendor.user.lastName}}</h4>
 		<p>{{vendor.description}}</p>
 	{{/each}}
 </div>

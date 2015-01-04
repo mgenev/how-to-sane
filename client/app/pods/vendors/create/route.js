@@ -7,8 +7,7 @@ export default Ember.Route.extend({
     actions: {
         createVendor: function(model) {
 
-            var userSession = this.container.lookup('simple-auth-session:main');
-            var userId = userSession.get('user')[0].id;
+            var userId= this.container.lookup('simple-auth-session:main').get('user')[0].id;
 
             var user = this.store.find('user', userId).then(function(result) {
                 model.set('user', result);

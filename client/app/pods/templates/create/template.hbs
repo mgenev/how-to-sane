@@ -1,9 +1,12 @@
 {{outlet}}
-<div class="columns large-12">
+<div class="container">
 	<div class="page-header">
         <h2>Upload Template</h2>
     </div>
-	Title: {{input type="text" value=title}}
+	<div class="form-group">
+        <label for="identification">Title</label>
+        {{input type="text" value=title class='form-control'}}
+    </div>
 	<div class="dropzone">		
 		{{file-upload-draggable record=model type="template" url="/api/v1/uploads/homepageTemplate"}}
 	</div>

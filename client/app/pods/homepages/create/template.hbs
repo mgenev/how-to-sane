@@ -1,34 +1,17 @@
 {{outlet}}
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <form class="form-horizontal">
-                <div class="page-header">
-                    <h2>Create Homepage</h2>
-                </div>
-                <span>Selected Template: {{homepageTemplate.name}}</span> {{!-- {{view Ember.Select content=controllers.homepages.templates value=model.homepageTemplate optionValuePath="content._id" optionLabelPath="content.name" selection=model.homepageTemplate prompt="Please a select a template" }}
-        </div> --}}
-        <div class="row">
-            <div class="controls">
-                {{input type="text" value=name id="name" placeholder="Title"}} Url slug: {{slug}}
-            </div>
+    <form>
+        <div class="page-header">
+            <h2>Create Homepage</h2>
         </div>
-        <div class="row">
-            <div class="control-group">
-                <div class="controls">
-                    {{textarea id="pageContent" value=pageContent cols="60" rows="20" placeholder="Homepage Content"}}
-                </div>
-            </div>
+        <span>Selected Template: {{homepageTemplate.name}}</span> 
+
+        {{!-- {{view Ember.Select content=controllers.homepages.templates value=model.homepageTemplate optionValuePath="content._id" optionLabelPath="content.name" selection=model.homepageTemplate prompt="Please a select a template" }} --}}
+        <div class="form-group">
+            <label for="identification">Title</label>
+            {{input type="text" value=title class='form-control'}}
         </div>
-        <div class="row">
-            <div class="control-group">
-                <div class="controls">
-                    <button class="btn" {{action 'createHomepage'}}>Create homepage</button>
-                </div>
-            </div>
-        </div>
-        </form>
-    </div>
-</div>
+        <button class="btn btn-default" {{action 'createPost' model}}>Create Homepage</button>
+    </form>
 </div>
