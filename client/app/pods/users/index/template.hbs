@@ -1,0 +1,12 @@
+{{outlet}}
+<div class="container">
+	{{#link-to 'users.create'}}<div class="btn btn-info bump">Create User</div>{{/link-to}}
+	<div class="page-header">
+        <h2>Users:</h2>
+    </div>
+
+	{{#each model as |user|}}
+		<h4>{{#link-to 'users.user' user.id}}{{user.username}}{{/link-to}}</h4>
+		<p>{{user.firstName}}&nbsp;{{user.lastName}}</p>
+	{{/each}}
+</div>

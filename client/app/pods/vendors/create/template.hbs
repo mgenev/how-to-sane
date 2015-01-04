@@ -1,27 +1,18 @@
 {{outlet}}
-<div class="row bump">
-    <div class="small-12 large-6 columns">
-        <div class="row">
-            <div class="small-12 large-8 columns">
 
-                <div class="large-6 columns">
-                    <label>Name {{input type="text" value=name}}
-                    </label>
-                </div>
-                <div class="large-6 columns">
-                    <label>Description {{textarea type="text" value=description}}
-                    </label>
-                </div>
-            </div>
-
-        </div>
+<div class="container">
+    <div class="page-header">
+        <h2>Create Vendor</h2>
     </div>
-</div>
-
-<div class="columns large-12 bump">
-    <div class="row">
-        <div class="large-6 columns">
-            <div class="button expand" {{action 'createVendor' model}}>Create Vendor</div>
+    <form>
+        <div class="form-group">
+            <label for="identification">Name</label>
+            {{input type="text" value=name class='form-control'}}
         </div>
-    </div>
+        <div class="form-group">
+            <label for="body">Description</label>
+            {{textarea value=description class='form-control'}}
+        </div>
+        <button class="btn btn-default" {{action 'createVendor' model}}>Create Vendor</button>
+    </form>
 </div>

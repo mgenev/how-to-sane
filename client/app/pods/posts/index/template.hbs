@@ -1,6 +1,11 @@
 {{outlet}}
-<h3>Posts: </h3>
-{{#each model as |post|}}
-	<h4>{{post.title}}</h4>
-	<p>{{post.body}}</p>
-{{/each}}
+<div class="container">
+	{{#link-to 'posts.create'}}<div class="btn btn-info bump">Create Post</div>{{/link-to}}
+	<div class="page-header">
+        <h2>Posts</h2>
+    </div>
+	{{#each model as |post|}}
+		<h4>{{#link-to 'posts.post' post.id}}{{post.title}}{{/link-to}}</h4>
+		<p>{{post.body}}</p>
+	{{/each}}
+</div>

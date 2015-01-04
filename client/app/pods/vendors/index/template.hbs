@@ -1,7 +1,9 @@
 {{outlet}}
-<div class="columns large-12">
-	<div class="button expand">{{#link-to 'templates.create' tagName='a'}}Upload Template{{/link-to}}</div>
-	<h2>List of Vendors:</h2>
+
+<div class="container">
+	<div class="page-header">
+        <h2>Vendors</h2>
+    </div>
 	{{#each model as |vendor|}}
 		<h3>{{vendor.name}}</h3>
 		<h4>belongs to: {{vendor.user.name}}</h4>

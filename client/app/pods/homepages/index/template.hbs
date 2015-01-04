@@ -1,0 +1,12 @@
+{{outlet}}
+
+<div class="container">
+	{{#link-to 'templates.create'}}<div class="btn btn-default bump">Upload Template</div>{{/link-to}}
+	<div class="page-header">
+        <h2>Homepages:</h2>
+    </div>
+	{{#each model as |homepage|}}
+		<h3>{{homepage.name}}</h3>
+		<h4>belongs to: {{homepage.user.fullName}}</h4>
+	{{/each}}
+</div>

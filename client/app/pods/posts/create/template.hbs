@@ -1,5 +1,18 @@
 {{outlet}}
-Create Post
-<p>Title: {{input type="text" value=title size="50"}}</p>
-<p>Body: {{textarea value=body cols="80" rows="6"}}</p>
-<button {{action 'createPost' model}}>Create Post</button>
+
+<div class="container">
+	<div class="page-header">
+        <h2>Create Post</h2>
+    </div>
+	<form {{action 'authenticate' on='submit'}}>
+	    <div class="form-group">
+	        <label for="identification">Title</label>
+	        {{input type="text" value=title class='form-control'}}
+	    </div>
+	    <div class="form-group">
+	        <label for="body">Body</label>
+	        {{textarea value=body class='form-control'}}
+	    </div>
+	    <button class="btn btn-default" {{action 'createPost' model}}>Create Post</button>
+	</form>
+</div>

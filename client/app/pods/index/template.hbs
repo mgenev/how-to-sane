@@ -1,9 +1,13 @@
 {{outlet}}
-<h1>This is the index page</h1>
+<div class="container">
+	<div class="page-header">
+        <h2>Index</h2>
+    </div>
 
-{{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>Logout</a>
-{{else}}
-  {{! show login panel component}}
-  {{login-panel}}
-{{/if}}
+	{{#if session.isAuthenticated}}
+	  <a {{ action 'invalidateSession' }}>Logout</a>
+	{{else}}
+	  {{! show login panel component}}
+	  {{login-panel}}
+	{{/if}}
+</div>
