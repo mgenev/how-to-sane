@@ -3,8 +3,8 @@
   "dependencies": {
     "handlebars": "2.0.0",
     "jquery": "^1.11.1",
-    "ember": "beta",
-    "ember-data": "1.0.0-beta.12",
+    "ember": "1.10.0-beta.3",
+    "ember-data": "1.0.0-beta.14",
     "ember-resolver": "~0.1.7",
     "loader.js": "stefanpenner/loader.js#1.0.1",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
