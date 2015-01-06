@@ -13,7 +13,7 @@ export default Ember.Route.extend({
                 model.set('user', result);
                 user = result;
                 return model.save();
-            }).then(() => this.transitionTo('users.user', user));
+            }).then(() => this.transitionTo('s.users.user', user));
         }
     }
 });

@@ -13,7 +13,7 @@
             <label for="password">Password</label>
             {{input id='password' placeholder='Enter Password' class='form-control' type='password' value=password}}
         </div>
-        <button type="submit" class="btn btn-default">Login</button> or {{#link-to 'users.create'}} Register{{/link-to}}
+        <button type="submit" class="btn btn-default">Login</button> or {{#link-to 's.users.create'}} Register{{/link-to}}
     </form>
     {{#if errorMessage}}
         <div class="alert alert-danger">

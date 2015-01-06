@@ -6,52 +6,52 @@ export default Ember.Component.extend({
         'link': 'index'
     }, {
         'title': 'Feed',
-        'link': 'feed'
+        'link': 's.feed'
     }, {
         'title': 'Media',
-        'link': 'media'
+        'link': 's.media'
     }, {
         'title': 'Posts',
-        'link': 'posts'
+        'link': 's.posts'
     }, {
         'title': 'Users',
-        'link': 'users',
+        'link': 's.users',
         'submenu': [{
             'title': 'Index',
-            'link': 'users.index'
+            'link': 's.users.index'
         }, {
             'title': 'Create New User',
-            'link': 'users.create'
+            'link': 's.users.create'
         }]
     }, {
         'title': 'Templates',
-        'link': 'templates',
+        'link': 's.templates',
         'submenu': [{
             'title': 'Index',
-            'link': 'templates.index'
+            'link': 's.templates.index'
         }, {
             'title': 'Create New Template',
-            'link': 'templates.create'
+            'link': 's.templates.create'
         }]
     }, {
         'title': 'Vendors',
-        'link': 'vendors',
+        'link': 's.vendors',
         'submenu': [{
             'title': 'Index',
-            'link': 'vendors.index'
+            'link': 's.vendors.index'
         }, {
             'title': 'Create Vendor',
-            'link': 'vendors.create'
+            'link': 's.vendors.create'
         }, ]
     }, {
         'title': 'Homepages',
-        'link': 'homepages',
+        'link': 's.homepages',
         'submenu': [{
             'title': 'Index',
-            'link': 'homepages.index'
+            'link': 's.homepages.index'
         }, {
             'title': 'Create Homepage',
-            'link': 'homepages.create'
+            'link': 's.homepages.create'
         }, ]
     }]
 });

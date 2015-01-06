@@ -16,7 +16,7 @@ export default Ember.ObjectController.extend({
             var user = this.model;
             user.save();
 
-            this.transitionToRoute('users.user', user);
+            this.transitionToRoute('s.users.user', user);
         },
 
         cancelEdit: function () {
