@@ -1,7 +1,13 @@
 import Ember from 'ember';
+import FocusForKeypress from 'client/mixins/focus-for-keypress';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend( FocusForKeypress, {
     action: 'closeModal',
+    keyDown: function (e) {
+        if (e.keyCode === 27) {
+            this.sendAction();
+        }
+    },
     didInsertElement: function() {
         var self = this;
         var modal = $('#modalDialog').modal({

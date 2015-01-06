@@ -4,7 +4,7 @@
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar" style="color: black;"></span>
+                <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -15,7 +15,7 @@
             {{#if session.isAuthenticated }}
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" style="padding-right: 10px;">
+                <li class="dropdown">
                     <a href="#" {{ action 'invalidateSession' }}>Signout</a>
                 </li>
             </ul>
