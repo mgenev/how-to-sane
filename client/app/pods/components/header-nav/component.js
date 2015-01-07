@@ -53,5 +53,19 @@ export default Ember.Component.extend({
             'title': 'Create Homepage',
             'link': 's.homepages.create'
         }, ]
-    }]
+    }],
+    didInsertElement: function() {
+        var _this = this;
+        $('.mobile-menu').on('shown.bs.collapse', function() {
+            $(document).on('click', _this.hideMenu);
+        });
+
+        $('.mobile-menu').on('hidden.bs.collapse', function() {
+            $(document).unbind("click", _this.hideMenu);
+        });
+
+    },
+    hideMenu: function () {
+        $('.mobile-menu').collapse('hide');
+    }
 });
