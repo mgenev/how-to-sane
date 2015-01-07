@@ -5,9 +5,11 @@
     </div>
 
 	{{#if session.isAuthenticated}}
-	  <a {{ action 'invalidateSession' }}>Logout</a>
+	<p> Welcome, {{session.user.firstName}} {{session.user.lastName}}</p>
+	<a href="#" {{ action 'invalidateSession' }}>Logout</a>
 	{{else}}
 	  {{! show login panel component}}
 	  {{login-panel}}
 	{{/if}}
 </div>
+

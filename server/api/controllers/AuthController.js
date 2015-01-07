@@ -32,7 +32,6 @@ module.exports = {
                         error: 'unknownError: ' + err
                     });
                 } else {
-                    
                     var token = jwt.sign(user, secret, { expiresInMinutes: 60*24 });
                     res.send({
                         user: user,

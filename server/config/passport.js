@@ -20,7 +20,7 @@ passport.use(new LocalStrategy(
                         message: 'Invalid Password'
                     });
                 } else {
-                    return done(null,user);
+                    return done(null,user[0]);
                 }
             });
         });
