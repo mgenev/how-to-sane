@@ -6,7 +6,7 @@ module.exports = {
         var file = req.file('file_data');
 
         file.upload({
-            dirname: '../../uploads/' + req.user[0].username
+            dirname: '../../uploads/' + req.user.username
         }, function(err, uploadedFiles) {
             if (err) return res.send(500, err);
             return res.json({
