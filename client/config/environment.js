@@ -9,7 +9,9 @@ module.exports = function(environment) {
       locationType: 'auto',
       EmberENV: {
           FEATURES: {
-              'ember-htmlbars': true
+              'ember-htmlbars': true,
+              'ember-htmlbars-block-params': true,
+              'ember-htmlbars-each-with-index': true
           }
       },
       contentSecurityPolicy: {

@@ -1,0 +1,15 @@
+<div {{action 'nextStep'}} class="btn btn-info">Next</div>
+<ol>
+	{{#each steps as |step|}}
+	    <li class="wizard-step">{{step.caption}}</li>
+	{{/each}}
+</ol>
+
+<form role="form">   
+	{{dynamic-component type=type model=model}}	    
+    <button type="submit" class="btn btn-default">Submit</button>
+<div class="bump"></div>
+</form>
+
+{{yield}}
+
