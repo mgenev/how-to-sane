@@ -1,5 +1,14 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
 	margin: 30px;
+    background-color :#e9eaed;
 }
 
 .bump {

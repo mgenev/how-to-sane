@@ -1,11 +1,13 @@
 {{outlet}}
 <div class="container">
-	<div class="page-header">
+    <div class="page-header">
         <h2>Feed</h2>
     </div>
-	{{#link-to 's.feed.status'}}<button class="btn">Post Status</button>{{/link-to}}
-	{{#each model as |status|}}
-		<h4>{{status.post}} <span>{{status.createdAt}}</span></h4>
-		<p>{{status.activity}} feeling {{status.state}}</p>
-	{{/each}}
+    {{#link-to 's.feed.status'}}
+    	<button class="btn btn-info">Post Status</button>
+    {{/link-to}}
+
+    {{#each model as |status|}}
+    	{{status-card status=status}}
+    {{/each}}
 </div>
