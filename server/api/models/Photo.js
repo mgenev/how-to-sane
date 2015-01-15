@@ -8,7 +8,23 @@
 module.exports = {
 
   attributes: {
+	name: {
+        type: 'string'
+    },
+    path: {
+        type: 'string'
+    },
+    description: {
+        type: 'string'
+    },
+    tags : {
+    	type: 'array'
+   	},
 
+    // relationships
+	user: {
+        model: 'user'
+    }
   }
 };
 

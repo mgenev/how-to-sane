@@ -12,6 +12,10 @@ export default DS.Model.extend({
 
     //relationships
     vendors: DS.hasMany('vendor'),
+    photos: DS.hasMany('photo'),
+    albums: DS.hasMany('album'),
+    post: DS.hasMany('post'),
+
 
     // computed
     fullName: function () {

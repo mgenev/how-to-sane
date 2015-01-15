@@ -8,7 +8,20 @@
 module.exports = {
 
   attributes: {
-
+	name: {
+        type: 'string'
+    },
+    description: {
+        type: 'string'
+    },
+    tags : {
+    	type: 'array'
+   	},
+   	    
+    // todo look up this kind of relationship in waterline
+    photos: {         
+        collection: 'photo'
+    }
   }
 };
 

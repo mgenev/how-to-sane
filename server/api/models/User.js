@@ -33,6 +33,17 @@ module.exports = {
         tagline: {
             type: 'string'
         },
+
+        tagline: {
+            type: 'string'
+        },
+
+        website: {
+            type: 'string'
+        },
+
+        // Relationships
+        
         homepages: {
             collection: 'homepage',
             via: 'user'
@@ -41,14 +52,11 @@ module.exports = {
             collection: 'vendor',
             via: 'user'
         },
-        tagline: {
-            type: 'string'
+        photos: {
+            collection: 'photo',
+            via: 'user'
         },
 
-        website: {
-            type: 'string'
-        },
-        
         isAdmin: function() {
             return this.userType == 3;
         },
