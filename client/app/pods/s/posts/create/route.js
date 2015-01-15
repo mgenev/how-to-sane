@@ -6,6 +6,7 @@ export default Ember.Route.extend({
     },
     actions: {
         createPost: function(model) {
+        	model.set('tags', ['lifestyle', 'health', 'tech']);
             model.save().then(post => this.transitionTo('s.posts.post', post));
         }
     }

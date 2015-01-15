@@ -24,16 +24,16 @@ export default Ember.Component.extend({
             'link': 's.users.create'
         }]
     }, {
-        'title': 'Templates',
-        'link': 's.templates',
-        'submenu': [{
-            'title': 'Index',
-            'link': 's.templates.index'
-        }, {
-            'title': 'Create New Template',
-            'link': 's.templates.create'
-        }]
-    }, {
+    //     'title': 'Templates',
+    //     'link': 's.templates',
+    //     'submenu': [{
+    //         'title': 'Index',
+    //         'link': 's.templates.index'
+    //     }, {
+    //         'title': 'Create New Template',
+    //         'link': 's.templates.create'
+    //     }]
+    // }, {
         'title': 'Vendors',
         'link': 's.vendors',
         'submenu': [{
@@ -43,19 +43,20 @@ export default Ember.Component.extend({
             'title': 'Create Vendor',
             'link': 's.vendors.create'
         }, ]
-    }, {
-        'title': 'Homepages',
-        'link': 's.homepages',
-        'submenu': [{
-            'title': 'Index',
-            'link': 's.homepages.index'
-        }, {
-            'title': 'Create Homepage',
-            'link': 's.homepages.create'
-        }, ]
+    // }, {
+    //     'title': 'Homepages',
+    //     'link': 's.homepages',
+    //     'submenu': [{
+    //         'title': 'Index',
+    //         'link': 's.homepages.index'
+    //     }, {
+    //         'title': 'Create Homepage',
+    //         'link': 's.homepages.create'
+    //     }, ]
     }],
     didInsertElement: function() {
         var _this = this;
+        $('.mobile-menu').css('padding-right', "15px");
         $('.mobile-menu').on('shown.bs.collapse', function() {
             $(document).on('click', _this.hideMenu);
         });

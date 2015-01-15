@@ -1,6 +1,11 @@
 @import "common";
 
-@import "components/drag-and-drop";
+// routes
+@import "posts/index";
 @import "user/index";
 @import "feed/index";
 
+// components
+@import "components/drag-and-drop";
+@import "components/wizard";
+@import "components/header-nav";

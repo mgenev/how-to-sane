@@ -3,5 +3,12 @@
 	<div class="page-header">
         <h2>{{title}}</h2>
     </div>
+    <p>		
+		{{#each tags as |tag|}}
+		<span class="badge">
+			{{tag}}
+		</span>
+		{{/each}}
+	</p>
 	<p>{{body}}</p>
 </div>
