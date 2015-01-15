@@ -45,6 +45,10 @@ module.exports = {
             type: 'string'
         },
 
+        website: {
+            type: 'string'
+        },
+        
         isAdmin: function() {
             return this.userType == 3;
         },

@@ -1,71 +1,7 @@
 {{outlet}}
 <div class="container">
-
-  <div class="row bump">
-    <div class="col-xs-3">
-        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/BillSKenney/128.jpg" alt="profile image">
-    </div>
-    <div class="col-xs-9">
-        {{#unless isEditing}}
-          <h4>{{firstName}}&nbsp;{{lastName}}<span>{{tagline}}</span></h4>
-          <p>{{email}}</p>
-          <p>{{username}}</p>
-          <p>{{website}}</p>
-          {{else}}
-          <form>
-            <div class="form-group">
-                <label for="identification">First Name </label>
-                {{input type="text" value=firstName class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Last Name</label>
-                {{input type="text" value=lastName class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Tagline</label>
-                {{input type="text" value=tagline class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Email</label>
-                {{input type="text" value=email class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Username</label>
-                {{input type="text" value=username class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Website</label>
-                {{input type="text" value=website class='form-control'}}
-            </div>
-          </form>
-        {{/unless}}
-    </div>
-  </div>
-
-  <div class="row bump">
-    <div class="col-xs-3">
-      {{#unless isEditing}}
-        <div class="btn btn-info" {{action 'editProfile'}}>Edit Profile</div>
-        {{else}}
-        <div class="btn btn-info" {{action 'saveEdit'}}>Save</div>
-      {{/unless}}
-    </div>
-      <div class="col-xs-3">
-        {{#if isEditing}}
-        <div class="btn btn-info" {{action 'cancelEdit'}}>Cancel</div>
-        {{else}} 
-        {{#unless currentUser}}
-         <div class="btn btn-info">Send Message</div>
-        {{else}}
-         {{#unless isVendor}}
-            <div class="btn btn-info">{{#link-to 's.vendors.create' tagName='div'}}Become Vendor{{/link-to}}</div>
-          {{/unless}}
-        {{/unless}} 
-      {{/if}}
-    </div>
-  </div>
-  
-
+    
+  {{user-profile user=model}}
   <div class="col-xs-12">
     <div class="row">
       <h3>List of Vendors</h3>

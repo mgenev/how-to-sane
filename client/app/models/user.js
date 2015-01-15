@@ -8,6 +8,7 @@ export default DS.Model.extend({
     username: DS.attr('string'),
     tagline: DS.attr('string'),
     email: DS.attr('string'),
+    website: DS.attr('string'),
 
     //relationships
     vendors: DS.hasMany('vendor'),

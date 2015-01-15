@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Component.extend({
 	isEditing: false,
 	currentUser: true,
 	isVendor: false,
@@ -13,7 +13,7 @@ export default Ember.ObjectController.extend({
         saveEdit: function() {
             this.set('isEditing', false);
 
-            var user = this.model;
+            var user = this.get('user');
             user.save();
 
             this.transitionToRoute('s.users.user', user);
@@ -22,5 +22,5 @@ export default Ember.ObjectController.extend({
         cancelEdit: function () {
 			this.set('isEditing', false);        	
         }
-	}    
+	}   
 });
