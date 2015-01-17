@@ -1,0 +1,7 @@
+{{yield}}
+<p>SELECTED ALBUM: {{selectedAlbum.name}}</p>
+{{#each albums as |album|}}
+	<span {{action 'pickAlbum' album}} class="album-thumb">{{album.name}}</span>
+{{/each}}
+
+{{#link-to 's.media.albums.create'}}<span class="album-thumb">New Album</span>{{/link-to}}
