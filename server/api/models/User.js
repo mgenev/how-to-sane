@@ -11,6 +11,30 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
     attributes: {
+        
+        // Relationships
+        posts: {
+            collection: 'post',
+            via: 'user'
+        },
+        vendors: {
+            collection: 'vendor',
+            via: 'user'
+        },
+        photos: {
+            collection: 'photo',
+            via: 'user'
+        },
+        albums: {
+            collection: 'album',
+            via: 'user'
+        },
+        statuses: {
+            collection: 'status',
+            via: 'user'
+        },
+
+        // attributes
         firstName: 'STRING',
         lastName: 'STRING',
         username: {
@@ -42,20 +66,7 @@ module.exports = {
             type: 'string'
         },
 
-        // Relationships
-        
-        homepages: {
-            collection: 'homepage',
-            via: 'user'
-        },
-        vendors: {
-            collection: 'vendor',
-            via: 'user'
-        },
-        photos: {
-            collection: 'photo',
-            via: 'user'
-        },
+
 
         isAdmin: function() {
             return this.userType == 3;

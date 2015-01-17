@@ -1,16 +1,15 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    // relatioships
-    user: DS.belongsTo('user'),
-    vendor: DS.belongsTo('vendor'),
 
-    homepageTemplate: DS.attr(),
+    // relatioships
+    vendor: DS.belongsTo('vendor'),
 
     // attributes
     title: DS.attr('string'),
     pageContent: DS.attr('string'),
     urlSegment: DS.attr('string'),
+    homepageTemplate: DS.attr(),
 
     // computed
     slug: function() {

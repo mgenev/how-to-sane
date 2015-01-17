@@ -7,24 +7,30 @@
 
 module.exports = {
 
-  attributes: {
-	name: {
-        type: 'string'
-    },
-    path: {
-        type: 'string'
-    },
-    description: {
-        type: 'string'
-    },
-    tags : {
-    	type: 'array'
-   	},
+    attributes: {
 
-    // relationships
-	user: {
-        model: 'user'
+        // relationships
+        user: {
+            model: 'user'
+        },
+        album: {
+            model:'album',
+            via: 'photos'
+        },
+
+        // attr
+        name: {
+            type: 'string'
+        },
+        path: {
+            type: 'string'
+        },
+        description: {
+            type: 'string'
+        },
+        tags : {
+        	type: 'array'
+        }
     }
-  }
 };
 

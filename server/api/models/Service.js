@@ -8,17 +8,16 @@
 module.exports = {
 
     attributes: {
-        user: {
-            model: 'user'
-        },
+        // relationships
         vendor: {
             model: 'vendor'
         },
+        
         name: {
             type: 'string'
         },
         description: {
             type: 'string'
-        }
+        }    
     }
 };

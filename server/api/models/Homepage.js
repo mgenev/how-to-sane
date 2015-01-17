@@ -8,7 +8,15 @@
 module.exports = {
 
     attributes: {
+        // relationships
+        template: {
+            model: 'template'
+        },
+        vendor: {
+            model: 'vendor'
+        },
 
+        // attr
         title: {
             type: 'string',
             required: true
@@ -21,15 +29,6 @@ module.exports = {
         },
         urlSegment: {
             type: 'string'
-        },
-        template: {
-			model: 'template'
-        },
-        vendor: {
-            model: 'vendor'
-        },
-        user: {
-            model: 'user'
         }
     }
 };

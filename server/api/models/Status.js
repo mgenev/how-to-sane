@@ -7,17 +7,23 @@
 
 module.exports = {
 
-  attributes: {
-    post: {
-        type: 'string',
-        required: true
-    },
-    state: {
-        type: 'string'
-    },
-    activity: {
-        type: 'string'
+    attributes: {
+        // relationships
+        user: {
+            model: 'user'
+        },
+        
+        // attr
+        note: {
+            type: 'string',
+            required: true
+        },
+        state: {
+            type: 'string'
+        },
+        activity: {
+            type: 'string'
+        }
     }
-  }
 };
 

@@ -1,6 +1,13 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+
+    //relationships
+    vendors: DS.hasMany('vendor'),
+    photos: DS.hasMany('photo'),
+    albums: DS.hasMany('album'),
+    post: DS.hasMany('post'),
+    statuses: DS.hasMany('status'),
     
     // attributes
     firstName: DS.attr('string'),
@@ -9,13 +16,6 @@ export default DS.Model.extend({
     tagline: DS.attr('string'),
     email: DS.attr('string'),
     website: DS.attr('string'),
-
-    //relationships
-    vendors: DS.hasMany('vendor'),
-    photos: DS.hasMany('photo'),
-    albums: DS.hasMany('album'),
-    post: DS.hasMany('post'),
-
 
     // computed
     fullName: function () {

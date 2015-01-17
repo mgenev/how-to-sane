@@ -8,11 +8,17 @@
 module.exports = {
 
     attributes: {
+        // relationships
+        vendor: {
+            model: 'vendor'
+        },
+        
+        // attr
         title: {
             type: 'string'
         },
         filePath: {
             type: 'string'
-        }
+        }        
     }
 };
