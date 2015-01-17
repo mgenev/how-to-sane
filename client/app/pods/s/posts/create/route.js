@@ -10,7 +10,7 @@ export default Ember.Route.extend(DestroyNew, {
         	// model.set('tags', ['lifestyle', 'health', 'tech']);
         	var userId = this.session.get('user.id');
 
-            var user = this.store.find('user', userId).then(function(result) {
+            this.store.find('user', userId).then(function(result) {
                 model.set('user', result);
                 return model.save();
             }).then(post => this.transitionTo('s.posts.post', post));

@@ -9,7 +9,7 @@ export default Ember.Route.extend(DestroyNew, {
         postStatus: function(model) {
             var userId = this.session.get('user.id');
 
-            var user = this.store.find('user', userId).then(function(result) {
+            this.store.find('user', userId).then(function(result) {
                 model.set('user', result);
                 return model.save();
             }).then(() => this.transitionTo('s.feed'));
