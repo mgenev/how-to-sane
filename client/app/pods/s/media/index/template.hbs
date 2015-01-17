@@ -3,5 +3,12 @@
     <div class="page-header">
         <h2>Media Gallery</h2>
     </div>
-    <div {{action "openModal" "s.media.upload" controller}} class="btn btn-info">Upload images</div>
+    {{#link-to "s.media.upload"}}
+    	<div class="btn btn-info">
+    	<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+    	Upload images
+    	</div>
+    {{/link-to}}
+
+    Album previews like amazon or picasa go here
 </div>

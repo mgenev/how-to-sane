@@ -1,7 +1,17 @@
 {{yield}}
-<p>SELECTED ALBUM: {{selectedAlbum.name}}</p>
-{{#each albums as |album|}}
-	<span {{action 'pickAlbum' album}} class="album-thumb">{{album.name}}</span>
-{{/each}}
 
-{{#link-to 's.media.albums.create'}}<span class="album-thumb">New Album</span>{{/link-to}}
+<div class="row">
+	
+	{{#link-to 's.media.albums.create'}}
+		<div class="album-tile">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</div>
+	{{/link-to}}
+
+	{{#each albums as |album|}}
+		<span {{action 'pickAlbum' album}} class="album-tile" {{bind-attr id=album.id}}>
+			{{album.name}}
+		</span>
+	{{/each}}
+	
+</div>

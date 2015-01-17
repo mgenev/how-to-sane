@@ -13,6 +13,15 @@
 	        <label for="body">Description</label>
 	        {{textarea value=description class='form-control'}}
 	    </div>
-	    <button class="btn btn-default" {{action 'createAlbum' model}}>Create Album</button>
+	    {{#link-to "s.media.upload"}}
+		    <div class="btn btn-default">
+		    	<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+		    	Back to upload
+		    </div>
+	    {{/link-to}}
+	    <div class="btn btn-info" {{action 'createAlbum' model}}>
+	    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	    	Create Album
+	    </div>
 	</form>
 </div>

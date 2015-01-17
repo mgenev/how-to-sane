@@ -1,12 +1,14 @@
 import Ember from 'ember';
+import DestroyNew from 'client/mixins/destroy-new-model';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(DestroyNew, {
     model: function() {
         return this.store.createRecord('album');
     },
     actions: {
         createAlbum: function(model) {
-            model.save().then(album => this.transitionTo('s.albums.album', album));
+            model.save().then( () => this.transitionTo('s.media.upload'));
         }
     }
+    
 });

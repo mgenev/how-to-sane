@@ -335,8 +335,6 @@ module.exports = {
    */
   parseModel: function ( req ) {
     
-    console.log('req.options', req.options);
-
     // Ensure a model can be deduced from the request options.
     var model = req.options.model || req.options.controller;
     if ( !model ) throw new Error( util.format( 'No "model" specified in route options.' ) );

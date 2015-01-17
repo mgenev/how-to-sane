@@ -11,26 +11,28 @@ body {
   background-color :#e9eaed;
 }
 
+a:hover {
+  text-decoration:none; 
+}
+
 .bump {
     margin-top: 20px;
 }
 
 .absolute-center {
-
     margin: auto;
-
     position: absolute;
-
     top: 0;
-
     left: 0;
-
     bottom: 0;
-
     right: 0;
-
     overflow:auto;
+}
 
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .mobile-menu {

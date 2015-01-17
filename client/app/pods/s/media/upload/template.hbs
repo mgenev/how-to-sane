@@ -1,16 +1,19 @@
 {{outlet}}
 
-{{#modal-dialog}}
-	<div class="modal-header">
-		<span class="h2">Upload your pictures</span>
-		<span {{action "closeModal"}} class="btn glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
-	</div>
-	<div class="modal-body">	
-		{{album-picker albums=this selectedAlbum=selectedAlbum}}
+<div class="container upload-wrapper">
+	<div class="page-header">
+        <h2>Upload your photos</h2>
+    </div>
+	<div  class="bump modal-body">
+		{{album-picker albums=model selectedAlbum=selectedAlbum}}
 		{{bootstrap-fileinput url="/api/v1/uploads/upload" associationType='album' extraData=selectedAlbum.id}}
 	</div>
 	<div class="modal-footer">
-	    <button class="btn btn-info" {{action "closeModal"}}>
-	    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done</button>
+		{{#link-to "s.media"}}
+			<div class="btn btn-info">
+				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+				Back to gallery
+			</div>
+		{{/link-to}}
 	</div>
-{{/modal-dialog}}
+</div>
