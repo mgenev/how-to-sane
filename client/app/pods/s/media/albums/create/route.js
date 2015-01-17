@@ -7,8 +7,13 @@ export default Ember.Route.extend(DestroyNew, {
     },
     actions: {
         createAlbum: function(model) {
-            model.save().then( () => this.transitionTo('s.media.upload'));
+        	var userId = this.session.get('user.id');
+
+            var user = this.store.find('user', userId).then(function(result) {
+                model.set('user', result);
+                return model.save();
+            }).then(() => this.transitionTo('s.media.upload'));
+
         }
     }
-    
 });
