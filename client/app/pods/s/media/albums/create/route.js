@@ -13,7 +13,6 @@ export default Ember.Route.extend(DestroyNew, {
                 model.set('user', result);
                 return model.save();
             }).then(() => this.transitionTo('s.media.upload'));
-
         }
     }
 });

@@ -1,1 +1,4 @@
 {{outlet}}
+{{#each model as |photo|}}
+	<img {{bind-attr src=photo.filePath}} >
+{{/each}}

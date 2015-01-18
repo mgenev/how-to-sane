@@ -6,8 +6,9 @@ export default DS.Model.extend({
     album: DS.belongsTo('album'),
 
     // attr
-	name: DS.attr('string'),
-	path: DS.attr('string'),
-	description: DS.attr('string'),
-	tags: DS.attr('array')
+	
+	filePath: DS.attr('string'),	
+	tags: DS.attr('array'),
+	createdAt: DS.attr('string')
+	 
 });

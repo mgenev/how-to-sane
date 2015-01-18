@@ -24,16 +24,16 @@ export default Ember.Component.extend({
             'link': 's.users.create'
         }]
     }, {
-    //     'title': 'Templates',
-    //     'link': 's.templates',
-    //     'submenu': [{
-    //         'title': 'Index',
-    //         'link': 's.templates.index'
-    //     }, {
-    //         'title': 'Create New Template',
-    //         'link': 's.templates.create'
-    //     }]
-    // }, {
+        'title': 'Templates',
+        'link': 's.templates',
+        'submenu': [{
+            'title': 'Index',
+            'link': 's.templates.index'
+        }, {
+            'title': 'Create New Template',
+            'link': 's.templates.create'
+        }]
+    }, {
         'title': 'Vendors',
         'link': 's.vendors',
         'submenu': [{
