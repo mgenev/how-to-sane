@@ -1,0 +1,137 @@
+/**
+ * Grid container
+ */
+
+#tiles {
+
+    list-style-type: none;
+
+    position: relative;
+
+    /** Needed to ensure items are laid out relative to this container **/
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+/**
+ * Grid items
+ */
+
+#tiles li {
+
+    width: 200px;
+
+    background-color: #ffffff;
+
+
+    border-radius: 2px;
+
+    -moz-border-radius: 2px;
+
+    -webkit-border-radius: 2px;
+
+    display: none;
+
+    /** Hide items initially to avoid a flicker effect **/
+
+    cursor: pointer;
+
+    padding: 1px;
+
+}
+
+#tiles li.inactive {
+
+    visibility: hidden;
+
+    opacity: 0;
+
+}
+
+#tiles li img {
+
+    display: block;
+
+}
+
+/**
+ * Grid item text
+ */
+
+#tiles li p {
+    
+
+
+    color: white;
+
+    font-size: 18px;
+
+    line-height: 10px;
+
+    text-align: center;
+
+    font-weight: 200;
+
+    margin-top: -50px;
+
+}
+
+#tiles li p {
+    display: none;
+}
+
+
+/**
+ * Progress bar for imagesLoaded
+ */
+
+.progress-bar {
+
+    background-color: #0BC20B;
+
+    height: 2px;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    width: 0;
+
+    box-shadow: 0 1px 3px rgba(11, 194, 11, 0.2);
+
+    -webkit-transition: width 0.3s ease-out;
+
+    -moz-transition: width 0.3s ease-out;
+
+    -o-transition: width 0.3s ease-out;
+
+    transition: width 0.3s ease-out;
+
+}
+
+/**
+     * Grid items
+     */
+
+#tiles li {
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
+#tiles li img {
+
+    width: 100%;
+
+    height: auto;
+
+}

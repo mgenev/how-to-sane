@@ -1,4 +1,9 @@
 {{outlet}}
-{{#each model as |photo|}}
-	<img {{bind-attr src=photo.filePath}} >
-{{/each}}
+<div class="container">
+	<div class="page-header">
+        <h2>{{album.name}} <small>{{moment album.createdAt 'MMM Do, YY'}}</small></h2>
+        <p>{{album.description}}</p>
+    </div>
+	{{photo-gallery photos=model album=album}}
+</div>
+

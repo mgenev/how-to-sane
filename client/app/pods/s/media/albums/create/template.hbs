@@ -2,7 +2,9 @@
 {{#modal-dialog}}
 	<div class="modal-header">
 			<span class="h2">Create Album</span>
+			{{#link-to "s.media.upload"}}
 			<span {{action "closeModal"}} class="btn glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+			{{/link-to}}
 		</div>
 		<div class="modal-body">	
 			<form {{action 'createAlbum' on='submit'}}>
@@ -19,7 +21,7 @@
 		</div>
 		<div class="modal-footer">
 	    {{#link-to "s.media.upload"}}
-		    <div {{action "closeModal"}} class="btn btn-default">
+		    <div class="btn btn-default">
 		    	<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
 		    	Back to upload
 		    </div>

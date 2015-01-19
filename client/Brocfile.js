@@ -12,6 +12,11 @@ app.import('bower_components/bootstrap-fileinput/css/fileinput.min.css');
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', {
   destDir: 'fonts'
 });
+
+app.import('bower_components/wookmark-jquery/jquery.wookmark.min.js');
+app.import('bower_components/wookmark-jquery/libs/jquery.imagesloaded.js');
+
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //
