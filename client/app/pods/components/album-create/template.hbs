@@ -1,0 +1,28 @@
+{{yield}}
+{{#modal-dialog}}
+<div class="container">
+	<div class="page-header">
+        <h2>Create Album</h2>
+    </div>
+	<form {{action 'createAlbum' on='submit'}}>
+	    <div class="form-group">
+	        <label for="identification">Name</label>
+	        {{input type="text" value=albumModel.name class='form-control'}}
+	    </div>
+	    <div class="form-group">
+	        <label for="body">Description</label>
+	        {{textarea value=albumModel.description class='form-control'}}
+	    </div>
+	    {{#link-to "s.media.upload"}}
+		    <div class="btn btn-default">
+		    	<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+		    	Back to upload
+		    </div>
+	    {{/link-to}}
+	    <div class="btn btn-info" {{action 'createAlbum' albumModel}}>
+	    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	    	Create Album
+	    </div>
+	</form>
+</div>
+{{/modal-dialog}}

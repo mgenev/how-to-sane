@@ -1,20 +1,25 @@
 {{outlet}}
+{{#modal-dialog}}
+	<div class="modal-header">
+			<span class="h2">Create Album</span>
+			<span {{action "closeModal"}} class="btn glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+		</div>
+		<div class="modal-body">	
+			<form {{action 'createAlbum' on='submit'}}>
+			    <div class="form-group">
+			        <label for="identification">Name</label>
+			        {{input type="text" value=name class='form-control'}}
+			    </div>
+			    <div class="form-group">
+			        <label for="body">Description</label>
+			        {{textarea value=description class='form-control'}}
+			    </div>
 
-<div class="container">
-	<div class="page-header">
-        <h2>Create Album</h2>
-    </div>
-	<form {{action 'createAlbum' on='submit'}}>
-	    <div class="form-group">
-	        <label for="identification">Name</label>
-	        {{input type="text" value=name class='form-control'}}
-	    </div>
-	    <div class="form-group">
-	        <label for="body">Description</label>
-	        {{textarea value=description class='form-control'}}
-	    </div>
+			</form>
+		</div>
+		<div class="modal-footer">
 	    {{#link-to "s.media.upload"}}
-		    <div class="btn btn-default">
+		    <div {{action "closeModal"}} class="btn btn-default">
 		    	<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
 		    	Back to upload
 		    </div>
@@ -23,5 +28,7 @@
 	    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	    	Create Album
 	    </div>
-	</form>
-</div>
+	</div>
+{{/modal-dialog}}
+
+
