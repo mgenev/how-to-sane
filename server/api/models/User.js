@@ -58,10 +58,6 @@ module.exports = {
             type: 'string'
         },
 
-        tagline: {
-            type: 'string'
-        },
-
         website: {
             type: 'string'
         },

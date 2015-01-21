@@ -7,7 +7,8 @@ export default DS.Model.extend({
 
     // attr
 	
-	filePath: DS.attr('string'),	
+	filePath: DS.attr('string'),
+	thumbPath: DS.attr('string'),
 	tags: DS.attr('array'),
 	createdAt: DS.attr('string')
 	 

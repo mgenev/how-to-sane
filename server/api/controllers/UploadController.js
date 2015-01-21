@@ -1,4 +1,5 @@
-var actionUtil = require('../blueprints/_util/actionUtil');
+var easyimg = require('easyimage');
+var fs = require('fs');
 
 module.exports = {
     upload: function(req, res) {
@@ -51,9 +52,38 @@ module.exports = {
 
             if (err) return res.send(500, err);
 
-            var str = uploadedFiles[0].fd;            
-            str = str.substr(str.lastIndexOf('/'), str.length - str.lastIndexOf('/') ); 
-            record.filePath = path + str;
+            var fileName, destDir;
+
+            var str = uploadedFiles[0].fd;
+            fileName = str.substr(str.lastIndexOf('/') + 1, str.length - str.lastIndexOf('/'));
+            destDir = str.substr(0, str.lastIndexOf('/'))
+
+            console.log(' FILENAME ', fileName);
+            console.log(' DESTDIR ', destDir);
+
+            // todo put thumb at end of file after this works
+            thumbPath = path + '/thumbs/' + fileName;
+
+            record.filePath = path + '/' + fileName;
+            record.thumbPath = thumbPath;
+
+            if (!fs.existsSync(destDir + '/thumbs')) {
+                fs.mkdirSync(destDir + '/thumbs');
+            }
+
+            easyimg.thumbnail({
+                src: uploadedFiles[0].fd,
+                dst: destDir + '/thumbs/' + fileName,
+                width: 300,
+                height: 300
+            }).then(
+                function(image) {
+                    console.log('THE IMAGE RETURNED ' + JSON.stringify(image));
+                },
+                function(err) {
+                    console.log(err);
+                }
+            );
 
             Photo.create(record).exec(function(err, photo) {
                 return res.json({

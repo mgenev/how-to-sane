@@ -22,7 +22,10 @@ module.exports = {
         name: {
             type: 'string'
         },
-        path: {
+        filePath: {
+            type: 'string'
+        },
+        thumbPath : {
             type: 'string'
         },
         description: {

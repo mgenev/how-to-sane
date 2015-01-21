@@ -30,7 +30,8 @@
       "passport": "*",
       "passport-local": "*",
       "express-jwt": "~0.2.0",
-      "jsonwebtoken": "~0.2.0"
+      "jsonwebtoken": "~0.2.0",
+      "caman" : "~4.1.2"
   },
   "scripts": {
       "start": "node app.js",
