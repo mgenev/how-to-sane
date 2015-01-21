@@ -1,0 +1,58 @@
+
+.full-size-photo-viewer {
+
+    opacity: 0;
+
+    .modal-body {
+
+        padding:0;
+
+    }
+
+    .photo {
+
+        width: 80%;
+        margin:0;
+        float:left;
+        background-color: #000;
+        height:100%;
+        position: relative;
+        img {
+
+            margin: auto;
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            bottom: 0;
+
+            right: 0;
+
+        }
+
+    }
+
+    .side-panel {
+
+        float:left;
+
+        height:100%;
+
+        width: 20%;
+
+        margin:0;
+
+        background-color:white;
+
+    }
+
+}
+
+.modal-dialog {
+
+    width: auto;
+
+}

@@ -4,6 +4,13 @@
         <h2>{{album.name}} <small>{{moment album.createdAt 'MMM Do, YY'}}</small></h2>
         <p>{{album.description}}</p>
     </div>
-	{{photo-gallery photos=model album=album}}
+	{{photo-gallery photos=model album=album p=p}}
+	
+	<h1>{{p}}</h1>
+
+	{{#if p}}
+		{{photo-viewer currentPhoto=currentPhoto photos=model album=album nextPhoto="nextPhoto" closeViewer="closeViewer"}}
+	{{/if}}
+
 </div>
 
