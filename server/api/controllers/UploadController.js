@@ -1,5 +1,6 @@
-var easyimg = require('easyimage');
+var gm = require('gm');
 var fs = require('fs');
+var _ = require('nimble');
 
 module.exports = {
     upload: function(req, res) {
@@ -56,40 +57,58 @@ module.exports = {
 
             var str = uploadedFiles[0].fd;
             fileName = str.substr(str.lastIndexOf('/') + 1, str.length - str.lastIndexOf('/'));
-            destDir = str.substr(0, str.lastIndexOf('/'))
-
-            console.log(' FILENAME ', fileName);
-            console.log(' DESTDIR ', destDir);
+            destDir = str.substr(0, str.lastIndexOf('/'));
 
             // todo put thumb at end of file after this works
-            thumbPath = path + '/thumbs/' + fileName;
 
             record.filePath = path + '/' + fileName;
-            record.thumbPath = thumbPath;
+            record.thumbPath = path + '/thumbs/' + fileName;
 
             if (!fs.existsSync(destDir + '/thumbs')) {
                 fs.mkdirSync(destDir + '/thumbs');
             }
 
-            easyimg.thumbnail({
-                src: uploadedFiles[0].fd,
-                dst: destDir + '/thumbs/' + fileName,
-                width: 300,
-                height: 300
-            }).then(
-                function(image) {
-                    console.log('THE IMAGE RETURNED ' + JSON.stringify(image));
-                },
-                function(err) {
-                    console.log(err);
-                }
-            );
+            _.series([
+                function(callback) {
+                    // Resize thumb, preserve dimensions
+                    gm(uploadedFiles[0].fd)
+                        .resize(300 + '>')
+                        .gravity('Center')
+                        .write(destDir + '/thumbs/' + fileName, function(error) {
+                            if (error) res.send(500, error);
 
-            Photo.create(record).exec(function(err, photo) {
-                return res.json({
-                    photo: photo
-                });
-            });
+                            callback();
+                        });
+                },
+                function(callback) {
+                    // Resize main
+                    gm(uploadedFiles[0].fd)
+                        .resize(1024 + '>')
+                        .gravity('Center')
+                        .write(uploadedFiles[0].fd, function(error) {
+                            if (error) res.send(500, error);
+                            callback();
+                        });
+
+                },
+                function(callback) {
+                    // Resize main
+                    Photo.create(record).exec(function(err, photo) {
+                        return res.json({
+                            photo: photo
+                        });
+                        callback();
+                    });
+                }
+            ]);
         });
     }
+};
+
+resizePhoto = function(photo, path, width) {
+    gm(photo)
+        .resize(width)
+        .write(root + '/public/img/uploads/' + name, function(err) {
+            if (err) console.log('gm error', err);
+        });
 };
