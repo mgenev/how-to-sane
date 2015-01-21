@@ -5,12 +5,12 @@ A demo app of how to use the SANE stack https://github.com/artificialio/sane
 
 Currently demonstrated features:
 
-+ CRUD
++ CRUD - API with a SPA client
 + User authentication
 + Data relationships
 + File uploads
-+ Drag and Drop
 + Photo gallery and viewer (being built) 
++ Server connected UI components
 + Data bound modals
 + Basic CMS functionality (being built) 
 + Many more coming
