@@ -9,7 +9,7 @@ Currently demonstrated features:
 + User authentication
 + Data relationships
 + File uploads
-+ Photo gallery and viewer (being built) 
++ Photo gallery and viewer 
 + Server connected UI components
 + Data bound modals
 + Basic CMS functionality (being built) 
