@@ -43,7 +43,7 @@ Installation:
 
 Support:
 ==========================
-If you have questions about this project, open a ticket even better, come to the chat for the SANE stack https://gitter.im/artificialio/sane
+If you have questions about this project, come to the chat for the SANE stack https://gitter.im/artificialio/sane
 
 ### License 
 The MIT License (MIT)
