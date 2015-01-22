@@ -1,24 +1,24 @@
+// component photo-viewer
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    // eventManager: Ember.Object.create({
-    //     keyDown: function(event, view) {
-    //         // escape 
-    //         if (event.keyCode === 27) {
-    //             view.get('controller.controllers.PhotosPhoto').send('close', view.get('controller').content.content);
-    //         }
-    //         // right arrow
-    //         if (event.keyCode === 39) {
-    //             view.get('controller.controllers.PhotosPhoto').send('forward', view.get('controller').content.content);
-    //         }
 
-    //         // left arrow
-    //         if (event.keyCode === 37) {
-    //             view.get('controller.controllers.PhotosPhoto').send('backwards', view.get('controller').content.content);
-    //         }
+    keyDown: function(event) {
+        // escape 
+        if (event.keyCode === 27) {
+            this.send('closeViewer', this.get('currentPhoto'));
+        }
+        // right arrow
+        if (event.keyCode === 39) {
+            this.send('forward', this.get('currentPhoto'));
+        }
 
-    //     }
-    // }),
+        // left arrow
+        if (event.keyCode === 37) {
+            this.send('backwards', this.get('currentPhoto'));
+        }
+
+    },
 
     didInsertElement: function() {
         //fix for catching key events
@@ -33,6 +33,12 @@ export default Ember.Component.extend({
         var self = this;
         $(window).resize(function() {
             self.setViewerHeight();
+        });
+
+        var modal = $('#modalDialog');
+        // TODO: Check to see if we need to cleanup this on event upon destroy
+        modal.on('hidden.bs.modal', function() {
+            self.send('closeViewer');
         });
     },
 
@@ -54,8 +60,8 @@ export default Ember.Component.extend({
     },
 
     getNextId: function(direction, model) {
-    	
-    	var currentId = model.get('id')
+
+        var currentId = model.get('id');
 
         var photoIdList = this.getPhotoIdList();
         var currentIdIndex = photoIdList.indexOf(currentId);
@@ -88,8 +94,8 @@ export default Ember.Component.extend({
         closeViewer: function(album) {
             this.sendAction('closeViewer');
         },
-        closeModal: function () {
-        	this.sendAction('closeModal');
+        closeModal: function() {
+            this.sendAction('closeModal');
         }
     },
 });

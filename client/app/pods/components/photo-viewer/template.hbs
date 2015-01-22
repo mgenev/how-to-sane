@@ -6,10 +6,26 @@
 			<img class="img-responsive center" {{bind-attr src='currentPhoto.filePath'}}>
 		</div>
 		<div  class="side-panel">
-			<div class="well">
-		  		<div class="btn btn-info bump" {{action 'forward' currentPhoto}}>NEXT</div>
-				<div class="btn btn-info bump" {{action 'backwards' currentPhoto}}>PREV</div>
-				<div class="btn btn-info bump" {{action 'closeViewer'}}>CLOSE</div>
+			<div class="well">				
+		  		<div class="btn btn-info bump" {{action 'backwards' currentPhoto}}>
+		  			<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+		  			PREV
+		  		</div>
+		  		<div class="btn btn-info bump" {{action 'forward' currentPhoto}}>
+		  			<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+		  			NEXT
+		  		</div>
+		  		<div class="btn btn-info bump" {{action 'closeViewer'}}>
+		  			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		  			CLOSE
+		  		</div>
+			</div>
+			<div class="container-fluid">
+				{{!-- turn this to component --}}
+				<h5>
+					Comments:
+				</h5>
+				<hr>
 			</div>
 		</div>
 	</div>
