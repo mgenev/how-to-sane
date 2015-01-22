@@ -11,7 +11,9 @@ module.exports = function(environment) {
           FEATURES: {
               'ember-htmlbars': true,
               'ember-htmlbars-block-params': true,
-              'ember-htmlbars-each-with-index': true
+              'ember-htmlbars-each-with-index': true,
+              'ember-htmlbars-attribute-syntax': true,
+              'ember-htmlbars-component-generation': true
           }
       },
       contentSecurityPolicy: {

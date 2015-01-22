@@ -1,9 +1,9 @@
 {
   "name": "client",
   "dependencies": {
-    "handlebars": "2.0.0",
+    "handlebars": ">=2.0.0",
     "jquery": "^1.11.1",
-    "ember": "1.10.0-beta.3",
+    "ember": "canary",
     "ember-data": "1.0.0-beta.14",
     "ember-resolver": "~0.1.7",
     "loader.js": "stefanpenner/loader.js#1.0.1",
@@ -18,5 +18,8 @@
     "ember-simple-auth": "0.7.2",
     "ember-cli-moment-shim": "~0.0.2",
     "wookmark-jquery": "~1.4.8"
+  },
+  "resolutions": {
+    "ember": "canary"
   }
 }
