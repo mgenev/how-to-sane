@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     queryParams: ['p'],
-    
+
     p: null,
 
     currentPhoto: function() {
@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
     	if (this.get('p')) {
     		return this.store.find('photo', this.get('p'));	
     	} else {
-    		return null;
+    		return { filePath: '' };
     	}
         
     }.property('p')
