@@ -3,6 +3,7 @@
 	<div class="page-header">
         <h2>{{album.name}} <small>{{moment album.createdAt 'MMM Do, YY'}}</small></h2>
         <p>{{album.description}}</p>
+        <p> You are viewing from <b>{{location}}</b></p>
     </div>
 	<photo-gallery photos={{model}} album={{album}} p={{p}}></photo-gallery>
 	
@@ -10,4 +11,3 @@
 		<photo-viewer currentPhoto={{currentPhoto}} photos={{model}} album={{album}} nextPhoto="nextPhoto" closeViewer="closeViewer"></photo-viewer>
 	{{/if}}
 </div>
-

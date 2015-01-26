@@ -17,7 +17,8 @@
     "bootstrap": "~3.3.1",
     "ember-simple-auth": "0.7.2",
     "ember-cli-moment-shim": "~0.0.2",
-    "wookmark-jquery": "~1.4.8"
+    "wookmark-jquery": "~1.4.8",
+    "geoPosition": "latest"
   },
   "resolutions": {
     "ember": "canary"

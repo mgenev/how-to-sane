@@ -16,19 +16,23 @@ module.exports = function(environment) {
               'ember-htmlbars-component-generation': true
           }
       },
-      contentSecurityPolicy: {
-          'default-src': "*",
-          'font-src': "*",
-          'connect-src': "*",
-          'img-src': "*",
-          'style-src': "*",
-          'frame-src': "*"
-      },
+
       APP: {
           // Here you can pass flags/options to your application instance
           // when it is created
       }
   };
+
+  ENV.contentSecurityPolicy =  {
+          'default-src': "'self' https://maps.googleapis.com",
+          'font-src': "*",
+          'connect-src': "'self' https://maps.googleapis.com",
+          'img-src': "*",
+          'style-src': "* 'unsafe-inline'",
+          'frame-src': "*",
+          'script-src': "'self' 'unsafe-eval' *.googleapis.com *.gstatic.com"
+  };
+
   ENV['simple-auth'] = {
       authorizer: 'simple-auth-authorizer:oauth2-bearer'
   };
