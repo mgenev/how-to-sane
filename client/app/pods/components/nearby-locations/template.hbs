@@ -4,11 +4,9 @@
     <p> You are viewing from <b>{{location}}</b></p>	
     <div id="mapfeed"></div>
 	
-	<h3>Nerby Locations are: </h3>
+	<h3>Nearby Locations are: </h3>
     {{#each nearbyLocations as |place|}} 
 		<h4><b>{{place.name}}</b></h4>
 		<p>{{place.formatted_address}}</p>
     {{/each}}
-
-    {{areaGeo}}
 </div>
