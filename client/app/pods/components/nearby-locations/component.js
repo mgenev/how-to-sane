@@ -3,12 +3,12 @@ import GeoLocationMixin from 'client/mixins/geolocation-mixin';
 
 
 export default Ember.Component.extend(GeoLocationMixin, {
-	
+
     startGeo: function() {
 
         var _this = this;
         this.get('geolocation').start();
-		
+
         this.get('geolocation').getGeoposition().then(function(geoposition) {
             _this.set('geoposition', geoposition);
 
@@ -21,12 +21,20 @@ export default Ember.Component.extend(GeoLocationMixin, {
     }.on('didInsertElement'),
 
     drawMap: function(geo) {
-
+    	var infoWindow = new google.maps.InfoWindow();
         var map = new google.maps.Map(document.getElementById('mapfeed'), {
             center: this.get('areaGeo'),
-            zoom: 15
+            zoom: 14
         });
+
+        this.set('infoWindow', infoWindow);
         this.set('map', map);
+
+         new google.maps.Marker({
+            map: map,
+            position: this.get('areaGeo'),
+            icon: '/images/icons/smiley_happy.png'
+        });
     },
 
     areaGeo: function() {
@@ -69,14 +77,26 @@ export default Ember.Component.extend(GeoLocationMixin, {
             _this.set('nearbyLocations', results);
 
             // TODO pin the markers
-            // if (status == google.maps.places.PlacesServiceStatus.OK) {
-            //     for (var i = 0; i < results.length; i++) {
-            //         var place = results[i];
-            //         createMarker(results[i]);
-            //     }
-            // }
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    _this.createMarker(results[i]);
+                }
+            }
 
         }
+    },
+    createMarker: function(place) {
+    	var _this = this;
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+            map: _this.get('map'),
+            position: placeLoc
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            _this.get('infoWindow').setContent(place.name);
+            _this.get('infoWindow').open(_this.get('map'), this);
+        });
     }
 
 });

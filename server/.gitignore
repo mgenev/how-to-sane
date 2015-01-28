@@ -118,3 +118,4 @@ nbproject
 .node_history
 uploads
 assets/images
+!assets/images/icons
