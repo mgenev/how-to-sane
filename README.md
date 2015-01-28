@@ -9,7 +9,7 @@ Currently demonstrated features:
 + User authentication
 + Data relationships
 + File uploads
-+ Photo gallery and viewer (being built) 
++ Photo gallery and viewer 
 + Server connected UI components
 + Data bound modals
 + Basic CMS functionality (being built) 
@@ -31,7 +31,6 @@ How is it made?
 + Passport - User Authentication
 + GraphicMagic - Image manipulation
 
-
 Installation:
 ==========================
 1. Follow the steps to install and run the SANE stack - https://github.com/artificialio/sane
@@ -41,6 +40,10 @@ Installation:
 5. npm install, bower install in both the client and the server directories
 6. 'sane up' to start both the client and the server
 7. Browse app at localhost:4200
+
+Support:
+==========================
+If you have questions about this project, come to the chat for the SANE stack https://gitter.im/artificialio/sane
 
 ### License 
 The MIT License (MIT)
@@ -65,4 +68,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-If you have questions about this project, open a ticket even better, come to the chat for the SANE stack https://gitter.im/artificialio/sane
