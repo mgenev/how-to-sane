@@ -3,9 +3,13 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('service', 'Service', {
+import Homepage from 'client/app/models/homepage';
+import Vendor from 'client/app/models/vendor';
+
+
+moduleForModel('homepage', 'Homepage', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:vendor']
 });
 
 test('it exists', function() {

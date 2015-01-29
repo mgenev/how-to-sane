@@ -5,7 +5,7 @@ import {
 
 moduleForModel('photo', 'Photo', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:user', 'model:album']
 });
 
 test('it exists', function() {

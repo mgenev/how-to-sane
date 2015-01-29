@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:homepages/index', 'HomepagesIndexRoute', {
+moduleFor('route:s/homepages/index', 'HomepagesIndexRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

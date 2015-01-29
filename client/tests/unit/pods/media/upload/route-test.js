@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:media/upload', 'MediaUploadRoute', {
+moduleFor('route:s/media/upload', 'MediaUploadRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

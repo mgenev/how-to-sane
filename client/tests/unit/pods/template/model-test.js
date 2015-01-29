@@ -5,7 +5,7 @@ import {
 
 moduleForModel('template', 'Template', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:vendor']
 });
 
 test('it exists', function() {

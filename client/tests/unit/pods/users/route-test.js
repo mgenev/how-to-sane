@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('route:users', 'UsersRoute', {
+moduleFor('route:s/users', 'UsersRoute', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
