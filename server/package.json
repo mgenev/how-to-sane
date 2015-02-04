@@ -25,8 +25,6 @@
     "jsonwebtoken": "3.2.2",
     "lodash": "^2.4.1",
     "nimble": "0.0.2",
-    "passport": "*",
-    "passport-local": "*",
     "pluralize": "^1.1.0",
     "rc": "~0.5.0",
     "sails": "~0.10.5",

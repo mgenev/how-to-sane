@@ -1,9 +1,8 @@
-var passport = require('passport');
 var jwt = require('jsonwebtoken');
 var _ = require('lodash');
 var secret = 'RS#$09qu43f09qfj94qf*&H#(R';
 var refreshSecret = 'rw5&&$$2224124f*&H#(R';
-
+var bcrypt = require('bcrypt');
 /**
  * AuthController
  *
@@ -26,24 +25,28 @@ module.exports = {
 
         if (req.body.grant_type === 'password') {
 
-            passport.authenticate('local', {
-                session: false
-            }, function(err, user, info) {
-                if ((err) || (!user)) {
+            User.findByUsername(req.body.username).exec(function(err, user) {
+                if (err) {
                     res.badRequest({
-                        error: 'invalidPassword'
+                        error: err
                     });
-                    return;
-                } else {
-                    if (err) {
+                }
+                if (!user || user.length < 1) {
+                    res.badRequest({
+                        error: 'No such user'
+                    });
+                }
+
+                bcrypt.compare(req.body.password, user[0].password, function(err, result) {
+                    if (err || !result) {
                         res.badRequest({
-                            error: 'unknownError: ' + err
+                            error: 'invalidPassword'
                         });
                     } else {
                         issueTokens(user, res);
                     }
-                }
-            })(req, res);
+                });
+            });
 
         } else if (req.body.grant_type === 'refresh_token' && req.body.refresh_token) {
 
@@ -98,7 +101,7 @@ function issueTokens(user, res) {
     });
 
     res.send({
-        user: user,
+        user: user[0],
         access_token: token,
         expires_in: expirationTimeInMinutes * 60, // because simple auth expects seconds
         refresh_token: refreshToken
