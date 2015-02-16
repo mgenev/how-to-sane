@@ -6,9 +6,9 @@ export default DS.Model.extend({
     vendors: DS.hasMany('vendor'),
     photos: DS.hasMany('photo'),
     albums: DS.hasMany('album'),
-    post: DS.hasMany('post'),
+    posts: DS.hasMany('post'),
     statuses: DS.hasMany('status'),
-    
+
     // attributes
     firstName: DS.attr('string'),
     lastName: DS.attr('string'),

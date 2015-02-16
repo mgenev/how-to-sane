@@ -3,21 +3,9 @@ var _ = require('lodash');
 var secret = 'RS#$09qu43f09qfj94qf*&H#(R';
 var refreshSecret = 'rw5&&$$2224124f*&H#(R';
 var bcrypt = require('bcrypt');
+
 /**
  * AuthController
- *
- * @module      :: Controller
- * @description :: A set of functions called `actions`.
- *
- *                 Actions contain code telling Sails how to respond to a certain type of request.
- *                 (i.e. do stuff, then send some JSON, show an HTML page, or redirect to another URL)
- *
- *                 You can configure the blueprint URLs which trigger these actions (`config/controllers.js`)
- *                 and/or override them with custom routes (`config/routes.js`)
- *
- *                 NOTE: The code you write here supports both HTTP and Socket.io automatically.
- *
- * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
 module.exports = {
@@ -92,11 +80,11 @@ module.exports = {
 function issueTokens(user, res) {
     var expirationTimeInMinutes = 60 * 2;
 
-    var token = jwt.sign(user, secret, {
+    var token = jwt.sign(user[0], secret, {
         expiresInMinutes: expirationTimeInMinutes
     });
 
-    var refreshToken = jwt.sign(user, refreshSecret, {
+    var refreshToken = jwt.sign(user[0], refreshSecret, {
         expiresInMinutes: expirationTimeInMinutes
     });
 

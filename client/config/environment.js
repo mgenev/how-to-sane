@@ -37,6 +37,7 @@ module.exports = function(environment) {
       authorizer: 'simple-auth-authorizer:oauth2-bearer'
   };
   ENV['simple-auth-oauth2'] = {
+      refreshAccessTokens: true,
       serverTokenEndpoint: '/api/v1/auths/login',
       serverTokenRevocationEndpoint: '/api/v1/auths/logout',
   };

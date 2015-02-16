@@ -8,8 +8,8 @@
 		<div  class="bump modal-body">
 			<h4>Select Album</h4>
 			{{album-picker albums=model selectedAlbum=selectedAlbum}}
-			{{bootstrap-fileinput url="/api/v1/uploads/photo" associationType='album' extraData=selectedAlbum.id}}
-		</div>
+			{{bootstrap-fileinput url="/api/v1/uploads/photo" associationType="album" extraData=selectedAlbum.id}}
+		 </div>
 		<div class="modal-footer">
 			{{#link-to "s.media"}}
 				<div class="btn btn-info">

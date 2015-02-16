@@ -36,6 +36,9 @@ module.exports = {
         description: {
             type: 'string'
         },
+        address: {
+            type: 'string'
+        },
         urlSegment: {
             type: 'string'
         },

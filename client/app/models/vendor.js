@@ -10,7 +10,9 @@ export default DS.Model.extend({
     // attr
     name: DS.attr('string'),
     description: DS.attr('string'),
-    urlSegment: DS.attr('string'),    
+    urlSegment: DS.attr('string'),
+    address: DS.attr('string'),
+    location: DS.attr(),
 
     // computed
     slug: function() {
