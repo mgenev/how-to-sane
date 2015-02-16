@@ -13,7 +13,7 @@ export default Ember.Route.extend({
             var user = this.store.find('user', userId).then(function(result) {
                 model.set('user', result);
                 user = result;
-                return _this.geoService.getLatLongForAddress(model.get('address'));
+                return _this.geoGoogleService.getLatLongForAddress(model.get('address'));
             }).then(function (response) {
                 var latlong = response.results[0].geometry.location;
                 model.set('location', latlong);

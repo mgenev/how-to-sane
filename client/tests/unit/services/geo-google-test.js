@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleFor('service:geo', 'GeoService', {
+moduleFor('service:geo-google', 'GeoGoogleService', {
   // Specify the other units that are required for this test.
   // needs: ['service:foo']
 });
