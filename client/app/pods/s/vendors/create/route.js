@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import toGeoJson from 'client/utils/to-geo-json';
+import {point} from 'client/utils/to-geo-json';
 
 export default Ember.Route.extend({
     model: function() {
@@ -16,7 +16,7 @@ export default Ember.Route.extend({
                 user = result;
                 return _this.geoGoogleService.getLatLongForAddress(model.get('address'));
             }).then(function (response) {
-                var latlong = toGeoJson(response.results[0].geometry.location);
+                var latlong = point(response.results[0].geometry.location);
                 model.set('location', latlong);
                 return model.save();
             }).then(() => this.transitionTo('s.users.user', user));
