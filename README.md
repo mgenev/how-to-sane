@@ -39,7 +39,7 @@ Installation:
 2. Install and run MongoDB - http://docs.mongodb.org/manual/installation/
 3. Install imagemagic and graphicmagic like shown: https://github.com/aheckmann/gm
 4. Clone repo
-5. npm install, bower install in both the client and the server directories
+5. bower install on client and npm install  on both the client and the server directories
 6. 'sane up' to start both the client and the server
 7. Browse app at localhost:4200
 
