@@ -8,9 +8,10 @@ export default Ember.Route.extend({
         var near = {
             fieldName: "location",
             coordinates: [ -122.3481255 , 47.6281998 ],
-            maxDistance: 4000
+            maxDistance: 3000
         };
 
+        // return this.store.find('vendor', {user: userId, near: near});
         return this.store.find('vendor', {user: userId, near: near});
     }
 });

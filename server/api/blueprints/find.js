@@ -50,74 +50,29 @@ module.exports = function findRecords(req, res) {
     // }
 
     // Lookup for records that match the specified criteria
-    var query, near, maxDistance;
-    near = actionUtil.parseNear(req);
+    var query = Model.find()
+        .where(actionUtil.parseCriteria(req))
+        .limit(actionUtil.parseLimit(req))
+        .skip(actionUtil.parseSkip(req))
+        .sort(actionUtil.parseSort(req));
 
-    // var nearObj = {
-    //     fieldName: "location",
-    //     coordinates: [ -122.3481255 , 47.6281998 ],
-    //     maxDistance: 4000
-    // };
-    //
+    query = actionUtil.populateEach(query, req);
+    query.exec(function found(err, matchingRecords) {
+        if (err) return res.serverError(err);
 
-    if (near) {
-        near.coordinates[1] = parseFloat(near.coordinates[1]);
-        near.coordinates[0] = parseFloat(near.coordinates[0]);
-        near.maxDistance = parseFloat(near.maxDistance);
-
-        var obj = {};
-        obj[near.fieldName] = {
-            $near: {
-                $geometry: {
-                    type: "Point",
-                    coordinates: [near.coordinates[0], near.coordinates[1]]
-                },
-                $maxDistance: near.maxDistance
+        // Only `.watch()` for new instances of the model if
+        // `autoWatch` is enabled.
+        if (req._sails.hooks.pubsub && req.isSocket) {
+            Model.subscribe(req, matchingRecords);
+            if (req.options.autoWatch) {
+                Model.watch(req);
             }
-        };
-        console.log('NEAR', near.coordinates[1], near.coordinates[0]);
-        console.log('TYPE OF', typeof near.coordinates[1]);
-
-        console.log('OBJ ----> ', typeof obj['location']['$near']['$geometry']['coordinates'][0]);
-
-        // obj['location']['$near']['$geometry']['coordinates'] = [near.coordinates[1], near.coordinates[0]];
-
-        Model.native(function (err, collection) {
-            if (err) return res.serverError(err);
-
-            collection.find(obj).toArray(function (err, results) {
-                if (err) return res.serverError(err);
-                console.log('->', results);
-                return res.ok(results);
-                // return res.ok(actionUtil.emberizeJSON(Model, results, req.options.associations, performSideload));
+            // Also subscribe to instances of all associated models
+            _.each(matchingRecords, function (record) {
+                actionUtil.subscribeDeep(req, record);
             });
-        });
+        }
 
-    } else {
-        query = Model.find()
-            .where(actionUtil.parseCriteria(req))
-            .limit(actionUtil.parseLimit(req))
-            .skip(actionUtil.parseSkip(req))
-            .sort(actionUtil.parseSort(req));
-
-            query = actionUtil.populateEach(query, req);
-            query.exec(function found(err, matchingRecords) {
-                if (err) return res.serverError(err);
-
-                // Only `.watch()` for new instances of the model if
-                // `autoWatch` is enabled.
-                if (req._sails.hooks.pubsub && req.isSocket) {
-                    Model.subscribe(req, matchingRecords);
-                    if (req.options.autoWatch) {
-                        Model.watch(req);
-                    }
-                    // Also subscribe to instances of all associated models
-                    _.each(matchingRecords, function (record) {
-                        actionUtil.subscribeDeep(req, record);
-                    });
-                }
-
-                res.ok(actionUtil.emberizeJSON(Model, matchingRecords, req.options.associations, performSideload));
-            });
-    }
+        res.ok(actionUtil.emberizeJSON(Model, matchingRecords, req.options.associations, performSideload));
+    });
 };
