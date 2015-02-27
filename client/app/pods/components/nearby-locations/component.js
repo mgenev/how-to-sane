@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import GeoLocationMixin from 'client/mixins/geolocation-mixin';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(GeoLocationMixin,{
 
     startGeo: function () {
 

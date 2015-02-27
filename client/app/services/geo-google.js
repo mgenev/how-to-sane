@@ -3,15 +3,14 @@ import Ember from 'ember';
 export default Ember.Object.extend({
 
     getGeoposition: function () {
-        var options = this.get('options');
 
         return new Ember.RSVP.Promise(function(resolve, reject) {
-            geoPosition.getCurrentPosition(resolve, reject, options);
+            navigator.geolocation.getCurrentPosition(resolve, reject);
         });
     },
 
     currentCoords: function () {
-    	this.get('geolocation').getGeoposition().then(function(geoposition) {
+    	this.getGeoposition().then(function(geoposition) {
             return geoposition.coords;
         });
     },
@@ -35,7 +34,7 @@ export default Ember.Object.extend({
     },
 
     getCurrentAddress: function () {
-    	return this.getAddressForLatLong(this.get('currentCoords'));
+    	return this.getAddressForLatLong(this.currentCoords());
     },
 
     getLatLongForAddress: function (address) {
@@ -95,7 +94,9 @@ export default Ember.Object.extend({
 
     createMarker: function(place) {
     	var _this = this;
-        var placeLoc = place.geometry.location;
+        var location =  { latitude: parseFloat(place.coordinates[1]), longitude: parseFloat(place.coordinates[0]) };
+        var placeLoc  = this.getGoogleMapsGeoCoords(location);
+
         var marker = new google.maps.Marker({
             map: _this.get('map'),
             position: placeLoc
