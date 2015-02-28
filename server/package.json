@@ -33,6 +33,7 @@
     "sails-mongo": "^0.10.4"
   },
   "scripts": {
+    "test": "node tests/runner",
     "start": "node app.js",
     "debug": "node debug app.js"
   },
@@ -42,5 +43,11 @@
     "url": "git://github.com/martin.genev/server.git"
   },
   "author": "martin.genev",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "chai": "^2.1.0",
+    "glob": "^4.4.1",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
+  }
 }
