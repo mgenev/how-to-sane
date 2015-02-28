@@ -33,6 +33,7 @@
     "sails-mongo": "^0.10.4"
   },
   "scripts": {
+    "test": "node tests/runner",
     "start": "node app.js",
     "debug": "node debug app.js"
   },
@@ -45,7 +46,7 @@
   "license": "",
   "devDependencies": {
     "chai": "^2.1.0",
-    "grunt-mocha-test": "^0.12.7",
+    "glob": "^4.4.1",
     "mocha": "^2.1.0",
     "sinon": "^1.12.2"
   }

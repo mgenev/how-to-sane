@@ -19,6 +19,7 @@ describe('The User Model', function() {
         password: 'password'
       }, function(err, user) {
         expect(user.password).to.not.equal('password');
+        expect(user.password).to.have.length(60);
         done();
       });
     });
