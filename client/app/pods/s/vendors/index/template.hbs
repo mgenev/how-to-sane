@@ -1,12 +1,21 @@
 {{outlet}}
 
-<div class="container">
+<div class="col-md-6">
 	<div class="page-header">
         <h2>Vendors</h2>
     </div>
 	{{#each model as |vendor|}}
 		<h3>{{vendor.name}}</h3>
 		<h4>belongs to: {{vendor.user.firstName}}&nbsp;{{vendor.user.lastName}}</h4>
+		<p>{{vendor.address}}</p>
 		<p>{{vendor.description}}</p>
 	{{/each}}
+</div>
+
+<div class="col-md-5">
+    <div class="page-header">
+        <h3>Geo</h3>
+    </div>
+    {{! TODO - make filter radios for food, adventure etc. hook them to query param and redo api call for places}}
+    <vendor-map vendors={{model}}></vendor-map>
 </div>

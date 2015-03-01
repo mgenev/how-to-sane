@@ -1,22 +1,23 @@
 {{outlet}}
 <div class="col-md-6">
 
-	    <div class="page-header">
-	        <h3>Feed</h3>
-	    </div>
-	    {{#link-to 's.feed.status'}}
-	    	<button class="btn btn-info">Post Status</button>
-	    {{/link-to}}
+    <div class="page-header">
+        <h3>Feed</h3>
+    </div>
+    {{#link-to 's.feed.status'}}
+        <button class="btn btn-info">Post Status</button>
+    {{/link-to}}
 
-	    {{#each model as |status|}}
-	    	{{status-card status=status}}
-	    {{/each}}
+    {{#each model as |status|}}
+        {{status-card status=status}}
+    {{/each}}
 
 </div>
+
 {{!-- <div class="col-md-5">
-	<div class="page-header">
+    <div class="page-header">
         <h3>Geo</h3>
     </div>
     {{! TODO - make filter radios for food, adventure etc. hook them to query param and redo api call for places}}
-	<nearby-locations></nearby-locations>
+    <nearby-locations></nearby-locations>
 </div> --}}

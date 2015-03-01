@@ -97,7 +97,6 @@ module.exports = {
                         return res.json({
                             photo: photo
                         });
-                        callback();
                     });
                 }
             ]);

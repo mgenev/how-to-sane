@@ -51,6 +51,7 @@ module.exports = {
     var prepareOneRecord = function ( record ) {
       // get rid of the record's prototype ( otherwise the .toJSON called in res.send would re-insert embedded records)
       record = _.create( {}, record.toJSON() );
+
       _.each( associations, function ( assoc ) {
         var assocName = assoc.type === "collection" ? pluralize( assoc.collection ) : pluralize( assoc.model );
 
@@ -230,7 +231,7 @@ module.exports = {
 
     // Allow customizable blacklist for params NOT to include as criteria.
     req.options.criteria = req.options.criteria || {};
-    req.options.criteria.blacklist = req.options.criteria.blacklist || [ 'limit', 'skip', 'sort', 'populate' ];
+    req.options.criteria.blacklist = req.options.criteria.blacklist || [ 'limit', 'skip', 'sort', 'populate', 'near' ];
 
     // Validate blacklist to provide a more helpful error msg.
     var blacklist = req.options.criteria && req.options.criteria.blacklist;
@@ -255,7 +256,7 @@ module.exports = {
       where = req.params.all();
 
       // Omit built-in runtime config (like query modifiers)
-      where = _.omit( where, blacklist || [ 'limit', 'skip', 'sort' ] );
+      where = _.omit( where, blacklist || [ 'limit', 'skip', 'sort', 'near' ] );
 
       // Omit any params w/ undefined values
       where = _.omit( where, function ( p ) {
@@ -276,6 +277,23 @@ module.exports = {
       if ( jsonpOpts ) {
         where = _.omit( where, [ jsonpOpts.callback ] );
       }
+    }
+
+    var near = req.param( 'near' );
+    if (near) {
+        near.coordinates[1] = parseFloat(near.coordinates[1]);
+        near.coordinates[0] = parseFloat(near.coordinates[0]);
+        near.maxDistance = parseFloat(near.maxDistance);
+
+        where[near.fieldName] = {
+            $near: {
+                $geometry: {
+                    type: "Point",
+                    coordinates: [near.coordinates[0], near.coordinates[1]]
+                },
+                $maxDistance: near.maxDistance
+            }
+        };
     }
 
     // Merge w/ req.options.where and return
@@ -334,7 +352,7 @@ module.exports = {
    * @return {WLCollection}
    */
   parseModel: function ( req ) {
-    
+
     // Ensure a model can be deduced from the request options.
     var model = req.options.model || req.options.controller;
     if ( !model ) throw new Error( util.format( 'No "model" specified in route options.' ) );
@@ -350,6 +368,10 @@ module.exports = {
    */
   parseSort: function ( req ) {
     return req.param( 'sort' ) || req.options.sort || undefined;
+  },
+
+  parseNear: function ( req ) {
+    return req.param( 'near' ) || req.options.near || undefined;
   },
 
   /**
