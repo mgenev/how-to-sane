@@ -1,14 +1,37 @@
 var User = require('../../../api/models/User.js');
+var Sails = require('sails').Sails;
 var sinon = require('sinon');
 var expect = require('chai').expect;
 
-describe('The User Model', function() {
-  describe('after a user is created', function() {
+
+describe('Users', function() {
+
+  before(function beforeRunningAnyTests(done) {
+    // Load the app without lifting sails
+    new Sails().load({
+      log: {
+        level: 'warn'
+      },
+      hooks: {
+        grunt: false
+      }
+    }, function whenAppIsReady(err, sailsApp) {
+      done(err, sailsApp);
+    });
+  });
+
+  after(function afterAllTestsFinish(done) {
+    sails.lower(done);
+  });
+
+  describe('before a user is created', function() {
+    // Wrap method in a spy
     before(function(done) {
       sinon.spy(User, "beforeCreate");
       done();
     });
 
+    // Remove spy from method
     after(function(done) {
       User.beforeCreate.restore();
       done();

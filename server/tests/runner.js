@@ -17,7 +17,5 @@ function addFiles(mocha, files) {
 addFiles(mocha, '/**/*Test.js');
 
 mocha.run(function(failures) {
-  process.on('exit', function() {
-    process.exit(failures);
-  });
+  process.exit(failures);
 });
