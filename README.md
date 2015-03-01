@@ -3,7 +3,9 @@
 
 How to SANE
 ==========================
-A demo app of how to use the SANE stack https://github.com/artificialio/sane. Please keep in mind that this project is 'canary'. For the sake of adopting new features as early as possible,  it is developed using the latest unstable versions of everything like ember canary, es6, iojs etc. This will definitely cause instability.
+The official demo app of how to use the SANE stack https://github.com/artificialio/sane. This is also the main experiment laboratory for prototyping and spinning off sane add ons.
+
+Please keep in mind that this project is 'canary'. For the sake of adopting new features as early as possible,  it is developed using the latest unstable versions of everything like ember canary, es6, iojs etc. This will definitely cause instability.
 
 Currently demonstrated features:
 
