@@ -15,19 +15,19 @@ module.exports = {
 
             User.findByUsername(req.body.username).exec(function(err, user) {
                 if (err) {
-                    res.badRequest({
+                    return res.badRequest({
                         error: err
                     });
                 }
                 if (!user || user.length < 1) {
-                    res.badRequest({
+                    return res.badRequest({
                         error: 'No such user'
                     });
                 }
 
                 bcrypt.compare(req.body.password, user[0].password, function(err, result) {
                     if (err || !result) {
-                        res.badRequest({
+                        return res.badRequest({
                             error: 'invalidPassword'
                         });
                     } else {
