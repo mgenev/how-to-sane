@@ -48,8 +48,48 @@ describe('Users', function() {
     });
 
     it('should not allow duplicate emails');
-    it('should require a username');
-    it('should require a password');
+
+    it('should require a username', function(done) {
+      sails.request({
+        url: '/api/v1/users',
+        method: 'POST',
+        params: {
+          user: {
+            username: '',
+            password: 'password'
+          }
+        },
+        headers: {},
+      }, function(err, clientRes, body) {
+        expect(err).to.exist;
+        expect(err).to.be.instanceof(Error);
+        expect(err).to.have.property('status', 400);
+        expect(err).to.have.deep.property('body.error', 'E_VALIDATION');
+        expect(err).to.have.deep.property('body.invalidAttributes.username');
+        done();
+      });
+    });
+
+    it('should require a password', function(done) {
+      sails.request({
+        url: '/api/v1/users',
+        method: 'POST',
+        params: {
+          user: {
+            username: 'test@test.com',
+            password: ''
+          }
+        },
+        headers: {}
+      }, function(err, clientRes, body) {
+        expect(err).to.exist;
+        expect(err).to.be.instanceof(Error);
+        expect(err).to.have.property('status', 400);
+        expect(err).to.have.deep.property('body.error', 'E_VALIDATION');
+        expect(err).to.have.deep.property('body.invalidAttributes.password');
+        done();
+      });
+    });
 
   });
 
