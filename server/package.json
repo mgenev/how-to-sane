@@ -33,7 +33,7 @@
     "sails-mongo": "^0.10.4"
   },
   "scripts": {
-    "test": "node tests/runner",
+    "test": "mocha -R spec --ui bdd ./tests/**/*-test.js",
     "start": "node app.js",
     "debug": "node debug app.js"
   },
