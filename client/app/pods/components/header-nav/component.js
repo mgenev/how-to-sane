@@ -68,5 +68,10 @@ export default Ember.Component.extend({
     },
     hideMenu: function () {
         $('.mobile-menu').collapse('hide');
+    },
+    actions: {
+        invalidateSession: function () {
+            this.sendAction('invalidateSession');
+        }
     }
 });
