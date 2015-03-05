@@ -1,26 +1,23 @@
 {
   "name": "client",
   "dependencies": {
-    "handlebars": ">=2.0.0",
     "jquery": "^1.11.1",
     "ember": "canary",
-    "ember-data": "1.0.0-beta.14",
-    "ember-resolver": "~0.1.7",
-    "loader.js": "stefanpenner/loader.js#1.0.1",
-    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
-    "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.0.4",
-    "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
-    "ember-qunit": "0.1.8",
-    "ember-qunit-notifications": "0.0.4",
-    "qunit": "~1.15.0",
     "bootstrap-fileinput": "~4.1.3",
     "bootstrap": "~3.3.1",
     "ember-simple-auth": "0.7.2",
     "ember-cli-moment-shim": "~0.0.2",
     "wookmark-jquery": "~1.4.8",
     "geoPosition": "latest"
-  },
-  "resolutions": {
     "ember": "canary"
+    "ember-data": "1.0.0-beta.15",
+    "ember-resolver": "~0.1.11",
+    "loader.js": "ember-cli/loader.js#1.0.1",
+    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
+    "ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
+    "ember-load-initializers": "ember-cli/ember-load-initializers#0.0.2",
+    "ember-qunit": "0.2.8",
+    "ember-qunit-notifications": "0.0.7",
+    "qunit": "~1.17.1"
   }
 }
