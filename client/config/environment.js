@@ -38,8 +38,7 @@ module.exports = function(environment) {
   };
   ENV['simple-auth-oauth2'] = {
       refreshAccessTokens: true,
-      serverTokenEndpoint: '/api/v1/auths/login',
-      serverTokenRevocationEndpoint: '/api/v1/auths/logout',
+      serverTokenEndpoint: '/api/v1/auths/login'
   };
 
 

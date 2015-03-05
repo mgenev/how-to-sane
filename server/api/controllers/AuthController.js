@@ -66,14 +66,6 @@ module.exports = {
                 issueTokens(user, res);
             };
         }
-    },
-
-    logout: function(req, res) {
-        req.logout();
-        res.send({
-            success: true,
-            message: 'logoutSuccessful'
-        });
     }
 };
 
