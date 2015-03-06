@@ -3,13 +3,14 @@ import {
   test
 } from 'ember-qunit';
 
-import Homepage from 'client/app/models/homepage';
-import Vendor from 'client/app/models/vendor';
-
-
 moduleForModel('homepage', 'Homepage', {
   // Specify the other units that are required for this test.
-  needs: ['model:vendor']
+  needs: [
+    'model:vendor',
+    'model:user',
+    'model:template',
+    'model:service'
+  ]
 });
 
 test('it exists', function() {
