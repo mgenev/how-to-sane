@@ -2,18 +2,40 @@ import {
   moduleForModel,
   test
 } from 'ember-qunit';
+import Ember from 'ember';
 
-import Album from 'client/app/models/album';
-import User from 'client/app/models/user';
-import Photo from 'client/app/models/photo';
 
 moduleForModel('album', 'Album', {
   // Specify the other units that are required for this test.
-  needs: ['model:user', 'model:photo']
+  needs: [
+    'model:user',
+    'model:vendor',
+    'model:photo',
+    'model:post',
+    'model:status'
+  ]
 });
 
-test('it exists', function() {
+// --- Basics ---
+test('it exists', function(assert) {
   var model = this.subject();
-  // var store = this.store();
-  ok(!!model);
+
+  assert.ok(!!model);
+});
+
+// --- Relationships ---
+test('it has user relationship', function(assert) {
+  var klass = this.subject({}).constructor;
+  var relationship = Ember.get(klass, 'relationshipsByName').get('user');
+
+  assert.equal(relationship.key, 'user', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
+});
+
+test('it has photo relationship', function(assert) {
+  var klass = this.subject({}).constructor;
+  var relationship = Ember.get(klass, 'relationshipsByName').get('photos');
+
+  assert.equal(relationship.key, 'photos', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
