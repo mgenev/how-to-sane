@@ -67,3 +67,10 @@ test('it has post relationship', function(assert) {
   assert.equal(relationship.key, 'posts', 'exists');
   assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
+
+// --- Computed Properties ---
+test('it computes fullName', function(assert) {
+  var model = this.subject({firstName: 'Dave', lastName:'Chappelle'});
+
+  assert.equal(model.get('fullName'), 'Dave Chappelle', 'creates fullName');
+});

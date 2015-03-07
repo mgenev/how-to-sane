@@ -58,3 +58,14 @@ test('it has service relationship', function(assert) {
   assert.equal(relationship.key, 'services', 'exists');
   assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
+
+// --- Computed Properties ---
+test('it computes slug', function(assert) {
+  var model;
+  var _this = this;
+  Ember.run(function() {
+    model = _this.subject({name: 'This IS !url-safe'});
+    assert.equal(model.get('slug'), 'this-is-url-safe', 'creates a slug');
+    assert.equal(model.get('urlSegment'), 'this-is-url-safe', 'sets urlSegment');
+  });
+});
