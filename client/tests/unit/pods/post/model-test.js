@@ -4,6 +4,7 @@ import {
 } from 'ember-qunit';
 import Ember from 'ember';
 
+
 moduleForModel('post', 'Post', {
   // Specify the other units that are required for this test.
   needs: [
@@ -15,16 +16,18 @@ moduleForModel('post', 'Post', {
   ]
 });
 
+// --- Basics ---
 test('it exists', function(assert) {
   var model = this.subject();
 
   assert.ok(!!model);
 });
 
-test('user relationship', function(assert) {
+// --- Relationships ---
+test('it has user relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('user');
 
-  assert.equal(relationship.key, 'user');
-  assert.equal(relationship.kind, 'belongsTo');
+  assert.equal(relationship.key, 'user', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
 });

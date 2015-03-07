@@ -16,24 +16,26 @@ moduleForModel('album', 'Album', {
   ]
 });
 
+// --- Basics ---
 test('it exists', function(assert) {
   var model = this.subject();
 
   assert.ok(!!model);
 });
 
-test('user relationship', function(assert) {
+// --- Relationships ---
+test('it has user relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('user');
 
-  assert.equal(relationship.key, 'user');
-  assert.equal(relationship.kind, 'belongsTo');
+  assert.equal(relationship.key, 'user', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
 });
 
-test('photo relationship', function(assert) {
+test('it has photo relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('photos');
 
-  assert.equal(relationship.key, 'photos');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'photos', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });

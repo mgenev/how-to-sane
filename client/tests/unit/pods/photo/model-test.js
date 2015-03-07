@@ -4,6 +4,7 @@ import {
 } from 'ember-qunit';
 import Ember from 'ember';
 
+
 moduleForModel('photo', 'Photo', {
   // Specify the other units that are required for this test.
   needs: [
@@ -15,24 +16,26 @@ moduleForModel('photo', 'Photo', {
   ]
 });
 
+// --- Basics ---
 test('it exists', function(assert) {
   var model = this.subject();
 
   assert.ok(!!model);
 });
 
-test('user relationship', function(assert) {
+// --- Relationships ---
+test('it has user relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('user');
 
-  assert.equal(relationship.key, 'user');
-  assert.equal(relationship.kind, 'belongsTo');
+  assert.equal(relationship.key, 'user', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
 });
 
-test('album relationship', function(assert) {
+test('it has album relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('album');
 
-  assert.equal(relationship.key, 'album');
-  assert.equal(relationship.kind, 'belongsTo');
+  assert.equal(relationship.key, 'album', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
 });

@@ -19,40 +19,42 @@ moduleForModel('vendor', 'Vendor', {
   ]
 });
 
+// --- Basics ---
 test('it exists', function(assert) {
   var model = this.subject();
 
   assert.ok(!!model);
 });
 
-test('user relationship', function(assert) {
+// --- Relationships ---
+test('it has user relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('user');
 
-  assert.equal(relationship.key, 'user');
-  assert.equal(relationship.kind, 'belongsTo');
+  assert.equal(relationship.key, 'user', 'exists');
+  assert.equal(relationship.kind, 'belongsTo', 'is type belongsTo');
 });
 
-test('homepage relationship', function(assert) {
+test('it has homepage relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('homepages');
 
-  assert.equal(relationship.key, 'homepages');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'homepages', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('template relationship', function(assert) {
+test('it has template relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('templates');
 
-  assert.equal(relationship.key, 'templates');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'templates', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('service relationship', function(assert) {
+test('it has service relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('services');
 
-  assert.equal(relationship.key, 'services');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'services', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });

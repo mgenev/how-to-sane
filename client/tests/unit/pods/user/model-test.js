@@ -4,6 +4,7 @@ import {
 } from 'ember-qunit';
 import Ember from 'ember';
 
+
 moduleForModel('user', 'User', {
   // Specify the other units that are required for this test.
   needs: [
@@ -19,48 +20,50 @@ moduleForModel('user', 'User', {
   ]
 });
 
+// --- Basics ---
 test('it exists', function(assert) {
   var model = this.subject();
 
   assert.ok(!!model);
 });
 
-test('status relationship', function(assert) {
+// --- Relationships ---
+test('it has status relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('statuses');
 
-  assert.equal(relationship.key, 'statuses');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'statuses', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('album relationship', function(assert) {
+test('it has album relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('albums');
 
-  assert.equal(relationship.key, 'albums');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'albums', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('photo relationship', function(assert) {
+test('it has photo relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('photos');
 
-  assert.equal(relationship.key, 'photos');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'photos', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('vendor relationship', function(assert) {
+test('it has vendor relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('vendors');
 
-  assert.equal(relationship.key, 'vendors');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'vendors', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 
-test('post relationship', function(assert) {
+test('it has post relationship', function(assert) {
   var klass = this.subject({}).constructor;
   var relationship = Ember.get(klass, 'relationshipsByName').get('posts');
 
-  assert.equal(relationship.key, 'posts');
-  assert.equal(relationship.kind, 'hasMany');
+  assert.equal(relationship.key, 'posts', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
