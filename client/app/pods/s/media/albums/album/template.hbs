@@ -5,9 +5,9 @@
         <p>{{album.description}}</p>
         <p> You are viewing from <b>{{location}}</b></p>
     </div>
-	<photo-gallery photos={{model}} album={{album}} p={{p}}></photo-gallery>
-	
+	{{photo-gallery photos=model album=album p=p}}
+
 	{{#if p}}
-		<photo-viewer currentPhoto={{currentPhoto}} photos={{model}} album={{album}} nextPhoto="nextPhoto" closeViewer="closeViewer"></photo-viewer>
+		{{photo-viewer currentPhoto=currentPhoto photos=model album=album nextPhoto="nextPhoto" closeViewer="closeViewer"}}
 	{{/if}}
 </div>
