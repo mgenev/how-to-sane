@@ -4,13 +4,14 @@
 	{{/each}}
 </ol>
 
-<form role="form" {{action 'submitAction' model on='submit'}}>   
-	{{dynamic-component type=type model=model}}
+<form role="form" {{action 'submitAction' status on='submit'}}>
+
+	{{component type status=status}}
 
 	{{#unless lastStep}}
 		<div {{action 'nextStep'}} class="btn btn-info">Next</div>
 	{{else}}
-		<button {{action 'submitAction' model}} type="submit" class="btn btn-default">Submit</button>
+		<button {{action 'submitAction' status}} type="submit" class="btn btn-default">Submit</button>
 	{{/unless}}
 
 	<div class="bump"></div>
@@ -18,4 +19,3 @@
 </form>
 
 {{yield}}
-

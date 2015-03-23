@@ -5,15 +5,15 @@ export default Ember.Component.extend( FocusForKeypress, {
 	action: 'submitAction',
 	keyDown: function (e) {
         if (e.keyCode === 13) {
-            this.sendAction('action', this.get('model'));
+            this.sendAction('action', this.get('status'));
         }
     },
 	actions: {
 		pickState: function (state) {
-			this.model.set('state', state);
+			this.status.set('state', state);
 		}
 	},
-	removeOutline: function() { 
+	removeOutline: function() {
         this.$().css('outline-style', 'none');
     }.on('didInsertElement')
 });
