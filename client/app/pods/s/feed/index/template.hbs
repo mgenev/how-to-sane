@@ -1,16 +1,25 @@
 {{outlet}}
-<div class="col-md-6">
+<div>
+    <div class="row">
+        <div class="page-header">
+            <h3>Feed</h3>
 
-    <div class="page-header">
-        <h3>Feed</h3>
-        {{bootstrap-datepicker autoclose=true value=fromDate format="mm-dd-yyyy" placeholder="Show posts since"}}
+        </div>
     </div>
-    {{#link-to 's.feed.status'}}
-        <button class="btn btn-info">Post Status</button>
-    {{/link-to}}
-
-    {{#each model as |status|}}
-        {{status-card status=status}}
-    {{/each}}
+    <div class="row">
+        <div class="pull-left">
+            {{#link-to 's.feed.status'}}
+                <button class="btn btn-info">Post Status</button>
+            {{/link-to}}
+        </div>
+        <div class="pull-right clearfix">
+            {{bootstrap-datepicker autoclose=true value=fromDate format="mm-dd-yyyy" placeholder="Show posts since"}}
+        </div>
+    </div>
+    <div class="row">
+        {{#each model as |status|}}
+            {{status-card status=status}}
+        {{/each}}
+    </div>
 
 </div>
