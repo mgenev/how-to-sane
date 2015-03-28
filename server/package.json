@@ -30,7 +30,7 @@
     "sails": "^0.11.0",
     "sails-disk": "~0.10.0",
     "sails-generate-ember-blueprints": "0.0.2",
-    "sails-mongo": "^0.10.4"
+    "sails-mongo": "^0.10.6"
   },
   "scripts": {
     "test-w": "mocha -R spec --ui bdd --watch ./tests/**/*-test.js",
