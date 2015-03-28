@@ -6,7 +6,6 @@ export default Ember.Route.extend({
 			refreshModel: true
 		}
 	},
-	fromDate: null,
     model: function (params) {
         return this.store.find('status', {
             sort: 'createdAt desc',
