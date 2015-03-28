@@ -1,7 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function () {
-		return this.store.find('status', {sort: 'createdAt desc'});
-	}
+	queryParams: {
+		fromDate: {
+			refreshModel: true
+		}
+	},
+	fromDate: null,
+    model: function (params) {
+        return this.store.find('status', {
+            sort: 'createdAt desc',
+            createdAt: {
+                ">": params.fromDate
+            }
+        });
+    }
 });
