@@ -13,7 +13,7 @@
             {{/link-to}}
         </div>
         <div class="pull-right clearfix">
-            {{bootstrap-datepicker autoclose=true value=fromDate format="mm-dd-yyyy" placeholder="Show posts since"}}&nbsp;<span {{action "clearDate"}} class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+            {{date-picker autoclose=true valueFormat="" date=fromDate format="YYYY-MM-DD" placeholder="Show posts since"}}&nbsp;<span {{action "clearDate"}} class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
         </div>
     </div>
     <div class="row">
