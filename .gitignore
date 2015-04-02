@@ -13,3 +13,6 @@ sitemap.xml
 .DS_Store?
 ehthumbs.db
 Thumbs.db
+
+#webstorm/phpstorm files
+.idea
