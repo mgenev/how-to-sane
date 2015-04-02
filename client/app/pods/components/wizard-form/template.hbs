@@ -1,21 +1,27 @@
-<ol>
-	{{#each steps as |step|}}
-	    <li class="wizard-step">{{step.caption}}</li>
-	{{/each}}
-</ol>
+<div class="wizard-wrapper container">
 
-<form role="form" {{action 'submitAction' status on='submit'}}>
+	<div class="wizard row">
+			{{#each steps as |step index|}}
+			    <div class="wizard-step pull-left">{{index}}. {{step.caption}}</div>
+			{{/each}}
+	</div>
 
-	{{component type status=status}}
+	<div class="clear row wizard-form">
+		<form role="form" {{action 'submitAction' status on='submit'}}>
+			<div class="bump"></div>
+			{{component type status=status}}
 
-	{{#unless lastStep}}
-		<div {{action 'nextStep'}} class="btn btn-info">Next</div>
-	{{else}}
-		<button {{action 'submitAction' status}} type="submit" class="btn btn-default">Submit</button>
-	{{/unless}}
+			{{#unless lastStep}}
+				<div class="bump"></div>
+				<div {{action 'nextStep'}} class="btn btn-info">Next</div>
+			{{else}}
+				<div class="bump"></div>
+				<button {{action 'submitAction' status}} type="submit" class="btn btn-default">Submit</button>
+			{{/unless}}
 
-	<div class="bump"></div>
+			<div class="bump"></div>
 
-</form>
-
+		</form>
+	</div>
+</div>
 {{yield}}
