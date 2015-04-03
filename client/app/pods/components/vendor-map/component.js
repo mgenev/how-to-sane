@@ -1,13 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    getCurrentAddress: Ember.on('init', function () {
-        let vendors = this.get('vendors');
+    drawVendorMap: Ember.on('init', function () {
         let showPosition = position => {
-            this.set('currentAddress', position.coords.latitude + ' ' + position.coords.longitude);
             this.geoGoogleService.drawMap(position.coords, 'mapfeed');
-
-            vendors.forEach(vendor => this.geoGoogleService.createMarker(vendor.get('location')));
+            this.get('vendors').forEach(vendor => this.geoGoogleService.createMarker(vendor.get('location')));
         };
 
         if (navigator.geolocation) {
