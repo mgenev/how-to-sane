@@ -8,8 +8,12 @@ export default Ember.Component.extend({
             this.geoGoogleService.drawMap(position.coords, 'mapfeed');
 
             vendors.forEach(vendor => this.geoGoogleService.createMarker(vendor.get('location')));
-        }
+        };
 
-        navigator.geolocation ? navigator.geolocation.getCurrentPosition(showPosition) : console.log('Geolocation is not supported by this browser.');
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log('Geolocation is not supported by this browser.');
+        }
     })
 });
