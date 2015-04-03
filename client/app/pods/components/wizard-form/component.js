@@ -3,40 +3,54 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     activeStep: 0,
 
-    type: function() {
+    type: Ember.computed('activeStep', function () {
         return this.get('steps')[this.get('activeStep')].component;
-    }.property('activeStep'),
+    }),
 
-    lastStep: function() {
+    firstStep: Ember.computed('activeStep', function () {
+        return (this.get('activeStep') === 0);
+    }),
+
+    lastStep: Ember.computed('activeStep', function () {
         return (this.get('activeStep') === this.get('steps').length - 1);
-    }.property('activeStep'),
+    }),
 
     actions: {
-        nextStep: function() {
-            this.incrementProperty('activeStep');
-            this.addActiveClass();
-        },
+        nextStep() {
+                this.incrementProperty('activeStep');
+                this.addActiveClass();
+            },
 
-        submitAction: function() {
-            if (this.get('lastStep')) {
-                this.sendAction('action', this.get('status'));
-            } else {
-                this.triggerAction({
-                    action: 'nextStep',
-                    target: this
-                });
+            prevStep() {
+                this.decrementProperty('activeStep');
+                this.addActiveClass();
+            },
+
+            goToStep(step) {
+                this.set('activeStep', step);
+                this.addActiveClass();
+            },
+
+            submitAction() {
+                if (this.get('lastStep')) {
+                    this.sendAction('action', this.get('status'));
+                } else {
+                    this.triggerAction({
+                        action: 'nextStep',
+                        target: this
+                    });
+                }
             }
-        }
     },
 
-    addActiveClass: function() {
+    addActiveClass() {
         $('.wizard-active').removeClass('wizard-active');
 
-        var selector = '.wizard-step:eq(' + this.get('activeStep') + ')';
+        let selector = '.wizard-step:eq(' + this.get('activeStep') + ')';
         $(selector).addClass('wizard-active');
     },
 
-    didInsertElement: function() {
+    didInsertElement() {
         this.addActiveClass();
     }
 });

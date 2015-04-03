@@ -3,17 +3,21 @@ import FocusForKeypress from 'client/mixins/focus-for-keypress';
 
 export default Ember.Component.extend( FocusForKeypress, {
 	action: 'submitAction',
-	keyDown: function (e) {
+	click(e) {
+		$('.selected').removeClass('selected');
+		$(e.target).addClass('selected');
+	},
+	keyDown(e) {
         if (e.keyCode === 13) {
             this.sendAction('action', this.get('status'));
         }
     },
 	actions: {
-		pickState: function (state) {
+		pickState (state) {
 			this.status.set('state', state);
 		}
 	},
-	removeOutline: function() {
+	removeOutline: Ember.on('didInsertElement', function() {
         this.$().css('outline-style', 'none');
-    }.on('didInsertElement')
+    })
 });
