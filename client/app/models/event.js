@@ -7,6 +7,7 @@ export default DS.Model.extend({
 
     // attributes
     title: DS.attr('string'),
-    date: DS.attr('date'),
+    description: DS.attr('string'),
+    eventDate: DS.attr(),
     tags: DS.attr('array')
 });

@@ -22,7 +22,7 @@ module.exports = {
             type: 'string',
             required: true
         },
-        date: {
+        eventDate: {
             type: 'datetime',
             required: true
         }
