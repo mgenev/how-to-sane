@@ -15,7 +15,8 @@ moduleForModel('vendor', 'Vendor', {
     'model:service',
     'model:status',
     'model:photo',
-    'model:post'
+    'model:post',
+    'model:event'
   ]
 });
 
@@ -56,6 +57,14 @@ test('it has service relationship', function(assert) {
   var relationship = Ember.get(klass, 'relationshipsByName').get('services');
 
   assert.equal(relationship.key, 'services', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
+});
+
+test('it has event relationship', function(assert) {
+  var klass = this.subject({}).constructor;
+  var relationship = Ember.get(klass, 'relationshipsByName').get('events');
+
+  assert.equal(relationship.key, 'events', 'exists');
   assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 

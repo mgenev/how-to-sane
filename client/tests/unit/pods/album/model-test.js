@@ -12,7 +12,8 @@ moduleForModel('album', 'Album', {
     'model:vendor',
     'model:photo',
     'model:post',
-    'model:status'
+    'model:status',
+    'model:event'
   ]
 });
 
