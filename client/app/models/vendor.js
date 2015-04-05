@@ -6,6 +6,7 @@ export default DS.Model.extend({
 	homepages: DS.hasMany('homepage'),
 	templates: DS.hasMany('template'),
 	services: DS.hasMany('service'),
+	events: DS.hasMany('event'),
 
     // attr
     name: DS.attr('string'),

@@ -14,6 +14,16 @@ export default Ember.Component.extend({
         'title': 'Posts',
         'link': 's.posts'
     }, {
+        'title': 'Evens',
+        'link': 's.events',
+        'submenu': [{
+            'title': 'Index',
+            'link': 's.events.index'
+        }, {
+            'title': 'Create New Event',
+            'link': 's.events.create'
+        }]
+    }, {
         'title': 'Users',
         'link': 's.users',
         'submenu': [{

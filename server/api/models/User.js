@@ -11,7 +11,7 @@ var bcrypt = require('bcrypt');
 module.exports = {
 
     attributes: {
-        
+
         // Relationships
         posts: {
             collection: 'post',
@@ -32,6 +32,11 @@ module.exports = {
         statuses: {
             collection: 'status',
             via: 'user'
+        },
+
+        events: {
+            collection: 'event',
+            via: 'users'
         },
 
         // attributes

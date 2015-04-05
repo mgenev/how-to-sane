@@ -8,6 +8,7 @@ export default DS.Model.extend({
     albums: DS.hasMany('album'),
     posts: DS.hasMany('post'),
     statuses: DS.hasMany('status'),
+    events: DS.hasMany('event'),
 
     // attributes
     firstName: DS.attr('string'),
