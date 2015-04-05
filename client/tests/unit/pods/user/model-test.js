@@ -16,7 +16,8 @@ moduleForModel('user', 'User', {
     'model:status',
     'model:homepage',
     'model:template',
-    'model:service'
+    'model:service',
+    'model:event'
   ]
 });
 
@@ -65,6 +66,14 @@ test('it has post relationship', function(assert) {
   var relationship = Ember.get(klass, 'relationshipsByName').get('posts');
 
   assert.equal(relationship.key, 'posts', 'exists');
+  assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
+});
+
+test('it has event relationship', function(assert) {
+  var klass = this.subject({}).constructor;
+  var relationship = Ember.get(klass, 'relationshipsByName').get('events');
+
+  assert.equal(relationship.key, 'events', 'exists');
   assert.equal(relationship.kind, 'hasMany', 'is type hasMany');
 });
 

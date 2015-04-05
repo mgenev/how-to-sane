@@ -11,7 +11,8 @@ moduleForModel('template', 'Template', {
     'model:vendor',
     'model:user',
     'model:homepage',
-    'model:service'
+    'model:service',
+    'model:event'
   ]
 });
 
