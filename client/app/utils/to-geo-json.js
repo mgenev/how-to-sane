@@ -1,10 +1,8 @@
-export default {
-    point: point
-};
-
-export function point (latlong, properties) {
+function Point (latlong, properties) {
     return {
           "type": "Point",
           "coordinates": [latlong.lng, latlong.lat]
     };
 }
+
+export default Point;

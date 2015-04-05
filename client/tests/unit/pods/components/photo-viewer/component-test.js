@@ -5,7 +5,7 @@ import {
 
 moduleForComponent('photo-viewer', 'PhotoViewerComponent', {
   // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
+  needs: ['component:modal-dialog']
 });
 
 test('it renders', function() {

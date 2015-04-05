@@ -4,6 +4,10 @@ module('toGeoJson');
 
 // Replace this with your real tests.
 test('it works', function() {
-  var result = toGeoJson();
+  var result = toGeoJson({
+    lng: 0,
+    lat: 0
+  });
   ok(result);
 });
+
