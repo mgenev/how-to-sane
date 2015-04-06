@@ -10,7 +10,7 @@ export default Ember.Route.extend(DestroyNew, {
 
         	var userId = this.session.get('user.id');
             this.store.find('vendor', {user: userId} ).then(result => {
-                console.log('model: ', model);
+
                 model.set('vendor', result.get('content')[0]);
                 // model.set('tags', ['lifestyle', 'health', 'tech']);
 
