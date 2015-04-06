@@ -3,25 +3,14 @@ import {
   test
 } from 'ember-qunit';
 
-import Ember from 'ember';
 
 import { initialize } from '../../../../../initializers/ember-moment';
 
-moduleForComponent('status-card', 'StatusCardComponent',  {
-    // Specify the other units that are required for this test
-    // needs: ['helper:moment'],
-    setup: function (container) {
-        Ember.run(function () {
-            // these two arguments are not used
-            // but probably still good to pass them in
-            // in the event we leverage them in the future
-            initialize(container);
-        });
-    }
-});
+moduleForComponent('status-card', 'StatusCardComponent',  {integration: true});
 
 test('it renders', function() {
   expect(2);
+  initialize(this.container);
 
   // creates the component instance
   var component = this.subject({
