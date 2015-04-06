@@ -13,6 +13,7 @@ export default Ember.Route.extend(DestroyNew, {
                 console.log('model: ', model);
                 model.set('vendor', result.get('content')[0]);
                 // model.set('tags', ['lifestyle', 'health', 'tech']);
+
                 return model.save();
             }).then(event => this.transitionTo('s.events.event', event));
 

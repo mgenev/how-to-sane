@@ -2,20 +2,22 @@
 <div class="bump"></div>
 <div class="post">
     <div class="main">
-        <div class="pic"></div>
+        <div class="event-image"></div>
         <div class="details">
-            <div class="name">{{session.user.firstName}} {{session.user.lastName}} {{status.activity}} and  feeling {{status.state}}</div>
-            <div class="time">{{moment status.createdAt}} near Tokyo, Japan</div>
+            <div class="name">{{event.title}}</div>
+            <div class="name">{{event.address}}</div>
+            <div class="time">{{moment event.eventDate}} near Tokyo, Japan</div>
+
         </div>
         <div class="clear"></div>
 
-        <div class="content">{{status.note}}</div>
-        <div class="likes">1 like 1 comment</div>
+        <div class="content">{{event.description}}</div>
+        <div class="likes">Number of guests and comments</div>
         <!--/main -->
     </div>
     <div class="buttons">
         <div class="border-right">
-            <div class="like">Like</div>
+            <div class="like">Join</div>
         </div>
         <div class="border-right">
             <div class="comment">Comment</div>

@@ -14,7 +14,7 @@ export default Ember.Component.extend({
         'title': 'Posts',
         'link': 's.posts'
     }, {
-        'title': 'Evens',
+        'title': 'Events',
         'link': 's.events',
         'submenu': [{
             'title': 'Index',
@@ -33,16 +33,16 @@ export default Ember.Component.extend({
             'title': 'Create New User',
             'link': 's.users.create'
         }]
-    }, {
-        'title': 'Templates',
-        'link': 's.templates',
-        'submenu': [{
-            'title': 'Index',
-            'link': 's.templates.index'
-        }, {
-            'title': 'Create New Template',
-            'link': 's.templates.create'
-        }]
+    // }, {
+        // 'title': 'Templates',
+        // 'link': 's.templates',
+        // 'submenu': [{
+        //     'title': 'Index',
+        //     'link': 's.templates.index'
+        // }, {
+        //     'title': 'Create New Template',
+        //     'link': 's.templates.create'
+        // }]
     }, {
         'title': 'Vendors',
         'link': 's.vendors',
