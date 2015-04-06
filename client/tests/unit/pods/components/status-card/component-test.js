@@ -7,7 +7,7 @@ import Ember from 'ember';
 
 import { initialize } from '../../../../../initializers/ember-moment';
 
-moduleForComponent('status-card', {
+moduleForComponent('status-card', 'StatusCardComponent',  {
     // Specify the other units that are required for this test
     // needs: ['helper:moment'],
     setup: function (container) {
