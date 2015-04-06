@@ -12,12 +12,16 @@
         <div class="clear"></div>
 
         <div class="content">{{event.description}}</div>
+        <div class="likes">
+            Attending:
+            {{#each event.users as |user|}}{{user.firstName}} {{user.lastName}}{{/each}}
+        </div>
         <div class="likes">Number of guests and comments</div>
         <!--/main -->
     </div>
     <div class="buttons">
         <div class="border-right">
-            <div class="like">Join</div>
+            <div class="like" {{action 'joinEvent' event}}>Join</div>
         </div>
         <div class="border-right">
             <div class="comment">Comment</div>
