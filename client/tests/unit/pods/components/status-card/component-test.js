@@ -3,9 +3,21 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('status-card', 'StatusCardComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
+import Ember from 'ember';
+
+import { initialize } from '../../../../../initializers/ember-moment';
+
+moduleForComponent('status-card', {
+    // Specify the other units that are required for this test
+    // needs: ['helper:moment'],
+    setup: function (container) {
+        Ember.run(function () {
+            // these two arguments are not used
+            // but probably still good to pass them in
+            // in the event we leverage them in the future
+            initialize(container);
+        });
+    }
 });
 
 test('it renders', function() {
