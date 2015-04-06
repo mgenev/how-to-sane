@@ -8,6 +8,6 @@ export default DS.Model.extend({
     // attributes
     title: DS.attr('string'),
     description: DS.attr('string'),
-    eventDate: DS.attr(),
+    eventDate: DS.attr('dateiso'),
     tags: DS.attr('array')
 });
