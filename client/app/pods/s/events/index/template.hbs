@@ -1,7 +1,16 @@
 {{outlet}}
-<h1>index</h1>
-<h1>index</h1>
-<h1>index</h1>
-<h1>index</h1>
-<h1>index</h1>
-<h1>index</h1>
+<div class="container">
+	<div class="page-header pull-left">
+        <h2>Events</h2>
+    </div>
+	<div class="pull-right page-header">
+        {{#link-to 's.events.create'}}
+            <button class="btn btn-info bump">Create Event</button>
+        {{/link-to}}
+	</div>
+	<div class="clear">
+        {{#each model as |event|}}
+            {{event-card event=event joinEvent="joinEvent"}}
+        {{/each}}
+	</div>
+</div>

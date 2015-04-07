@@ -1,16 +1,27 @@
 {{outlet}}
 <div class="container">
-    
-  {{user-profile user=model}}
-  <div class="col-xs-12">
-    <div class="row">
-      <h3>List of Vendors</h3>
+
+    {{user-profile user=model}}
+    <div class="col-xs-4">
+        <div class="row">
+            <h3>List of Vendors</h3>
+        </div>
+        {{#each vendor in vendors}}
+            <div class="row">
+                <h4>{{vendor.name}}</h4>
+                <h6>{{vendor.description}}</h6>
+            </div>
+        {{/each}}
     </div>
-    {{#each vendor in vendors}}
-      <div class="row">
-        <h4>Name: {{vendor.name}}</h4>
-        <h6>Desc: {{vendor.description}}</h6>
-      </div>
-    {{/each}}
-  </div>
+    <div class="col-xs-4">
+        <div class="row">
+            <h3>List of Events</h3>
+        </div>
+        {{#each event in events}}
+            <div class="row">
+                <h4>{{event.title}}</h4>
+                <h6>{{moment event.eventDate 'MM/DD/YYYY'}}</h6>
+            </div>
+        {{/each}}
+    </div>
 </div>

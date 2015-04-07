@@ -1,7 +1,8 @@
 /**
  * Event.js
  *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @description :: Event model including many to many with users and belongs to a vendor.
+ *                 Soon to include a location.
  * @docs        :: http://sailsjs.org/#!documentation/models
  */
 
@@ -16,13 +17,21 @@ module.exports = {
             collection: 'user',
             via: 'events'
         },
-
+        // TODO: add images
         // attributes
         title: {
             type: 'string',
             required: true
         },
-        date: {
+        description: {
+            type: 'string',
+            required: true
+        },
+        address: {
+            type: 'string',
+            required: true
+        },
+        eventDate: {
             type: 'datetime',
             required: true
         }

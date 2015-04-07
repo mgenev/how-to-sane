@@ -3,13 +3,14 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('status-card', 'StatusCardComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
-});
+
+import { initialize } from '../../../../../initializers/ember-moment';
+
+moduleForComponent('status-card', 'StatusCardComponent',  {integration: true});
 
 test('it renders', function() {
   expect(2);
+  initialize(this.container);
 
   // creates the component instance
   var component = this.subject({

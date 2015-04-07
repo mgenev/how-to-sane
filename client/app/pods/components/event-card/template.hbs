@@ -1,0 +1,36 @@
+{{yield}}
+<div class="bump"></div>
+<div class="post">
+    <div class="main">
+        <div class="event-image"></div>
+        <div class="details">
+            <div class="name">{{event.title}}</div>
+            <div class="name">{{event.address}}</div>
+            <div class="time">{{moment event.eventDate}} near Tokyo, Japan</div>
+
+        </div>
+        <div class="clear"></div>
+
+        <div class="content">{{event.description}}</div>
+        <div class="likes">
+            Attending:
+            {{#each event.users as |user|}}{{user.firstName}} {{user.lastName}}{{/each}}
+        </div>
+        <div class="likes">Number of guests and comments</div>
+        <!--/main -->
+    </div>
+    <div class="buttons">
+        <div class="border-right">
+            <div class="like" {{action 'joinEvent' event}}>Join</div>
+        </div>
+        <div class="border-right">
+            <div class="comment">Comment</div>
+        </div>
+        <div>
+            <div class="share">Share</div>
+        </div>
+        <div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
