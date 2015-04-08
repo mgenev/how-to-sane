@@ -30,6 +30,7 @@
     "sails": "^0.11.0",
     "sails-disk": "~0.10.0",
     "sails-generate-ember-blueprints": "0.0.2",
+    "sails-hook-eslint": "^1.0.1",
     "sails-mongo": "^0.10.6"
   },
   "scripts": {
@@ -46,6 +47,7 @@
   "author": "martin.genev",
   "license": "",
   "devDependencies": {
+    "babel-eslint": "^2.0.2",
     "chai": "^2.1.0",
     "glob": "^4.4.1",
     "mocha": "^2.1.0",
