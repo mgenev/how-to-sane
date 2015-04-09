@@ -1,5 +1,5 @@
 {{yield}}
-	
+
 	{{#link-to 's.media.albums.create'}}
 		<div class="album-tile">
 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -7,7 +7,7 @@
 	{{/link-to}}
 
 	{{#each albums as |album|}}
-		<span {{action 'pickAlbum' album}} class="album-tile" {{bind-attr id=album.id}}>
+		<span {{action 'pickAlbum' album}} class="album-tile" id={{album.id}}>
 			{{album.name}}
 		</span>
 	{{/each}}

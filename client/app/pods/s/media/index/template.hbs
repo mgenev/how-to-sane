@@ -13,7 +13,7 @@
     <p>Album previews like amazon or picasa go here</p>
     {{#each model as |album|}}
         {{#link-to 's.media.albums.album' album.id}}
-        <span class="album-tile" {{bind-attr id=album.id}}>
+        <span class="album-tile" id={{album.id}}>
             {{album.name}}
         </span>
         {{/link-to}}

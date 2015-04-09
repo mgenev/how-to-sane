@@ -6,7 +6,7 @@
         <div class="row">
             <h3>List of Vendors</h3>
         </div>
-        {{#each vendor in vendors}}
+        {{#each vendors as |vendor|}}
             <div class="row">
                 <h4>{{vendor.name}}</h4>
                 <h6>{{vendor.description}}</h6>
@@ -17,7 +17,7 @@
         <div class="row">
             <h3>List of Events</h3>
         </div>
-        {{#each event in events}}
+        {{#each events as |event|}}
             <div class="row">
                 <h4>{{event.title}}</h4>
                 <h6>{{moment event.eventDate 'MM/DD/YYYY'}}</h6>

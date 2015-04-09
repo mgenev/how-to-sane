@@ -4,16 +4,13 @@
 
 <div class="photo-list">
     <ul id="tiles">
-    	{{#each photos as |photo index|}}    		
-	        {{!-- {{#link-to 'photos.photo' this}} --}}
+    	{{#each photos as |photo index|}}
 		        <li>
-		        	{{#link-to (query-params p=photo.id)}}		        	
-					<img class="photo-tile" {{bind-attr src=photo.thumbPath alt=album.name}} >
+		        	{{#link-to (query-params p=photo.id)}}
+					<img class="photo-tile" src={{photo.thumbPath}} alt={{album.name}} >
 					{{/link-to}}
-		            {{!-- <p>{{name}}</p> --}}
 		            <p>{{index}}</p>
 		        </li>
-	        {{!-- {{/link-to}} --}}
 	    {{/each}}
     </ul>
 </div>
