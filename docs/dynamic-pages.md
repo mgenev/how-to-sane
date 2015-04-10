@@ -293,7 +293,12 @@
      <button class="btn btn-default" {{action 'update' model}}>Done Editing</button>
  </form>
  ```
- 
+ * now let's add our `edit-page` partial to `client/app/pods/s/page-manager/new/template.hbs` by adding this:
+  ```
+  {{partial 's/page-manager/edit-page'}}
+  {{outlet}}
+  ``` 
+   
  
  * lets add a default value to the layout field to help users get the right value entered since this will be used directly to pull and render the view.
  
@@ -310,6 +315,53 @@
    order: DS.attr('number')
  });
  ```
+ 
+ So from here, we should be able to run the site again (or if it is still running it has been reloading itself as you save your work)
+ and use our `/s/page-manager/new` logic to create a new page and then view that page on the `/s/page-manager` route.
+  
+  * now lets get editing working.
+    * we'll add the `edit-page` partial to the edit route here `client/app/pods/s/page-manager/edit/template.hbs`
+    ```html
+    {{partial 's/page-manager/edit-page'}}
+    {{outlet}}
+    ```
+    
+    
+    * we'll also update the edit route to support this logic as well.
+  ```javascript
+  export default Ember.Route.extend({
+    model: function(params) {
+      return this.store.find('page', params.page_id);
+    },
+    actions: {
+      update: function (model) {
+        var self = this;
+        model.save().then(
+          function(savedModel) {
+            console.log('page ' + savedModel.get('name') + ' saved successfully');
+            self.transitionTo('s.page-manager');
+          },
+          function(reason) {
+            console.log('error saving page, reason: ' + reason);
+            self.transitionTo('s.page-manager');
+          }
+        );
+      }
+    }
+  });
+  ```
+ 
+ * now that we can create and edit pages, lets ensure that our page grid respects the order field we've added.
+   * update `client/app/pods/s/page-manager/route.js` with the following to order the pages returned for our grid
+   ```javascript
+   export default Ember.Route.extend({
+     model: function() {
+       return this.store.find('page' , {sort: 'order asc'});
+     }
+   });
+   ```
+ 
+
  
  * add CRUD actions to routes
 
