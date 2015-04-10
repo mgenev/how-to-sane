@@ -102,7 +102,14 @@ Router.map(function() {
               path: "create"
           });
       });
-    this.route('page-manager');
+
+    this.route('page-manager', function() {
+      this.route('new');
+
+      this.route('edit', {
+        path: '/edit/:page_id'
+      });
+    });
   });
 
   this.route("login");

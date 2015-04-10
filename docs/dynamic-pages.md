@@ -77,8 +77,49 @@
    ```
    
  * create the index route where we will display a grid of pages `ember generate route s/page-manager/index --pod=true`
+ 
+ ```
+ jame-dev:client jame$ ember generate route s/page-manager/index --pod=true
+ version: 0.2.2
+ 
+ A new version of ember-cli is available (0.2.3). To install it, type ember update.
+ installing
+   create app/pods/s/page-manager/index/route.js
+   create app/pods/s/page-manager/index/template.hbs
+ installing
+   create tests/unit/pods/s/page-manager/index/route-test.js
+ jame-dev:client jame$
+ ```
+ 
  * create the new route where we will create new page instances `ember generate route s/page-manager/new --pod=true`
- * create the edit route where we will edit a single page instance `ember generate route s/page-manager/edit --path=:page_id --pod=true`
+ 
+ ```
+ jame-dev:client jame$ ember generate route s/page-manager/new --pod=true
+ version: 0.2.2
+ 
+ A new version of ember-cli is available (0.2.3). To install it, type ember update.
+ installing
+   create app/pods/s/page-manager/new/route.js
+   create app/pods/s/page-manager/new/template.hbs
+ installing
+   create tests/unit/pods/s/page-manager/new/route-test.js
+ jame-dev:client jame$
+ ```
+ 
+ * create the edit route where we will edit a single page instance `ember generate route s/page-manager/edit --path=/edit/:page_id --pod=true`
+ 
+ ```
+ jame-dev:client jame$ ember generate route s/page-manager/edit --path=/edit/:page_id --pod=true
+ version: 0.2.2
+ 
+ A new version of ember-cli is available (0.2.3). To install it, type ember update.
+ installing
+   create app/pods/s/page-manager/edit/route.js
+   create app/pods/s/page-manager/edit/template.hbs
+ installing
+   create tests/unit/pods/s/page-manager/edit/route-test.js
+ jame-dev:client jame$
+ ```
  
 3) next we will create some templates we'll need along the way
  
