@@ -28,6 +28,34 @@
  
  `sane generate resource pages name:string title:string slug:string navLabel:string layout:string content1:string content2:string order:string`
  
+ Running this command results in this output
+ 
+ ```
+ jame-dev:jame-how-to-sane jame$ sane generate resource pages name:string title:string slug:string navLabel:string layout:string content1:string content2:string order:number
+ info: Created a new model ("Pages") at api/models/Pages.js!
+ info: Created a new controller ("pages") at api/controllers/PagesController.js!
+ version: 0.2.2
+ 0.2.3
+ 
+ installing
+   create app/models/page.js
+ installing
+   create tests/unit/models/page-test.js
+ installing
+   create app/routes/pages.js
+   create app/templates/pages.hbs
+ installing
+   create tests/unit/routes/pages-test.js
+ jame-dev:jame-how-to-sane jame$
+ ```
+ 
+ As we can see this has created a model and controller in our backend sails API as well as a model, model test, a pages route, a pages template, and a pages route test.
+ 
+ If we investigate the details of what was created in the backend, we'll notice that we created a "pages" model and controller while our existing models and controllers are singular.  So for consistancies sake, we'll rename both of these files to also be singular.
+ 
+ 
+ 
+ 
  [jm note] do we need to manually fix the sails model and controller??
  
 2) create the ember routes for our CRUD operations so we can edit our page content

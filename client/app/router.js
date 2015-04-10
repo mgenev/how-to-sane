@@ -95,6 +95,8 @@ Router.map(function() {
   this.route("login");
   this.route("register");
 
+  this.resource('pages', function() {});
+
 });
 
 export default Router;
