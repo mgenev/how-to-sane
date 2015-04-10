@@ -12,11 +12,11 @@ export default Ember.Route.extend({
       model.save().then(
         function(savedModel) {
           console.log('page ' + savedModel.get('name') + ' saved successfully');
-          this.transitionTo('s.page-manager');
+          self.transitionTo('s.page-manager');
         },
         function(reason) {
           console.log('error saving page, reason: ' + reason);
-          this.transitionTo('s.page-manager');
+          self.transitionTo('s.page-manager');
         }
       );
 

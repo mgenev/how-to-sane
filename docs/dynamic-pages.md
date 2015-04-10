@@ -132,7 +132,7 @@
    * for this we'll edit the header-nav component that is responsible for the sites nav menu
  
  Update `client/app/pods/components/header-nav/component.js` with the following in the menu property
- ```
+ ```javascript
     }, {
        'title': 'Page Manager',     //creates the root menu item
        'link': 's.page-manager',
@@ -152,7 +152,7 @@
  
  Here we need to tell the page manager we want to work with our pages by adding this to 
  `client/app/pods/s/page-manager/route.js`
- ```
+ ```javascript
    export default Ember.Route.extend({
      model: function() {
        return this.store.find('page');
@@ -165,7 +165,7 @@
  
  lets start by adding some bootstrap goodness to our `/s/page-manager` template with a link to create new pages
  add this to `client/app/pods/s/page-manager/template.hbs`
-  ```
+  ```html
   <div class="container">
       <div class="row">
           <h1>dynamic page manager</h1>
@@ -179,7 +179,7 @@
    
  next lets add the basic grid to the `/s/page-manager/index` template
  `client/app/pods/s/page-manager/index/template.hbs`
- ```
+ ```javascript
  <div class="col-xs-12">
      <h1>dynamic page manager index</h1>
  </div>
@@ -215,13 +215,13 @@
  * update event hooks in `/s/page-manager/new`
    * we'll be editing `client/app/pods/s/page-manager/new/route.js`
    * lets add the model hook to create the new page model we will edit
-   ```
+   ```javascript
    model: function() {
      return this.store.createRecord('page');
    }
    ```
    * we also need to add an action to save our edits when we're complete 
-    ```
+    ```javascript
     actions: {
       update: function(model) {
         var _this = this;
@@ -233,7 +233,83 @@
  
  
  * add content to edit-form and add form to edit template
+ Update `client/app/pods/s/page-manager/edit-page/template.hbs` with the following:
+ ```html
+ <form class="form-horizontal">
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">Title</label>
+         <div class="col-sm-10">
+             {{input value=title class="form-control" placeholder="Title"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">Name</label>
+         <div class="col-sm-10">
+             {{input value=name class="form-control" placeholder="a friendly name for this page"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">slug (last portion of url)</label>
+         <div class="col-sm-10">
+             {{input value=slug class="form-control" placeholder="url-for-this-page"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">Navigation Label</label>
+         <div class="col-sm-10">
+             {{input value=navLabel class="form-control" placeholder="Short and sweet"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">order</label>
+         <div class="col-sm-10">
+             {{textarea value=order class="form-control" placeholder="a number"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">Layout</label>
+         <div class="col-sm-10">
+             {{input value=layout class="form-control" placeholder="standard"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">excerpt</label>
+         <div class="col-sm-10">
+             {{textarea value=excerpt class="form-control" placeholder="a cute little summary for the page (get your markdown on)"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">body</label>
+         <div class="col-sm-10">
+             {{textarea value=body class="form-control" placeholder="this is where the meat of things goes. (get your markdown on here too)" cols="80" rows="6"}}
+         </div>
+     </div>
+     <div class="form-group">
+         <label for="" class="col-sm-2 control-label">body preview</label>
+         <div class="col-sm-10">
+             <div>{{markdown-to-html markdown=body}}</div>
+         </div>
+     </div>
+     <button class="btn btn-default" {{action 'update' model}}>Done Editing</button>
+ </form>
+ ```
  
+ 
+ * lets add a default value to the layout field to help users get the right value entered since this will be used directly to pull and render the view.
+ 
+ Update `client/app/models/page.js` to add this default value so our model now looks like this:
+ ```javascript
+ export default DS.Model.extend({
+   name: DS.attr('string'),
+   title: DS.attr('string'),
+   slug: DS.attr('string'),
+   navLabel: DS.attr('string'),
+   layout: DS.attr('string', { defaultValue: 'standard'}),
+   content1: DS.attr('string'),
+   content2: DS.attr('string'),
+   order: DS.attr('number')
+ });
+ ```
  
  * add CRUD actions to routes
 
