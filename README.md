@@ -22,7 +22,7 @@ Currently demonstrated features:
 
 Open to contributors
 ==========================
-This project is made for learning. There is no better experience for that than doing. We strongly encourage you to get involved in the project. If you're new to development or new to these technologies, this gives you the unique opportunity to join a real team of experienced professionals which uses best practices and adopts the latest in the field. The project uses [Waffle](https://waffle.io/mgenev/how-to-sane) and this Github repo for management and [Travis CI](https://travis-ci.org/mgenev/how-to-sane) for continous integration. It is very straight forward to begin making contributions and if you are interested please inquire in our [Gitter chat channel](https://gitter.im/artificialio/sane). 
+This project is made for learning. There is no better experience for that than doing. We strongly encourage you to get involved in the project. If you're new to development or new to these technologies, this gives you the unique opportunity to join a real team of experienced professionals which uses best practices and adopts the latest in the field to solve real world requirements. It can teach you to make web apps better than any school or book. The project uses [Waffle](https://waffle.io/mgenev/how-to-sane) and this Github repo for management and [Travis CI](https://travis-ci.org/mgenev/how-to-sane) for continous integration. It is very straight forward to begin making contributions and if you are interested please inquire in our [Gitter chat channel](https://gitter.im/artificialio/sane). 
 
 How is it made?
 ==========================
