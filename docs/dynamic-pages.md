@@ -129,6 +129,25 @@
 4) now that we have things stubbed out, lets go in and add some real logic to make this all work.
 
  * add a link to the page-manager on the main nav menu
+   * for this we'll edit the header-nav component that is responsible for the sites nav menu
+ 
+ Update `client/app/pods/components/header-nav/component.js` with the following in the menu property
+ ```
+    }, {
+       'title': 'Page Manager',     //creates the root menu item
+       'link': 's.page-manager',
+       'submenu': [{                //creates the submenu items
+         'title': 'List Pages',
+         'link': 's.page-manager.index'
+       }, {
+         'title': 'Create New Page',
+         'link': 's.page-manager.new'
+       }]
+ ```
+ 
+ Now go ahead and `cd ..` back to the root of the project and run `sane up` so we can check our work and see the new menu item by visiting `http://localhost:4200`
+ (you may have to register a user account and login before you will be displayed the updated menu)
+ 
  * add page grid to /page-manager/index
  * add link in page grid to /page-manager/edit/:page_id
  * add content to edit-form and add form to edit template

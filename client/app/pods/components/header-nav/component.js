@@ -37,15 +37,25 @@ export default Ember.Component.extend({
         //     'link': 's.templates.create'
         // }]
     }, {
-        'title': 'Vendors',
-        'link': 's.vendors',
-        'submenu': [{
-            'title': 'Index',
-            'link': 's.vendors.index'
-        }, {
-            'title': 'Create Vendor',
-            'link': 's.vendors.create'
-        }, ]
+      'title': 'Vendors',
+      'link': 's.vendors',
+      'submenu': [{
+        'title': 'Index',
+        'link': 's.vendors.index'
+      }, {
+        'title': 'Create Vendor',
+        'link': 's.vendors.create'
+      },]
+    }, {
+      'title': 'Page Manager',
+      'link': 's.page-manager',
+      'submenu': [{
+        'title': 'List Pages',
+        'link': 's.page-manager.index'
+      }, {
+        'title': 'Create New Page',
+        'link': 's.page-manager.new'
+      }]
     // }, {
     //     'title': 'Homepages',
     //     'link': 's.homepages',
