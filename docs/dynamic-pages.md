@@ -148,9 +148,93 @@
  Now go ahead and `cd ..` back to the root of the project and run `sane up` so we can check our work and see the new menu item by visiting `http://localhost:4200`
  (you may have to register a user account and login before you will be displayed the updated menu)
  
- * add page grid to /page-manager/index
- * add link in page grid to /page-manager/edit/:page_id
+ * add model hook to /page-manager
+ 
+ Here we need to tell the page manager we want to work with our pages by adding this to 
+ `client/app/pods/s/page-manager/route.js`
+ ```
+   export default Ember.Route.extend({
+     model: function() {
+       return this.store.find('page');
+     }
+   });
+ ```
+ 
+ * add page grid to /s/page-manager/index
+ * add link in page grid to /s/page-manager/edit/:page_id
+ 
+ lets start by adding some bootstrap goodness to our `/s/page-manager` template with a link to create new pages
+ add this to `client/app/pods/s/page-manager/template.hbs`
+  ```
+  <div class="container">
+      <div class="row">
+          <h1>dynamic page manager</h1>
+          {{#link-to 's.page-manager.new' class="btn btn-info"}}Create New Page{{/link-to}}
+      </div>
+      <div class="row">
+          {{outlet}}
+      </div>
+  </div>
+  ```
+   
+ next lets add the basic grid to the `/s/page-manager/index` template
+ `client/app/pods/s/page-manager/index/template.hbs`
+ ```
+ <div class="col-xs-12">
+     <h1>dynamic page manager index</h1>
+ </div>
+ <div class="col-xs-12">
+     <table class="table table-bordered">
+         <thead>
+             <th>Name</th>
+             <th>Title</th>
+             <th>Slug (portion of the url)</th>
+             <th>Navigation Label</th>
+             <th>Layout Template</th>
+             <th>Order</th>
+             <th>Actions</th>
+         </thead>
+         <tbody>
+             {{#each model as |page|}}
+                 <tr>
+                     <td>{{page.name}}</td>
+                     <td>{{page.title}}</td>
+                     <td>{{page.slug}}</td>
+                     <td>{{page.navLabel}}</td>
+                     <td>{{page.layout}}</td>
+                     <td>{{page.order}}</td>
+                     <td>{{#link-to 's.page-manager.edit' page classNames="btn btn-info"}}edit{{/link-to}}</td>
+                 </tr>
+             {{/each}}
+         </tbody>
+     </table>
+ </div>
+ {{outlet}}
+ ```
+ 
+ * update event hooks in `/s/page-manager/new`
+   * we'll be editing `client/app/pods/s/page-manager/new/route.js`
+   * lets add the model hook to create the new page model we will edit
+   ```
+   model: function() {
+     return this.store.createRecord('page');
+   }
+   ```
+   * we also need to add an action to save our edits when we're complete 
+    ```
+    actions: {
+      update: function(model) {
+        var _this = this;
+        model.save();
+        this.transitionTo('s.page-manager');
+      }
+    }
+    ```
+ 
+ 
  * add content to edit-form and add form to edit template
+ 
+ 
  * add CRUD actions to routes
 
 
