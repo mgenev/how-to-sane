@@ -51,20 +51,34 @@
  
  As we can see this has created a model and controller in our backend sails API as well as a model, model test, a pages route, a pages template, and a pages route test.
  
- If we investigate the details of what was created in the backend, we'll notice that we created a "pages" model and controller while our existing models and controllers are singular.  So for consistancies sake, we'll rename both of these files to also be singular.
+ If we investigate the details of what was created in the backend, we'll notice that we created a "pages" model and controller while our existing models and controllers are singular.  So for consistencies sake, we'll rename both of these files to also be singular.
  
  
- 
- 
- [jm note] do we need to manually fix the sails model and controller??
- 
-2) create the ember routes for our CRUD operations so we can edit our page content
+2) Next we will create the ember routes for our CRUD operations so we can edit our page content
 
  * cd into the client folder `cd client`
- * create a base route 'page-manager' `ember generate route page-manager`
- * create the index route where we will display a grid of pages `ember generate route page-manager/index`
- * create the new route where we will create new page instances `ember generate route page-manager/new`
- * create the edit route where we will edit a single page instance `ember generate route page-manager/edit --path=:page_id`
+ * create a base route 'page-manager' `ember generate route s/page-manager --pod=true`
+   * note the `--pods` argument we are supplying.  This alters the behavior of the ember-cli to generate our resources using the "pod" file structure vs the default.  
+   This organizes our resulting files by feature vs by function which is the default behavior.  For more information, take a look at [http://www.ember-cli.com/#using-pods](http://www.ember-cli.com/#using-pods)
+   * also to note is that we created our page-manager route within the 's' route.  The 's' route is a secure route within the how-to-sane project and becuase we only want logged in users to be able to manage the pages on our site we want to leverage the existing 
+   functionality that secures everything within the secure route to enforce that the user is logged in.
+   
+   ```
+   jame-dev:client jame$ ember generate route s/page-manager --pod=true
+   version: 0.2.2
+   
+   A new version of ember-cli is available (0.2.3). To install it, type ember update.
+   installing
+     create app/pods/s/page-manager/route.js
+     create app/pods/s/page-manager/template.hbs
+   installing
+     create tests/unit/pods/s/page-manager/route-test.js
+   jame-dev:client jame$
+   ```
+   
+ * create the index route where we will display a grid of pages `ember generate route s/page-manager/index --pod=true`
+ * create the new route where we will create new page instances `ember generate route s/page-manager/new --pod=true`
+ * create the edit route where we will edit a single page instance `ember generate route s/page-manager/edit --path=:page_id --pod=true`
  
 3) next we will create some templates we'll need along the way
  

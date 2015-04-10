@@ -9,87 +9,100 @@ Router.map(function() {
   this.route("s", {
       path: "s"
   }, function() {
-    this.route("posts", function() {
-        this.route("post", {
-            path: ":post_id"
-        });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+      this.route("posts", function() {
+          this.route("post", {
+              path: ":post_id"
+          });
 
-    this.route("templates", function() {
-        this.route("template", {
-            path: ":template_id"
-        });
+          this.route("create", {
+              path: "create"
+          });
+      });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+      this.route("templates", function() {
+          this.route("template", {
+              path: ":template_id"
+          });
 
-    this.route("media", function() {
-        this.route("upload", {
-            path: "upload"
-        });
+          this.route("create", {
+              path: "create"
+          });
+      });
 
-        this.route("albums", function() {
-            this.route("album", {
-                path: ":album_id"
-            });
+      this.route("media", function() {
+          this.route("upload", {
+              path: "upload"
+          });
 
-            this.route("create", {
-                path: "create"
-            });
-        });
-    });
+          this.route("albums", function() {
+              this.route("album", {
+                  path: ":album_id"
+              });
 
-    this.route("users", function() {
-        this.route("user", {
-            path: ":user_id"
-        });
+              this.route("create", {
+                  path: "create"
+              });
+          });
+      });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+      this.route("photos", function() {
+          this.route("photo", {
+              path: ":photo_id"
+          });
 
-    this.route("feed", function() {
-        this.route("status", {
-            path: "status"
-        });
-    });
+          this.route("create", {
+              path: "create"
+          });
+      });
 
-    this.route("vendors", function() {
-        this.route("vendor", {
-            path: ":vendor_id"
-        });
+      this.route("users", function() {
+          this.route("user", {
+              path: ":user_id"
+          });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+          this.route("create", {
+              path: "create"
+          });
+      });
 
-    this.route("homepages", function() {
-        this.route("homepage", {
-            path: ":homepage_id"
-        });
+      this.route("feed", function() {
+          this.route("status", {
+              path: "status"
+          });
+      });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+      this.route("vendors", function() {
+          this.route("vendor", {
+              path: ":vendor_id"
+          });
 
-    this.route("events", function() {
-        this.route("event", {
-            path: ":event_id"
-        });
+          this.route("create", {
+              path: "create"
+          });
+      });
 
-        this.route("create", {
-            path: "create"
-        });
-    });
+      this.route("homepages", function() {
+          this.route("homepage", {
+              path: ":homepage_id"
+          });
+
+          this.route("create", {
+              path: "create"
+          });
+      });
+
+
+      this.route("events", function() {
+          this.route("event", {
+              path: ":event_id"
+          });
+
+          this.route("create", {
+              path: "create"
+          });
+      });
+    this.route('page-manager');
   });
 
   this.route("login");
