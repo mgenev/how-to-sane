@@ -118,6 +118,13 @@
  ```
  
  * next we need a layout form that will serve as the base structure for our dynamic pages `ember generate template /s/page-manager/layouts/standard --pod=true`
+ 
+ ```
+ jame-dev:client jame$ ember generate template /s/page-manager/layouts/standard --pod=true
+ installing
+   create app/pods/s/page-manager/layouts/standard/template.hbs
+ jame-dev:client jame$ 
+ ```
   
 4) now that we have things stubbed out, lets go in and add some real logic to make this all work.
 
