@@ -21,7 +21,10 @@
                     <td>{{page.navLabel}}</td>
                     <td>{{page.layout}}</td>
                     <td>{{page.order}}</td>
-                    <td>{{#link-to 's.page-manager.edit' page classNames="btn btn-info"}}edit{{/link-to}}</td>
+                    <td>
+                        {{#link-to 's.page-manager.edit' page classNames="btn btn-info"}}edit{{/link-to}}&nbsp;
+                        <button class="btn btn-info" {{action 'delete' page}}>delete</button>
+                    </td>
                 </tr>
             {{/each}}
         </tbody>

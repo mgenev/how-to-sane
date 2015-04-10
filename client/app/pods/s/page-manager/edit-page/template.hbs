@@ -47,5 +47,7 @@
             {{textarea value=content2 class="form-control" placeholder="this is where the meat of things goes. (get your markdown on here too)" cols="80" rows="6"}}
         </div>
     </div>
-    <button class="btn btn-default" {{action 'update' model}}>Done Editing</button>
+    <button class="btn btn-info" {{action 'update' model}}>Update Page</button>
+    <button class="btn btn-info" {{action 'cancel' model}}>Cancel</button>
+    <button class="btn btn-info" {{action 'delete' model}}>Delete Page</button>
 </form>

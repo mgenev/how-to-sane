@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   actions: {
     update: function(model) {
       var self = this;
-      model.save().then(
+      return model.save().then(
         function(savedModel) {
           console.log('page ' + savedModel.get('name') + ' saved successfully');
           self.transitionTo('s.page-manager');

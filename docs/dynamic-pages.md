@@ -361,11 +361,96 @@
    });
    ```
  
-
+ * logically next we should add the ability to cancel edits and delete pages.
  
- * add CRUD actions to routes
-
-
+   * first, a little housekeeping is in order, lets refactor our action hooks as we've created some duplicate code that can be consolidated becuase ember will bubble events up the route hierarchy.
+     * so lets move our update action hook from the edit and new routes up to the page-manager route
+   
+   Here's the updated `client/app/pods/s/page-manager/route.js`
+   
+   ```javascript
+   import Ember from 'ember';
+   
+   export default Ember.Route.extend({
+     model: function() {
+       return this.store.find('page', {sort: 'order asc'});
+     },
+     actions: {
+       update: function (model) {
+         var self = this;
+         return model.save().then(
+           function(savedModel) {
+             console.log('page ' + savedModel.get('name') + ' saved successfully');
+             self.transitionTo('s.page-manager');
+           },
+           function(reason) {
+             console.log('error saving page, reason: ' + reason);
+             self.transitionTo('s.page-manager');
+           }
+         );
+       }
+     }
+   });
+   ```
+   
+   * now lets add the action hooks `delete` and `cancel` to `client/app/pods/s/page-manager/route.js` so that it looks like this:
+   
+   ```javascript
+   import Ember from 'ember';
+   
+   export default Ember.Route.extend({
+     model: function() {
+       return this.store.find('page', {sort: 'order asc'});
+     },
+     actions: {
+       cancel: function() {
+         this.transitionTo('s.page-manager');
+       },
+       update: function (model) {
+         var self = this;
+         return model.save().then(
+           function(savedModel) {
+             console.log('page ' + savedModel.get('name') + ' saved successfully');
+             self.transitionTo('s.page-manager');
+           },
+           function(reason) {
+             console.log('error saving page, reason: ' + reason);
+             self.transitionTo('s.page-manager');
+           }
+         );
+       },
+       delete: function(model) {
+         var self = this;
+         return model.destroyRecord().then(
+           function() {
+             self.transitionTo('s.page-manager');
+           },
+           function(reason) {
+             console.log('error deleting page, reason was: ' + reason);
+             self.transitionTo('s.page-manager');
+           }
+         );
+       }
+     }
+   });
+   ```
+   
+   and to make use of our new action hooks, lets update our `edit-page` template by modifying our buttons at the botton of the form like so:
+   
+   ```html
+   <button class="btn btn-default" {{action 'update' model}}>Update Page</button>
+   <button class="btn btn-default" {{action 'cancel' model}}>Cancel</button>
+   <button class="btn btn-default" {{action 'delete' model}}>Delete Page</button>
+   ```
+   
+   Lets also add a delete button to the page-manager grid also by editing the actions column in our grid here.
+   editing: `client/app/pods/s/page-manager/index/template.hbs`
+   ```html
+   <td>
+       {{#link-to 's.page-manager.edit' page classNames="btn btn-info"}}edit{{/link-to}}&nbsp;
+       <button class="btn btn-info" {{action 'delete' page}}>delete</button>
+   </td>
+   ```
 
 5) now that we can edit our pages, lets incorporate them into the site itself.
 

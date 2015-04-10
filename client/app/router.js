@@ -103,11 +103,12 @@ Router.map(function() {
           });
       });
 
-    this.route('page-manager', function() {
-      this.route('new');
+      this.route('page-manager', function() {
+        this.route('new');
 
-      this.route('edit', {
-        path: '/edit/:page_id'
+        this.route('edit', {
+          path: '/edit/:page_id'
+        });
       });
     });
   });
