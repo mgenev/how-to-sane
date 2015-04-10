@@ -34,8 +34,6 @@
  jame-dev:jame-how-to-sane jame$ sane generate resource pages name:string title:string slug:string navLabel:string layout:string content1:string content2:string order:number
  info: Created a new model ("Pages") at api/models/Pages.js!
  info: Created a new controller ("pages") at api/controllers/PagesController.js!
- version: 0.2.2
- 0.2.3
  
  installing
    create app/models/page.js
@@ -65,9 +63,6 @@
    
    ```
    jame-dev:client jame$ ember generate route s/page-manager --pod=true
-   version: 0.2.2
-   
-   A new version of ember-cli is available (0.2.3). To install it, type ember update.
    installing
      create app/pods/s/page-manager/route.js
      create app/pods/s/page-manager/template.hbs
@@ -80,9 +75,6 @@
  
  ```
  jame-dev:client jame$ ember generate route s/page-manager/index --pod=true
- version: 0.2.2
- 
- A new version of ember-cli is available (0.2.3). To install it, type ember update.
  installing
    create app/pods/s/page-manager/index/route.js
    create app/pods/s/page-manager/index/template.hbs
@@ -95,9 +87,6 @@
  
  ```
  jame-dev:client jame$ ember generate route s/page-manager/new --pod=true
- version: 0.2.2
- 
- A new version of ember-cli is available (0.2.3). To install it, type ember update.
  installing
    create app/pods/s/page-manager/new/route.js
    create app/pods/s/page-manager/new/template.hbs
@@ -110,9 +99,6 @@
  
  ```
  jame-dev:client jame$ ember generate route s/page-manager/edit --path=/edit/:page_id --pod=true
- version: 0.2.2
- 
- A new version of ember-cli is available (0.2.3). To install it, type ember update.
  installing
    create app/pods/s/page-manager/edit/route.js
    create app/pods/s/page-manager/edit/template.hbs
@@ -123,8 +109,15 @@
  
 3) next we will create some templates we'll need along the way
  
- * to share a form between the edit and new routes, we'll create a partial to house our page edit form `ember generate template page-manager/edit-page`
- * next we need a layout form that will serve as the base structure for our dynamic pages `ember generate template page-manager/layouts/standard`
+ * to share a form between the edit and new routes, we'll create a partial to house our page edit form `ember generate template /s/page-manager/edit-page --pod=true`
+ 
+ ```
+ jame-dev:client jame$ ember generate template /s/page-manager/edit-page --pod=true
+ installing
+   create app/pods/s/page-manager/edit-page/template.hbs
+ ```
+ 
+ * next we need a layout form that will serve as the base structure for our dynamic pages `ember generate template /s/page-manager/layouts/standard --pod=true`
   
 4) now that we have things stubbed out, lets go in and add some real logic to make this all work.
 
