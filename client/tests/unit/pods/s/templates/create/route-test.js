@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import { describeModule, it } from 'ember-mocha';
 
-describeModule('route:s/media/albums', 'SMediaAlbumsRoute', {
-    // Specify the other units that are required for this test.
+describeModule('route:s/templates/create', 'STemplatesCreateRoute', {
     // needs: ['controller:foo']
 }, function () {
     it('exists', function () {

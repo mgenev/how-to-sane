@@ -1,14 +1,12 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('route:s/media/albums/create', 'SMediaAlbumsCreateRoute', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
-
-test('it exists', function() {
-  var route = this.subject();
-  ok(route);
+describeModule('route:s/media/albums/create', 'SMediaAlbumsCreateRoute', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var route = this.subject();
+        expect(route).to.be.ok;
+    });
 });
