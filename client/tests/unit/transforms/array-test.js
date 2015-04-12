@@ -1,15 +1,11 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('transform:array', 'ArrayTransform', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function() {
-  var transform = this.subject();
-  ok(transform);
+describeModule('transform:array', {
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var transform = this.subject();
+        expect(transform).to.be.ok;
+    });
 });

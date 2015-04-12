@@ -1,15 +1,11 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('service:file-uploader', 'FileUploaderService', {
-  // Specify the other units that are required for this test.
-  // needs: ['service:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function() {
-  var service = this.subject();
-  ok(service);
+describeModule('service:file-uploader', {
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var service = this.subject();
+        expect(service).to.be.ok;
+    });
 });

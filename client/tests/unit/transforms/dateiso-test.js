@@ -1,15 +1,11 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('transform:dateiso', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  var transform = this.subject();
-  assert.ok(transform);
+describeModule('transform:dateiso', {
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var transform = this.subject();
+        expect(transform).to.be.ok;
+    });
 });

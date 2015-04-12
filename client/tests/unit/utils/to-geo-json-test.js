@@ -1,13 +1,13 @@
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import toGeoJson from 'client/utils/to-geo-json';
 
-module('toGeoJson');
+describeModule('toGeoJson');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var result = toGeoJson({
-    lng: 0,
-    lat: 0
-  });
-  ok(result);
+it('exists', function () {
+    var result = toGeoJson({
+      lng: 0,
+      lat: 0
+    });
+    expect(result).to.be.ok;
 });
-
