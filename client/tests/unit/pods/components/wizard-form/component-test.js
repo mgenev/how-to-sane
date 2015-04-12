@@ -1,26 +1,27 @@
-import {
-  moduleForComponent,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeComponent,it} from 'ember-mocha';
 
-moduleForComponent('wizard-form', 'WizardFormComponent', {
-  // specify the other units that are required for this test
-  needs: ['component:status-note']
-});
+describeComponent(
+    'components/wizard-form',
+    'WizardFormComponent', {
+        integration: true
+    },
+    function () {
 
-test('it renders', function() {
-  expect(2);
+        it('renders', function () {
+            // creates the component instance
+            var component = this.subject({
+              steps: [{
+                  caption: 'Post your message',
+                  component: 'status-note'
+              }]
+            });
 
-  // creates the component instance
-  var component = this.subject({
-    steps: [{
-        caption: 'Post your message',
-        component: 'status-note'
-    }]
-  });
-  equal(component._state, 'preRender');
+            expect(component._state).to.equal('preRender');
 
-  // appends the component to the page
-  this.append();
-  equal(component._state, 'inDOM');
-});
+            // renders the component on the page
+            this.render();
+            expect(component._state).to.equal('inDOM');
+        });
+    }
+);

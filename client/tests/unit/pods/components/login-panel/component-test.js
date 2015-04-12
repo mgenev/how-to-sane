@@ -1,21 +1,25 @@
+import { expect } from 'chai';
 import {
-  moduleForComponent,
-  test
-} from 'ember-qunit';
+  describeComponent,
+  it
+} from 'ember-mocha';
 
-moduleForComponent('login-panel', 'LoginPanelComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
-});
+describeComponent(
+  'login-panel',
+  'LoginPanelComponent',
+  {
+    // specify the other units that are required for this test
+    // needs: ['component:foo', 'helper:bar']
+  },
+  function() {
+    it('renders', function() {
+      // creates the component instance
+      var component = this.subject();
+      expect(component._state).to.equal('preRender');
 
-test('it renders', function() {
-  expect(2);
-
-  // creates the component instance
-  var component = this.subject();
-  equal(component._state, 'preRender');
-
-  // appends the component to the page
-  this.append();
-  equal(component._state, 'inDOM');
-});
+      // renders the component on the page
+      this.render();
+      expect(component._state).to.equal('inDOM');
+    });
+  }
+);

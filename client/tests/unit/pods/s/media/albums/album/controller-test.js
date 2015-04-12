@@ -1,15 +1,11 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('controller:s/media/albums/album', 'SMediaAlbumsAlbumController', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function() {
-  var controller = this.subject();
-  ok(controller);
+describeModule('controller:s/media/albums/album', 'SMediaAlbumsAlbumController', {
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var controller = this.subject();
+        expect(controller).to.be.ok;
+    });
 });

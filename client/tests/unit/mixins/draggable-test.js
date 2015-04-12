@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import DraggableMixin from 'client/mixins/draggable';
+import Ember from 'ember';
 
-module('DraggableMixin');
+describeModule('DraggableMixin');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var DraggableObject = Ember.Object.extend(DraggableMixin);
-  var subject = DraggableObject.create();
-  ok(subject);
+it('exists', function () {
+    var DraggableMixinObject = Ember.Object.extend(DraggableMixin);
+    var subject = DraggableMixinObject.create();
+
+    expect(subject).to.be.ok;
 });

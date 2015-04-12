@@ -1,20 +1,37 @@
-import {
-    moduleForComponent,
-    test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeComponent,it} from 'ember-mocha';
 
-import { initialize } from '../../../../../initializers/ember-moment';
+import { initialize} from '../../../../../initializers/ember-moment';
 
-moduleForComponent('event-card', 'EventCardComponent',  {integration: true});
+describeComponent(
+    'components/event-card',
+    'ComponentsEventCardComponent', {
+        integration: true
+    },
+    function () {
 
-test('it renders', function (assert) {
-    assert.expect(2);
-    initialize(this.container);
-    // Creates the component instance
-    var component = this.subject();
-    assert.equal(component._state, 'preRender');
+        // it('spy works', function () {
+        //     // creates the component instance
+        //     function hello(name, cb) {
+        //         cb("hello " + name);
+        //     }
+        //
+        //     var cb = sinon.spy();
+        //     hello("foo", cb);
+        //
+        //     expect(cb.called).to.be.true;
+        // });
 
-    // Renders the component to the page
-    this.render();
-    assert.equal(component._state, 'inDOM');
-});
+        it('renders', function () {
+            // creates the component instance
+            initialize(this.container);
+            var component = this.subject();
+            expect(component._state).to.equal('preRender');
+
+            // renders the component on the page
+            this.render();
+            expect(component._state).to.equal('inDOM');
+        });
+
+    }
+);

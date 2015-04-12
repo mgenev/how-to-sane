@@ -1,15 +1,11 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 
-moduleFor('controller:s/feed/index', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
-});
-
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  var controller = this.subject();
-  assert.ok(controller);
+describeModule('controller:s/feed/index', {
+    // needs: ['controller:foo']
+}, function () {
+    it('exists', function () {
+        var controller = this.subject();
+        expect(controller).to.be.ok;
+    });
 });

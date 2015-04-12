@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import FocusForKeypressMixin from 'client/mixins/focus-for-keypress';
+import Ember from 'ember';
 
-module('FocusForKeypressMixin');
+describeModule('DroppableMixin');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var FocusForKeypressObject = Ember.Object.extend(FocusForKeypressMixin);
-  var subject = FocusForKeypressObject.create();
-  ok(subject);
+it('exists', function () {
+    var FocusForKeypressMixinObject = Ember.Object.extend(FocusForKeypressMixin);
+    var subject = FocusForKeypressMixinObject.create();
+
+    expect(subject).to.be.ok;
 });

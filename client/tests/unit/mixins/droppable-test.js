@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import DroppableMixin from 'client/mixins/droppable';
+import Ember from 'ember';
 
-module('DroppableMixin');
+describeModule('DroppableMixin');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var DroppableObject = Ember.Object.extend(DroppableMixin);
-  var subject = DroppableObject.create();
-  ok(subject);
+it('exists', function () {
+    var DroppableMixinObject = Ember.Object.extend(DroppableMixin);
+    var subject = DroppableMixinObject.create();
+
+    expect(subject).to.be.ok;
 });
