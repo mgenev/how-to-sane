@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import DestroyNewModelMixin from 'client/mixins/destroy-new-model';
+import Ember from 'ember';
 
-module('DestroyNewModelMixin');
+describeModule('DestroyNewModelMixin');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var DestroyNewModelObject = Ember.Object.extend(DestroyNewModelMixin);
-  var subject = DestroyNewModelObject.create();
-  ok(subject);
+it('exists', function () {
+    var DestroyNewModelObject = Ember.Object.extend(DestroyNewModelMixin);
+    var subject = DestroyNewModelObject.create();
+
+    expect(subject).to.be.ok;
 });

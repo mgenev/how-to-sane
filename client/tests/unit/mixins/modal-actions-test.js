@@ -1,11 +1,13 @@
-import Ember from 'ember';
+import { expect } from 'chai';
+import { describeModule, it } from 'ember-mocha';
 import ModalActionsMixin from 'client/mixins/modal-actions';
+import Ember from 'ember';
 
-module('ModalActionsMixin');
+describeModule('DroppableMixin');
 
-// Replace this with your real tests.
-test('it works', function() {
-  var ModalActionsObject = Ember.Object.extend(ModalActionsMixin);
-  var subject = ModalActionsObject.create();
-  ok(subject);
+it('exists', function () {
+    var ModalActionsMixinObject = Ember.Object.extend(ModalActionsMixin);
+    var subject = ModalActionsMixinObject.create();
+
+    expect(subject).to.be.ok;
 });
