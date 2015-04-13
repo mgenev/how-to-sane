@@ -2,6 +2,6 @@
     <h1>{{model.title}}</h1>
 </div>
 <div class="container">
-  <div class="row"><div class="col-xs-12">{{model.content1}}</div></div>
-  <div class="row"><div class="col-xs-12">{{model.content2}}</div></div>
+  <div class="row"><div class="col-xs-12">{{markdown-to-html markdown=model.content1}}</div></div>
+  <div class="row"><div class="col-xs-12">{{markdown-to-html markdown=model.content2}}</div></div>
 </div>
