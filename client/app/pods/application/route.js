@@ -4,5 +4,7 @@ import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 import ModalActions from 'client/mixins/modal-actions';
 
 export default Ember.Route.extend(ApplicationRouteMixin, ModalActions, {
-
+  model: function() {
+    return this.store.find('page', {sort: 'order asc'});
+  }
 });
