@@ -4,6 +4,8 @@
 [![Gitter](https://badges.gitter.im/Join+Chat.svg)](https://gitter.im/artificialio/sane?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) ![Travis Build Status](https://travis-ci.org/mgenev/how-to-sane.svg?branch=master) [![Stories in Ready](https://badge.waffle.io/mgenev/how-to-sane.png?label=in%20progress&title=InProgress)](https://waffle.io/mgenev/how-to-sane)
 How to SANE
 ==========================
+### [Demo](http://howtosane.ninja)
+ 
 The official demo app of how to use the SANE stack https://github.com/artificialio/sane. This is also the main experiment laboratory for prototyping and spinning off sane add ons.
 
 Please keep in mind that this project is 'canary'. For the sake of adopting new features as early as possible,  it is developed using the latest unstable versions of everything like ember canary, es6, iojs etc. This will definitely cause instability.
