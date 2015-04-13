@@ -5,7 +5,7 @@ import toGeoJson from 'client/utils/to-geo-json';
 describeModule('toGeoJson');
 
 it('exists', function () {
-    var result = toGeoJson({
+    var result = toGeoJson.point({
       lng: 0,
       lat: 0
     });
