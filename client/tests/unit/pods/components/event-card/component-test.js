@@ -10,17 +10,17 @@ describeComponent(
     },
     function () {
 
-        // it('spy works', function () {
-        //     // creates the component instance
-        //     function hello(name, cb) {
-        //         cb("hello " + name);
-        //     }
-        //
-        //     var cb = sinon.spy();
-        //     hello("foo", cb);
-        //
-        //     expect(cb.called).to.be.true;
-        // });
+        it('spy works', function () {
+            // creates the component instance
+            function hello(name, cb) {
+                cb("hello " + name);
+            }
+
+            var cb = sinon.spy();
+            hello("foo", cb);
+
+            expect(cb.called).to.be.true;
+        });
 
         it('renders', function () {
             // creates the component instance
