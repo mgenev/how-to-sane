@@ -8,7 +8,6 @@
         {{#unless isEditing}}
           <h4>{{user.firstName}}&nbsp;{{user.lastName}}<span>{{user.tagline}}</span></h4>
           <p>{{user.email}}</p>
-          <p>{{user.username}}</p>
           <p>{{user.website}}</p>
           {{else}}
           <form>
@@ -27,10 +26,6 @@
             <div class="form-group">
                 <label for="identification">Email</label>
                 {{input type="text" value=user.email class='form-control'}}
-            </div>
-            <div class="form-group">
-                <label for="identification">Username</label>
-                {{input type="text" value=user.username class='form-control'}}
             </div>
             <div class="form-group">
                 <label for="identification">Website</label>

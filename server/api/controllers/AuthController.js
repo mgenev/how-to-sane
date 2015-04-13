@@ -13,7 +13,7 @@ module.exports = {
 
         if (req.body.grant_type === 'password') {
 
-            User.findByUsername(req.body.username).exec(function(err, user) {
+            User.findByUsername(req.body.email).exec(function(err, user) {
                 if (err) {
                     return res.badRequest({
                         error: err
