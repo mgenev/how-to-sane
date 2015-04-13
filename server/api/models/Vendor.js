@@ -8,13 +8,13 @@
 module.exports = {
 
     attributes: {
-        
+
         // relationships
-        services: {         
+        services: {
             collection: 'service',
             via: 'vendor'
         },
-        templates: {         
+        templates: {
             collection: 'template',
             via: 'vendor'
         },
@@ -33,6 +33,9 @@ module.exports = {
         name: {
             type: 'string'
         },
+        location: {
+            type: 'json'
+        },        
         description: {
             type: 'string'
         },
