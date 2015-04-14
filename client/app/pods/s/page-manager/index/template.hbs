@@ -1,0 +1,30 @@
+<div class="col-xs-12">
+    <table class="table table-bordered">
+        <thead>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Slug (portion of the url)</th>
+            <th>Navigation Label</th>
+            <th>Layout Template</th>
+            <th>Order</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {{#each model as |page|}}
+                <tr>
+                    <td>{{page.name}}</td>
+                    <td>{{page.title}}</td>
+                    <td>{{page.slug}}</td>
+                    <td>{{page.navLabel}}</td>
+                    <td>{{page.layout}}</td>
+                    <td>{{page.order}}</td>
+                    <td>
+                        {{#link-to 's.page-manager.edit' page classNames="btn btn-info"}}edit{{/link-to}}&nbsp;
+                        <button class="btn btn-info" {{action 'delete' page}}>delete</button>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{outlet}}

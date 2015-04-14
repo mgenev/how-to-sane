@@ -1,0 +1,53 @@
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+            {{input value=title class="form-control" placeholder="Title"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            {{input value=name class="form-control" placeholder="a friendly name for this page"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">slug (last portion of url)</label>
+        <div class="col-sm-10">
+            {{input value=slug class="form-control" placeholder="url-for-this-page"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Navigation Label</label>
+        <div class="col-sm-10">
+            {{input value=navLabel class="form-control" placeholder="Short and sweet"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">order</label>
+        <div class="col-sm-10">
+            {{textarea value=order class="form-control" placeholder="a number"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Layout</label>
+        <div class="col-sm-10">
+            {{input value=layout class="form-control" placeholder="standard"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">content 1 (excerpt)</label>
+        <div class="col-sm-10">
+            {{textarea value=content1 class="form-control" placeholder="a cute little summary for the page (get your markdown on)" cols="80" rows="6"}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">content 2 (body)</label>
+        <div class="col-sm-10">
+            {{textarea value=content2 class="form-control" placeholder="this is where the meat of things goes. (get your markdown on here too)" cols="80" rows="6"}}
+        </div>
+    </div>
+    <button class="btn btn-info" {{action 'update' model}}>Update Page</button>
+    <button class="btn btn-info" {{action 'cancel' model}}>Cancel</button>
+    <button class="btn btn-info" {{action 'delete' model}}>Delete Page</button>
+</form>

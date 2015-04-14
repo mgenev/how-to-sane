@@ -31,6 +31,7 @@
     "sails-disk": "~0.10.0",
     "sails-generate-ember-blueprints": "0.0.2",
     "sails-hook-eslint": "^1.0.1",
+    "sails-hook-dev": "git://github.com/balderdashy/sails-hook-dev",
     "sails-mongo": "^0.10.6"
   },
   "scripts": {
