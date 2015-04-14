@@ -19,7 +19,7 @@ Currently demonstrated features:
 + Photo gallery and viewer 
 + Server connected UI components
 + Data bound modals
-+ Basic CMS functionality (being built) 
++ Basic CMS
 + Many more coming
 
 Open to contributors
