@@ -111,12 +111,12 @@ Router.map(function() {
         });
       });
     });
-  
+
 
   this.route("login");
   this.route("register");
 
-  this.resource('pages', { path: '/*slug' }, function() {});
+  this.resource('pages', { path: 'pages/*slug' }, function() {});
 
 });
 
