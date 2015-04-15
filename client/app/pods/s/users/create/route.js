@@ -13,7 +13,7 @@ export default Ember.Route.extend({
                 data: JSON.stringify({
                 	user: {
 	                    password: model.get('password'),
-	                    username: model.get('username'),
+	                    email: model.get('email'),
 	                    firstName: model.get('firstName'),
 	                    lastName: model.get('lastName')
                     }

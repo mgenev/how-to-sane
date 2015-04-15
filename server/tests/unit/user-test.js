@@ -55,7 +55,7 @@ describe('Users', function() {
         method: 'POST',
         params: {
           user: {
-            username: '',
+            email: '',
             password: 'password'
           }
         },
@@ -65,7 +65,7 @@ describe('Users', function() {
         expect(err).to.be.instanceof(Error);
         expect(err).to.have.property('status', 400);
         expect(err).to.have.deep.property('body.error', 'E_VALIDATION');
-        expect(err).to.have.deep.property('body.invalidAttributes.username');
+        expect(err).to.have.deep.property('body.invalidAttributes.email');
         done();
       });
     });
@@ -76,7 +76,7 @@ describe('Users', function() {
         method: 'POST',
         params: {
           user: {
-            username: 'test@test.com',
+            email: 'test@test.com',
             password: ''
           }
         },

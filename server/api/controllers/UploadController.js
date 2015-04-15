@@ -7,7 +7,7 @@ module.exports = {
         var file = req.file('file_data');
 
         file.upload({
-            dirname: '../../uploads/' + req.user.username
+            dirname: '../../uploads/' + req.user.email
         }, function(err, uploadedFiles) {
             if (err) return res.send(500, err);
             return res.json({
@@ -45,7 +45,7 @@ module.exports = {
         record.user = req.user.id;
 
         var file = req.file('file_data');
-        var path = '/images/users/' + req.user.username + '/photos';
+        var path = '/images/users/' + req.user.email + '/photos';
 
         file.upload({
             dirname: '../../assets' + path

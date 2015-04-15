@@ -42,7 +42,7 @@ module.exports = {
         // attributes
         firstName: 'STRING',
         lastName: 'STRING',
-        username: {
+        email: {
             type: 'EMAIL', // Email type will get validated by the ORM
             required: true,
             unique: true
