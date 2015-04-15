@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(params) {
+  model(params) {
     return this.store.find('page', { slug: params.slug }).then(model => model.content[0]);
   },
-  renderTemplate: function(controller, model) {
+  renderTemplate(controller, model) {
     this.render('s.page-manager.layouts.' + model.get('layout'));
   }
 });

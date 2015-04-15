@@ -1,24 +1,22 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
+  model() {
     return this.store.createRecord('page');
   },
 
   actions: {
-    update: function(model) {
-      var self = this;
+    update(model) {
       return model.save().then(
-        function(savedModel) {
+        savedModel => {
           console.log('page ' + savedModel.get('name') + ' saved successfully');
-          self.transitionTo('s.page-manager');
+          this.transitionTo('s.page-manager');
         },
-        function(reason) {
+        reason => {
           console.log('error saving page, reason: ' + reason);
-          self.transitionTo('s.page-manager');
+          this.transitionTo('s.page-manager');
         }
       );
-
     }
   }
 });
