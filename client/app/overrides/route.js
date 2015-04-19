@@ -3,9 +3,11 @@ import Ember from 'ember';
 let Route = Ember.Route.reopen({
   beforeModel(transition) {
     this._super(transition);
-
+    var history =  this.historyService;
     if (this.routeName === transition.targetName) {
-      this.historyService.get('log').pushObject(this.get('routeName'));
+      // TODO get location path instead and feed a string to the history manager
+      history.get('log').pushObject(this.get('routeName'));
+      history.set('cursor', history.get('log').length);
 
     }
     console.log(transition);

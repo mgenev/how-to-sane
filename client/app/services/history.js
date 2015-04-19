@@ -5,30 +5,16 @@ export default Ember.Service.extend({
   log: [],
 
   /* TODO
-   add cursor which keeps track of where you are in the log
-   need to start managing whether
+  lastly, evaluate whether you are at the end of the cursor or the beginning
+  if end = grey out and deactivate forward button
+  if beginning = grey out and deactivate back button
 
-   i'm navigating as driven by the history manager or driven by the user to keep
-   the queue and cursor straight,
-
-   if route changes because of back or forth buttons, just move cursor, do not
-   populate history log, try 'replace' for this
-
-   need to preserve param for param dependent routes
-   use transition.params, but the problem is, it takes a model, not id to transition
-   http://stackoverflow.com/questions/16627026/ember-transition-to-route-passing-the-id-instead-of-obj
-
-   so i need to store the models as well in history
-
-
-   but what happens at routes like /authors/214123/books/123124312 ?
-   how to even use links or transitions to routes with 2 models??
-   
-   lastly, evaluate whether you are at the end of the cursor or the beginning
-   if end = grey out and deactivate forward button
-   if beginning = grey out and deactivate back button
+  cursor starts at array.length index and gets reduced by back button actions
+  when back and forward happen, the route is replaced and therefore not recorded
+  in history.
   */
 
+  cursor: 0,
 
   enforceMaxLength: Ember.observer('log.[]', function () {
     let log = this.get('log');
