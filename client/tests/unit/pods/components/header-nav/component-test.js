@@ -9,7 +9,7 @@ describeComponent(
   'HeaderNavComponent',
   {
     // specify the other units that are required for this test
-    // needs: ['component:foo', 'helper:bar']
+    needs: ['helper:fa-icon']
   },
   function() {
     it('renders', function() {

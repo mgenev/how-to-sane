@@ -35,14 +35,4 @@ export default Ember.Service.extend({
     return this.get('cursor') === 1;
   })
 
-  /* TODO
-  lastly, evaluate whether you are at the end of the cursor or the beginning
-  if end = grey out and deactivate forward button
-  if beginning = grey out and deactivate back button
-
-  cursor starts at array.length index and gets reduced by back button actions
-  when back and forward happen, the route is replaced and therefore not recorded
-  in history.
-  */
-
 });
