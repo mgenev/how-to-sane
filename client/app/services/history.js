@@ -2,7 +2,38 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
   max: 20,
+  cursor: 0,
   log: [],
+  enforceMaxLength: Ember.observer('log.[]', function () {
+    let log = this.get('log');
+    if ( log.length > this.get('max')) {
+        log.shift();
+    }
+  }),
+  currentRoute: Ember.computed('log.[]', function () {
+    return this.get('log')[this.get('cursor')-1];
+  }),
+  back() {
+    if (!this.get('cursorAtStart')) {
+      this.decrementProperty('cursor');
+      this.container.lookup('router:main').router.replaceWith(this.get('log')[this.get('cursor')-1]);
+    }
+  },
+  forward() {
+    if (!this.get('cursorAtEnd')) {
+      this.incrementProperty('cursor');
+      this.container.lookup('router:main').router.replaceWith(this.get('log')[this.get('cursor')-1]);
+    }
+  },
+  go(index) {
+    this.container.lookup('router:main').router.replaceWith(log[index-1]);
+  },
+  cursorAtEnd: Ember.computed('log.[]', 'cursor', function () {
+    return this.get('log').length === this.get('cursor');
+  }),
+  cursorAtStart: Ember.computed('log.[]', 'cursor', function () {
+    return this.get('cursor') === 1;
+  })
 
   /* TODO
   lastly, evaluate whether you are at the end of the cursor or the beginning
@@ -13,36 +44,5 @@ export default Ember.Service.extend({
   when back and forward happen, the route is replaced and therefore not recorded
   in history.
   */
-
-  cursor: 0,
-
-  enforceMaxLength: Ember.observer('log.[]', function () {
-    let log = this.get('log');
-    if ( log.length > this.get('max')) {
-        log.shift();
-    }
-  }),
-  currentRoute: Ember.computed('log.[]', function () {
-    let log = this.get('log');
-    return log[log.length-1];
-  }),
-  previousRoute: Ember.computed('log.[]', function () {
-    let log = this.get('log');
-    return log[log.length-2];
-  }),
-  nextRoute: Ember.computed('log.[]', function () {
-    console.log('next path');
-    // let log = this.get('log');
-    // return log[log.length-2];
-  }),
-  back() {
-
-  },
-  forward() {
-
-  },
-  go(index) {
-
-  }
 
 });

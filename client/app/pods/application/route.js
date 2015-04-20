@@ -6,22 +6,10 @@ import ModalActions from 'client/mixins/modal-actions';
 export default Ember.Route.extend(ApplicationRouteMixin, ModalActions, {
   actions: {
     back() {
-      this.transitionTo(this.historyService.get('previousRoute'));
+      this.historyService.back();
     },
     forward() {
-      this.transitionTo(this.historyService.get('nextRoute'));
+      this.historyService.forward();
     }
   }
 });
-
-
-// actions: {
-//   back() {
-//     let historyEntry =  this.historyService.get('previousRoute');
-//     this.transitionTo(historyEntry.routeName, historyEntry.targetParam);
-//   },
-//   forward() {
-//     let historyEntry =  this.historyService.get('nextRoute');
-//     this.transitionTo(historyEntry.routeName, historyEntry.targetParam);
-//   }
-// }
