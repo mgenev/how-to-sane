@@ -8,7 +8,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <span {{action 'back'}} class="navbar-brand {{if historyService.cursorAtStart 'arrow-disabled'}}">{{fa-icon "arrow-left" size="1"}}</span>
+            <span {{action 'forward'}} class="navbar-brand {{if historyService.cursorAtEnd 'arrow-disabled'}}">{{fa-icon "arrow-right" size="1"}}</span>
             <a href="../" class="navbar-brand">How to SANE</a>
+
         </div>
         <nav class="mobile-menu collapse navbar-collapse bs-navbar-collapse" role="navigation">
 
@@ -39,7 +42,7 @@
                 </li>
                 {{/each}}
             </ul>
-            
+
             {{else}}
 
             <ul class="nav navbar-nav navbar-right">
