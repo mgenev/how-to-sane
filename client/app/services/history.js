@@ -26,7 +26,7 @@ export default Ember.Service.extend({
     }
   },
   go(index) {
-    this.container.lookup('router:main').router.replaceWith(log[index-1]);
+    this.container.lookup('router:main').router.replaceWith(this.get('log')[index-1]);
   },
   cursorAtEnd: Ember.computed('log.[]', 'cursor', function () {
     return this.get('log').length === this.get('cursor');
