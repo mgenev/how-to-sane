@@ -5,33 +5,14 @@ var expect = require('chai').expect;
 var path = require('path');
 var user = require('../fixtures/user')[0];
 var token = require('../helpers/jwt');
-var _ = require('lodash');
+var loadConfig = require('../helpers/loadConfig');
+
 
 describe('Users', function() {
 
   before(function beforeRunningAnyTests(done) {
     // Load the app without lifting sails
-    new Sails().load({
-      log: {
-        level: 'warn'
-      },
-      models: {
-        connection: 'test',
-        migrate: 'drop'
-      },
-      eslint: {
-        check: false
-      },
-      hooks: {
-        grunt: false,
-        views: false,
-        cors: false,
-        csrf: false,
-        i18n: false,
-        pubsub: false,
-        session: false
-      }
-    }, function whenAppIsReady(error, sailsApp) {
+    new Sails().load(loadConfig, function whenAppIsReady(error, sailsApp) {
       if (error) {
         done(error, sailsApp);
       }
@@ -155,16 +136,25 @@ describe('Users', function() {
         done();
       });
     });
-    it('should not include the password');
-  });
+    it('should not include the password', function(done) {
+      sails.request({
+        url: '/api/v1/users',
+        method: 'GET',
+        params: {'sort': 'id asc'},
+        headers: {'Authorization' : 'Bearer ' + token(user)}
+      }, function(err, clientRes, body) {
 
-  describe('after a user is created', function() {
-    it('should log the user in');
+        expect(body).to.not.have.deep.property('users[0].password');
+        expect(body).to.not.have.deep.property('users[1].password');
+        expect(body).to.not.have.deep.property('users[2].password');
+
+        done();
+      });
+    });
   });
 
   describe('when a user password is changed', function() {
     it('should hash the password');
-    it('should keep the user logged in');
   });
 
 });
