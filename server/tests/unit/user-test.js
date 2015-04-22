@@ -144,7 +144,6 @@ describe('Users', function() {
         headers: {'Authorization' : 'Bearer ' + token(user)}
       }, function(err, clientRes, body) {
 
-        console.log('users: ', body.users);
         expect(body).to.have.deep.property('users[0].id');
         expect(body).to.have.deep.property('users[0].createdAt');
         expect(body.users[0].firstName).to.equal('Peter');
