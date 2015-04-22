@@ -3,7 +3,9 @@ var Sails = require('sails').Sails;
 var sinon = require('sinon');
 var expect = require('chai').expect;
 var path = require('path');
-
+var user = require('../fixtures/user')[0];
+var token = require('../helpers/jwt');
+var _ = require('lodash');
 
 describe('Users', function() {
 
@@ -125,11 +127,10 @@ describe('Users', function() {
         url: '/api/v1/users',
         method: 'GET',
         params: {},
-        headers: {}
+        headers: {'Authorization' : 'Bearer ' + token(user)}
       }, function(err, clientRes, body) {
         expect(err).not.to.exist;
         expect(clientRes.statusCode).to.equal(200);
-        console.log(body);
         expect(body).to.include.keys('posts', 'vendors', 'photos', 'albums', 'statuses', 'events');
         done();
       });
@@ -139,18 +140,19 @@ describe('Users', function() {
       sails.request({
         url: '/api/v1/users',
         method: 'GET',
-        params: {},
-        headers: {}
+        params: {'sort': 'id asc'},
+        headers: {'Authorization' : 'Bearer ' + token(user)}
       }, function(err, clientRes, body) {
-        expect(body).to.have.deep.property('people[0].id');
-        expect(body).to.have.deep.property('people[0].createdAt');
-        console.log(body)
-        expect(body.people[0].firstName).to.equal('Peter');
-        expect(body.people[0].lastName).to.equal('Test');
-        expect(body.people[0].email).to.equal('peter@test.com');
-        expect(body.people[0].password).to.not.equal('super-secure');
-        expect(body.people[1].firstName).to.equal('First');
-        expect(body.people[2].email).to.equal('john.original@email.com');
+
+        console.log('users: ', body.users);
+        expect(body).to.have.deep.property('users[0].id');
+        expect(body).to.have.deep.property('users[0].createdAt');
+        expect(body.users[0].firstName).to.equal('Peter');
+        expect(body.users[0].lastName).to.equal('Test');
+        expect(body.users[0].email).to.equal('peter@test.com');
+        expect(body.users[0].password).to.not.equal('super-secure');
+        expect(body.users[1].firstName).to.equal('First');
+        expect(body.users[2].email).to.equal('john.original@email.com');
         done();
       });
     });
@@ -159,11 +161,11 @@ describe('Users', function() {
 
   describe('after a user is created', function() {
     it('should log the user in');
-  })
+  });
 
   describe('when a user password is changed', function() {
     it('should hash the password');
     it('should keep the user logged in');
-  })
+  });
 
 });
