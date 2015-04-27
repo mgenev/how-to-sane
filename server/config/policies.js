@@ -27,8 +27,7 @@ module.exports.policies = {
 
     '*': "hasToken",
     AppController: {
-        'serve': true,
-        'serveView': true
+        'serve': true
     },
     PageController: {
         "find": true,
