@@ -279,6 +279,7 @@ module.exports = {
       }
     }
 
+    // TODO rewrite for MongoDB.js 2.0 with geoNear
     var near = req.param( 'near' );
     if (near) {
         near.coordinates[1] = parseFloat(near.coordinates[1]);
