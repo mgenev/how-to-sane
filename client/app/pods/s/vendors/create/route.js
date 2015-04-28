@@ -1,25 +1,26 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 import {point} from 'client/utils/to-geo-json';
 
 export default Ember.Route.extend({
-    model: function() {
-        return this.store.createRecord('vendor');
-    },
+  model: function() {
+    return this.store.createRecord('vendor');
+  },
 
-    actions: {
-        createVendor: function(model) {
-            var _this = this;
-            var userId = this.session.get('user.id');
-
-            var user = this.store.find('user', userId).then(function(result) {
-                model.set('user', result);
-                user = result;
-                return _this.geoGoogleService.getLatLongForAddress(model.get('address'));
-            }).then(function (response) {
-                var latlong = point(response.results[0].geometry.location);
-                model.set('location', latlong);
-                return model.save();
-            }).then(() => this.transitionTo('s.users.user', user));
-        }
+  actions: {
+    createVendor: async function(model) {
+      try {
+        let user = await this.store.find('user', this.session.get('user.id'));
+        let latLong = await this.geoGoogleService.getLatLongForAddress(model.get('address'))
+        model.set('location', latLong);
+        model.set('user', user);
+        await model.save();
+        this.transitionTo('s.users.user', user);
+      }
+      catch (err) {
+        console.log('error', err);
+      }
     }
+  }
 });
+/* jshint ignore:end */

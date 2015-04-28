@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {point} from 'client/utils/to-geo-json';
 
 export default Ember.Object.extend({
 
@@ -37,9 +38,9 @@ export default Ember.Object.extend({
     	return this.getAddressForLatLong(this.currentCoords());
     },
 
-    getLatLongForAddress: function (address) {
-        // console.log('GETLATLONG', this.geocoding(address));
-   		 return this.geocoding(address);
+    getLatLongForAddress: async function (address) {
+   		let location = await this.geocoding(address);
+      return point(location.results[0].geometry.location);
     },
 
     getAddressForLatLong: function (latlong) {
