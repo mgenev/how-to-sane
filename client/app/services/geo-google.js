@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 import {
   point
@@ -119,3 +120,4 @@ export default Ember.Object.extend({
   }
 
 });
+/* jshint ignore:end */

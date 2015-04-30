@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 import computedDecorator from 'ember-computed-decorators';
 
@@ -18,3 +19,4 @@ export default Ember.Controller.extend({
 
   }
 });
+/* jshint ignore:end */
