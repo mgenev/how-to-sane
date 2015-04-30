@@ -1,22 +1,12 @@
-/* jshint ignore:start */
 import Ember from 'ember';
-import computedDecorator from 'ember-computed-decorators';
-
 export default Ember.Controller.extend({
-  queryParams: ['p'],
-
-  p: null,
-  @computedDecorator('p')
-  currentPhoto(p) {
-    debugger;
-    if (p) {
-      return this.store.find('photo', p);
-    } else {
-      return {
-        filePath: ''
-      };
-    }
-
-  }
+    queryParams: ['p'],
+    p: null,
+    currentPhoto: Ember.computed('p', function() {
+    	if (this.get('p')) {
+    		return this.store.find('photo', this.get('p'));
+    	} else {
+    		return { filePath: '' };
+    	}
+    })
 });
-/* jshint ignore:end */

@@ -19,7 +19,7 @@ export default Ember.Route.extend({
 			console.log('GEO ERROR', err);
 		}
 	},
-  model: function (params) {
+  model(params) {
     return this.store.find('status', {
       sort: 'createdAt desc',
       createdAt: {

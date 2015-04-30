@@ -9,16 +9,10 @@ export default Ember.Object.extend({
 
   getGeoposition: function () {
 
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Promise( (resolve, reject) => {
+      let success = pos => resolve(pos.coords);
+      let error = err => console.warn(`ERROR(${err.code}): ${err.message}`);
       navigator.geolocation.getCurrentPosition(success, error);
-
-      function success(pos) {
-        resolve(pos.coords);
-      };
-
-      function error(err) {
-        console.warn('ERROR(' + err.code + '): ' + err.message);
-      };
     });
   },
 
@@ -101,7 +95,7 @@ export default Ember.Object.extend({
   },
 
   createMarker: function (place) {
-    var _this = this;
+
     var location = {
       latitude: parseFloat(place.coordinates[1]),
       longitude: parseFloat(place.coordinates[0])
@@ -109,13 +103,13 @@ export default Ember.Object.extend({
     var placeLoc = this.getGoogleMapsGeoCoords(location);
 
     var marker = new google.maps.Marker({
-      map: _this.get('map'),
+      map: this.get('map'),
       position: placeLoc
     });
 
-    google.maps.event.addListener(marker, 'click', function () {
-      _this.get('infoWindow').setContent(place.name);
-      _this.get('infoWindow').open(_this.get('map'), this);
+    google.maps.event.addListener(marker, 'click', () => {
+      this.get('infoWindow').setContent(place.name);
+      this.get('infoWindow').open(this.get('map'), this);
     });
   }
 

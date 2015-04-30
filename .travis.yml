@@ -15,11 +15,9 @@ cache:
 before_install:
   - "npm config set spin false"
   - "npm install -g npm@^2"
-  - "npm install -g bower"
 
 env:
-  - TEST_DIR=client
   - TEST_DIR=server
 
 script:
-  - cd $TEST_DIR && npm install && bower install && npm test
+  - cd $TEST_DIR && npm install && npm test
