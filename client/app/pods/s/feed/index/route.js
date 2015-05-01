@@ -13,5 +13,15 @@ export default Ember.Route.extend({
         ">": params.fromDate
       }
     });
+  },
+  actions: {
+    postStatus(model) {
+        var userId = this.session.get('user.id');
+
+        this.store.find('user', userId).then(result => {
+            model.set('user', result);
+            return model.save();
+        }).then(() => this.transitionTo('s.feed'));
+    }
   }
 });

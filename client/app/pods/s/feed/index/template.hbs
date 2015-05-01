@@ -1,30 +1,38 @@
 {{outlet}}
 <div class="col-xs-6">
-    <div class="row">
-        <div class="page-header">
-            <h3>Feed</h3>
+  <div class="row">
+    <div class="page-header">
+      <h3>Feed</h3>
 
-            {{#liquid-if address class="geo-info"}}
-              <h4>{{#if geo}}Geo:{{geo.latitude}}, {{geo.longitude}}{{/if}}</h4>
-              <h4>{{#if address}}Address: {{address}}{{/if}}</h4>
-            {{else}}
-              {{loading-bars size=40 color='grey'}}
-            {{/liquid-if}}
-        </div>
+      {{#liquid-if address class="geo-info" }}
+        <h4>
+          {{#if geo}}Geo:{{geo.latitude}}, {{geo.longitude}}{{/if}}
+        </h4>
+        <h4>
+          {{#if address}}Address: {{address}}{{/if}}
+        </h4>
+        {{else}}
+          {{loading-bars size=40 color='grey'}}
+      {{/liquid-if}}
     </div>
-    <div class="row">
-        <div class="pull-left">
-            {{#link-to 's.feed.status'}}
-                <button class="btn btn-info">Post Status</button>
-            {{/link-to}}
-        </div>
-        <div class="pull-right clearfix">
-            {{date-picker autoclose=true valueFormat="" date=fromDate format="MM-DD-YYYY" allowBlank=true  placeholder="Show posts since"}}&nbsp;<span {{action "clearDate"}} class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-        </div>
+  </div>
+
+  <div class="row">
+    {{#liquid-if showStatusWizard class="geo-info"}}
+      {{feed.post-status}}
+    {{else}}
+      <div class="pull-left">
+        <button {{action 'showStatusWizard'}} class="btn btn-info">Post Status</button>
+      </div>
+    {{/liquid-if}}
+    <div class="pull-right clearfix">
+      {{date-picker autoclose=true valueFormat="" date=fromDate format="MM-DD-YYYY" allowBlank=true placeholder="Show posts since"}}&nbsp;
+      <span {{action "clearDate"}} class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
     </div>
-    <div class="row">
-        {{#each model as |status|}}
-            {{status-card status=status}}
-        {{/each}}
-    </div>
+  </div>
+  <div class="row">
+    {{#each model as |status|}}
+      {{status-card status=status}}
+    {{/each}}
+  </div>
 </div>

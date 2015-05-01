@@ -1,15 +1,16 @@
-<div class="wizard-wrapper container">
+<div class="wizard-wrapper">
 
-    <div class="wizard row">
+    <div class="wizard">
         {{#each steps as |step index|}}
             <div {{action 'goToStep' index}} class="wizard-step pull-left">{{index}}. {{step.caption}}</div>
         {{/each}}
     </div>
 
-    <div class="clear row wizard-form">
+    <div class="clear wizard-form">
         <form role="form" {{action 'submitAction' status on='submit'}}>
-            <div class="bump"></div>
-            {{component type status=status}}
+            {{#liquid-with type class="wizard" as |t|}}
+              {{component t status=status}}
+            {{/liquid-with}}
 
             <div class="bump"></div>
             {{#unless firstStep}}
@@ -21,10 +22,8 @@
                 {{else}}
                     <button {{action 'submitAction' status}} type="submit" class="btn btn-default">Submit</button>
             {{/unless}}
-
-            <div class="bump"></div>
-
         </form>
+        <div class="bump"></div>
     </div>
 </div>
 {{yield}}
