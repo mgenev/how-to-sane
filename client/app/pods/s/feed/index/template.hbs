@@ -3,8 +3,13 @@
     <div class="row">
         <div class="page-header">
             <h3>Feed</h3>
-            <h4>Geo: {{#if geo}}{{geo.latitude}}, {{geo.longitude}}{{/if}}</h4>
-            <h4>Address: {{address}}</h4>
+
+            {{#liquid-if address class="geo-info"}}
+              <h4>{{#if geo}}Geo:{{geo.latitude}}, {{geo.longitude}}{{/if}}</h4>
+              <h4>{{#if address}}Address: {{address}}{{/if}}</h4>
+            {{else}}
+              {{loading-bars size=40 color='grey'}}
+            {{/liquid-if}}
         </div>
     </div>
     <div class="row">
