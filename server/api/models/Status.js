@@ -12,7 +12,7 @@ module.exports = {
         user: {
             model: 'user'
         },
-        
+
         // attr
         note: {
             type: 'string',
@@ -23,7 +23,12 @@ module.exports = {
         },
         activity: {
             type: 'string'
-        }
+        },
+        location: {
+            type: 'json'
+        },
+        address: {
+            type: 'string'
+        },
     }
 };
-

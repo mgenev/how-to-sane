@@ -1,5 +1,6 @@
 /* jshint ignore:start */
 import Ember from 'ember';
+import { point } from 'client/utils/to-geo-json';
 
 export default Ember.Controller.extend({
   queryParams: ['fromDate'],
@@ -17,8 +18,9 @@ export default Ember.Controller.extend({
           let userId = this.session.get('user.id');
           let user = await this.store.find('user', userId);
           model.set('user', user);
-
-          // TODO save geojson location for the checkin and address
+          model.set('address', this.get('address'));
+          let location = { lat: this.get('geo').latitude, lng: this.get('geo').longitude };
+          model.set('location', point(location));
           await model.save();
           this.toggleProperty('showStatusWizard');
         } catch (err) {
@@ -36,7 +38,7 @@ export default Ember.Controller.extend({
         this.set('geo', currentGeo);
         this.set('address', currentAddress);
       } catch (err) {
-        console.log('GEO ERROR', err);
+        console.log('There was a problem with detecting your location', err);
       }
     })
 });
