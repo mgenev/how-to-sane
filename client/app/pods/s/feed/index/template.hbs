@@ -19,7 +19,7 @@
 
   <div class="row">
     {{#liquid-if showStatusWizard class="geo-info"}}
-      {{feed.post-status}}
+      {{feed.post-status postStatus="postStatus"}}
     {{else}}
       <div class="pull-left">
         <button {{action 'showStatusWizard'}} class="btn btn-info">Post Status</button>

@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import Ember from 'ember';
-import {point} from 'client/utils/to-geo-json';
 
 export default Ember.Route.extend({
   model: function() {

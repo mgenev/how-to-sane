@@ -45,7 +45,7 @@ export default Ember.Component.extend({
 
     submitAction() {
       if (this.get('lastStep')) {
-        this.sendAction('action', this.get('status'));
+        this.sendAction('postStatus', this.get('status'));
       } else {
         this.triggerAction({
           action: 'nextStep',

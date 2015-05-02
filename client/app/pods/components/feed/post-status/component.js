@@ -14,5 +14,10 @@ export default Ember.Component.extend({
   }],
   createStatusModel: Ember.on('init', function () {
     this.set('status', this.get('store').createRecord('status'));
-  })
+  }),
+  actions: {
+    postStatus() {
+      this.sendAction('postStatus', this.get('status'));
+    }
+  }
 });
