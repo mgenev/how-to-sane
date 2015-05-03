@@ -17,10 +17,10 @@ export default Ember.Controller.extend({
       console.log('There was a problem with detecting your location', err);
     }
   }),
-  drawPlacesMap(geo) {
+  async drawPlacesMap(geo) {
     try {
       this.geoGoogleService.drawMap(geo, 'mapfeed');
-      this.geoGoogleService.getNearbyPlaces(geo);
+      this.set('nearbyPlaces', await this.geoGoogleService.getNearbyPlaces(geo, true));
     } catch (err) {
       console.log('error in the geo', err);
     }

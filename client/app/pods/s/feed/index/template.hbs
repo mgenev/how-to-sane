@@ -1,9 +1,8 @@
 {{outlet}}
-<div class="col-xs-6">
+<div class="col-sm-6 col-xs-12">
   <div class="row">
     <div class="page-header">
       <h3>Feed</h3>
-
       {{#liquid-if address class="geo-info" }}
         <h4>
           {{#if address}}Address: {{address}}{{/if}}
@@ -33,13 +32,13 @@
     {{/each}}
   </div>
 </div>
-<div class="col-xs-6">
-  <div class="row">
+<div class="col-sm-6 col-xs-12">
     <div class="page-header">
       <h3>Nearby</h3>
     </div>
-    <div class="row">
-      <div id="mapfeed"></div>
-    </div>
-  </div>
+    <div id="mapfeed"></div>
+      {{#each nearbyPlaces as |place|}}
+        <h4><b>{{place.name}}</b></h4>
+        <p>{{place.formatted_address}}</p>
+      {{/each}}
 </div>
