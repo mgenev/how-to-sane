@@ -32,24 +32,24 @@ export default Ember.Object.extend({
     return geo.results[0].formatted_address;
   },
 
-  getNearbyPlaces(geo, pinMarkers) {
+  getNearbyPlaces(geo, pinMarkers=true) {
+
     let request = {
       location: this.getGoogleMapsGeoCoords(geo),
       radius: '500',
       query: 'restaurant'
     };
-
-    // TODO rewrite with async
-    let service = new google.maps.places.PlacesService(this.get('map'));
+    var _this = this;
+    var service = new google.maps.places.PlacesService(this.get('map'));
     service.textSearch(request, callback);
 
-    let callback = (results, status) => {
-      this.set('nearbyPlaces', results);
-      if (status === google.maps.places.PlacesServiceStatus.OK && pinMarkers) {
-        for (var i = 0; i < results.length; i++) {
-          this.createMarker(results[i]);
-        }
-      }
+    function callback(results, status) {
+       _this.set('nearbyLocations', results);
+       if (status === google.maps.places.PlacesServiceStatus.OK && pinMarkers) {
+           for (var i = 0; i < results.length; i++) {
+               _this.createMarker({coordinates: [results[i].geometry.location.F, results[i].geometry.location.A]});
+           }
+       }
     }
   },
 

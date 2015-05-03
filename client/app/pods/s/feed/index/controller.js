@@ -10,12 +10,21 @@ export default Ember.Controller.extend({
     try {
       let geo = await this.geoGoogleService.getGeoposition();
       let address = await this.geoGoogleService.getAddressForLatLong(geo);
+      this.drawPlacesMap(geo);
       this.set('geo', geo);
       this.set('address', address);
     } catch (err) {
       console.log('There was a problem with detecting your location', err);
     }
   }),
+  drawPlacesMap(geo) {
+    try {
+      this.geoGoogleService.drawMap(geo, 'mapfeed');
+      this.geoGoogleService.getNearbyPlaces(geo);
+    } catch (err) {
+      console.log('error in the geo', err);
+    }
+  },
   actions: {
     clearDate() {
       this.set('fromDate', null);
@@ -34,7 +43,6 @@ export default Ember.Controller.extend({
         await model.save();
         this.toggleProperty('showStatusWizard');
       } catch (err) {
-        // TODO flash the error message
         console.log('There was a problem with posting your status', err);
       }
     }
