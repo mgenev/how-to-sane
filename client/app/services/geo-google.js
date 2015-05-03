@@ -4,8 +4,7 @@ import { point } from 'client/utils/to-geo-json';
 
 export default Ember.Object.extend({
 
-  getGeoposition() {
-    // TODO try async here
+  async getGeoposition() {
     return new Promise( (resolve, reject) => {
       let success = pos => resolve(pos.coords);
       let error = err => console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -13,24 +12,14 @@ export default Ember.Object.extend({
     });
   },
 
-  getGoogleMapsGeoCoords(geo) {
-    return new google.maps.LatLng(geo.latitude, geo.longitude);
+  async geocoding(lookup, reverse) {
+    let url = reverse ? `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lookup.latitude},${lookup.longitude}` : `https://maps.googleapis.com/maps/api/geocode/json?address=${lookup}`;
+    return Ember.$.ajax({ url: url, type: 'POST' });
   },
 
-  geocoding(lookup, reverse) {
-    let url;
-    if (reverse) {
-      url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lookup.A + ',' + lookup.F;
-    } else {
-      url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + lookup;
-    }
-    return Ember.$.ajax({
-      url: url,
-      type: 'POST'
-    });
-  },
-  getCurrentAddress() {
-    return this.getAddressForLatLong(this.getGeoposition());
+  async getCurrentAddress() {
+    let geo = await this.getGeoposition();
+    return await this.getAddressForLatLong(geo);
   },
 
   async getLatLongForAddress(address) {
@@ -64,7 +53,7 @@ export default Ember.Object.extend({
     }
   },
 
-  drawMap(geo, mapElementSelector, pinCenter) {
+  drawMap(geo, mapElementSelector, pinCenter=false) {
 
     let center = this.getGoogleMapsGeoCoords(geo);
     let infoWindow = new google.maps.InfoWindow();
@@ -79,8 +68,7 @@ export default Ember.Object.extend({
     if (pinCenter) {
       new google.maps.Marker({
         map: map,
-        position: center,
-        icon: '/images/icons/smiley_happy.png'
+        position: center
       });
     }
   },
@@ -100,7 +88,10 @@ export default Ember.Object.extend({
       this.get('infoWindow').setContent(place.name);
       this.get('infoWindow').open(this.get('map'), this);
     });
-  }
+  },
 
+  getGoogleMapsGeoCoords(geo) {
+    return new google.maps.LatLng(geo.latitude, geo.longitude);
+  }
 });
 /* jshint ignore:end */
