@@ -7,7 +7,7 @@ export default Ember.Object.extend({
   async getGeoposition() {
     return new Promise( (resolve, reject) => {
       let success = pos => resolve(pos.coords);
-      let error = err => console.warn(`ERROR(${err.code}): ${err.message}`);
+        let error = err => console.warn(`ERROR(${err.code}): ${err.message}`);
       navigator.geolocation.getCurrentPosition(success, error);
     });
   },
@@ -39,7 +39,7 @@ export default Ember.Object.extend({
       radius: '500',
       query: 'restaurant'
     };
-    // var _this = this;
+
     var service = new google.maps.places.PlacesService(this.get('map'));
 
      let createMarker = place => {

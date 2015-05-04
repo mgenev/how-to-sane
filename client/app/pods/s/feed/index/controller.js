@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
     try {
       this.geoGoogleService.drawMap(geo, 'mapfeed');
       this.set('nearbyPlaces', await this.geoGoogleService.getNearbyPlaces(geo, true));
+      Ember.get(this, 'flashMessages').success('Success!');
     } catch (err) {
       console.log('error in the geo', err);
     }
