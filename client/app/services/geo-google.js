@@ -42,19 +42,31 @@ export default Ember.Object.extend({
     // var _this = this;
     var service = new google.maps.places.PlacesService(this.get('map'));
 
+     let createMarker = place => {
+      let marker = new google.maps.Marker({
+        map: this.get('map'),
+        position: place.geometry.location
+      });
+
+      google.maps.event.addListener(marker, 'click', () => {
+        this.get('infoWindow').setContent(place.name);
+        this.get('infoWindow').open(this.get('map'), marker);
+      });
+    }
+
     return new Promise( (resolve) => {
-      service.textSearch(request, (results, status) => {
-         if (status === google.maps.places.PlacesServiceStatus.OK && pinMarkers) {
-             for (var i = 0; i < results.length; i++) {
-                 this.createMarker({coordinates: [results[i].geometry.location.F, results[i].geometry.location.A]});
-             }
+      service.textSearch(request, (places, status) => {
+       if (status === google.maps.places.PlacesServiceStatus.OK && pinMarkers) {
+         for (var i = 0; i < places.length; i++) {
+           createMarker(places[i]);
          }
-         resolve(results);
+       }
+       resolve(places);
       });
     });
   },
 
-  drawMap(geo, mapElementSelector, pinCenter=false) {
+  drawMap(geo, mapElementSelector, pinCenter=true) {
 
     let center = this.getGoogleMapsGeoCoords(geo);
     let infoWindow = new google.maps.InfoWindow();
@@ -69,27 +81,12 @@ export default Ember.Object.extend({
     if (pinCenter) {
       new google.maps.Marker({
         map: map,
-        position: center
+        position: center,
+        icon: '/icons/ninja.svg'
       });
     }
   },
 
-  createMarker(place) {
-    let location = this.getGoogleMapsGeoCoords({
-      latitude: parseFloat(place.coordinates[1]),
-      longitude: parseFloat(place.coordinates[0])
-    });
-
-    let marker = new google.maps.Marker({
-      map: this.get('map'),
-      position: location
-    });
-
-    google.maps.event.addListener(marker, 'click', () => {
-      this.get('infoWindow').setContent(place.name);
-      this.get('infoWindow').open(this.get('map'), this);
-    });
-  },
 
   getGoogleMapsGeoCoords(geo) {
     return new google.maps.LatLng(geo.latitude, geo.longitude);
