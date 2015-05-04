@@ -17,7 +17,7 @@ export default Ember.Route.extend({
         this.transitionTo('s.users.user', user);
       }
       catch (err) {
-        console.log('error', err);
+        Ember.get(this, 'flashMessages').error(err);
       }
     }
   }

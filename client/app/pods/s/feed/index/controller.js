@@ -14,16 +14,15 @@ export default Ember.Controller.extend({
       this.set('geo', geo);
       this.set('address', address);
     } catch (err) {
-      console.log('There was a problem with detecting your location', err);
+      Ember.get(this, 'flashMessages').error(err);
     }
   }),
   async drawPlacesMap(geo) {
     try {
       this.geoGoogleService.drawMap(geo, 'mapfeed');
       this.set('nearbyPlaces', await this.geoGoogleService.getNearbyPlaces(geo, true));
-      Ember.get(this, 'flashMessages').success('Success!');
     } catch (err) {
-      console.log('error in the geo', err);
+      Ember.get(this, 'flashMessages').error(err);
     }
   },
   actions: {
@@ -44,7 +43,7 @@ export default Ember.Controller.extend({
         await model.save();
         this.toggleProperty('showStatusWizard');
       } catch (err) {
-        console.log('There was a problem with posting your status', err);
+        Ember.get(this, 'flashMessages').error(err);
       }
     }
   }

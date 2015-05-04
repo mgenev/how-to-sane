@@ -8,8 +8,7 @@ export default Ember.Component.extend({
       this.geoGoogleService.drawMap(geo, 'mapfeed');
       this.get('vendors').forEach(vendor => this.geoGoogleService.createMarker(vendor.get('location')));
     } catch (err) {
-      // TODO flash msg
-      console.log('error in the geo', err);
+      Ember.get(this, 'flashMessages').error(err);
     }
   })
 });
