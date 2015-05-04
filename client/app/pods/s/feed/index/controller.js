@@ -5,7 +5,7 @@ import { point } from 'client/utils/to-geo-json';
 export default Ember.Controller.extend({
   queryParams: ['fromDate'],
   fromDate: null,
-  showStatusWizard: false,
+  showTopPanel: false,
   setGeo: Ember.on('init', async function () {
     try {
       let geo = await this.geoGoogleService.getGeoposition();
@@ -30,7 +30,12 @@ export default Ember.Controller.extend({
       this.set('fromDate', null);
     },
     showStatusWizard() {
-      this.toggleProperty('showStatusWizard');
+      this.set('topPanel', 'feed.post-status');
+      this.toggleProperty('showTopPanel');
+    },
+    showSearchPanel() {
+      this.set('topPanel', 'feed.search-panel');
+      this.toggleProperty('showTopPanel');
     },
     async postStatus(model) {
       try {
@@ -41,7 +46,7 @@ export default Ember.Controller.extend({
         let location = { lat: this.get('geo').latitude, lng: this.get('geo').longitude };
         model.set('location', point(location));
         await model.save();
-        this.toggleProperty('showStatusWizard');
+        this.toggleProperty('showTopPanel');
       } catch (err) {
         Ember.get(this, 'flashMessages').error(err);
       }

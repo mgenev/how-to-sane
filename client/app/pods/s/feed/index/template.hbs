@@ -15,17 +15,14 @@
   </div>
 
   <div class="row">
-    {{#liquid-if showStatusWizard class="geo-info"}}
-      {{feed.post-status postStatus="postStatus"}}
-    {{else}}
-      <div class="pull-left">
-        <button {{action 'showStatusWizard'}} class="btn btn-info">Post Status</button>
-      </div>
+    {{#liquid-if showTopPanel class="geo-info" }}
+      {{component topPanel postStatus="postStatus" searchStatuses="searchStatuses" fromDate=fromDate showTopPanel=showTopPanel}}
+      {{else}}
+        <div class="pull-left">
+          <button {{action 'showStatusWizard'}} class="btn btn-info">Post Status</button>
+          <button {{action 'showSearchPanel'}} class="btn btn-info">Search</button>
+        </div>
     {{/liquid-if}}
-    <div class="pull-right clearfix">
-      {{date-picker autoclose=true valueFormat="" date=fromDate format="MM-DD-YYYY" allowBlank=true placeholder="Show posts since"}}&nbsp;
-      <span {{action "clearDate"}} class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-    </div>
   </div>
   <div class="row">
     {{#each model as |status|}}
@@ -34,12 +31,12 @@
   </div>
 </div>
 <div class="col-sm-6 col-xs-12">
-    <div class="page-header">
-      <h3>Nearby</h3>
-    </div>
-    <div id="mapfeed"></div>
-      {{#each nearbyPlaces as |place|}}
-        <h4><b>{{place.name}}</b></h4>
-        <p>{{place.formatted_address}}</p>
-      {{/each}}
+  <div class="page-header">
+    <h3>Nearby</h3>
+  </div>
+  <div id="mapfeed"></div>
+  {{#each nearbyPlaces as |place|}}
+    <h4><b>{{place.name}}</b></h4>
+    <p>{{place.formatted_address}}</p>
+  {{/each}}
 </div>
