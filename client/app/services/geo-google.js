@@ -41,18 +41,21 @@ export default Ember.Object.extend({
     };
 
     var service = new google.maps.places.PlacesService(this.get('map'));
-
-     let createMarker = place => {
+    let markers = [];
+    let createMarker = place => {
       let marker = new google.maps.Marker({
         map: this.get('map'),
         position: place.geometry.location
       });
+
+      markers.push(marker);
 
       google.maps.event.addListener(marker, 'click', () => {
         this.get('infoWindow').setContent(place.name);
         this.get('infoWindow').open(this.get('map'), marker);
       });
     }
+
 
     return new Promise( (resolve) => {
       service.textSearch(request, (places, status) => {
@@ -61,6 +64,8 @@ export default Ember.Object.extend({
            createMarker(places[i]);
          }
        }
+
+       let markerCluster = new MarkerClusterer(this.get('map'), markers);
        resolve(places);
       });
     });
