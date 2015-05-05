@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import readFileAsDataUrl from '../../../../utils/read-file-as-data-url';
 
 export default Ember.Route.extend({
   model() {
@@ -22,11 +21,12 @@ export default Ember.Route.extend({
         controller.set('photos', Ember.A([]));
       }
 
-      // The following creates a blob url which can be used in the
+      file.read().then
+      // The following creates a data URI which can be used in the
       // app as an img src, for instance.  It then adds the current
-      // file and its
-      readFileAsDataUrl(file.get('file')).then(function setPreviewUrl(url) {
-        file.set('preview', url);
+      // file to the controller array of photos
+      file.read().then(function setPreviewUrl(dataURI) {
+        file.set('preview', dataURI);
       }).then(function addFileToController(){
         controller.get('photos').pushObject(file);
       });
