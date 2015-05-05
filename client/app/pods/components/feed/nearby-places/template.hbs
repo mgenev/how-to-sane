@@ -1,0 +1,7 @@
+{{yield}}
+<div id="mapfeed">
+  <div class="placeholder"></div>
+</div>
+{{#each nearbyPlaces as |place|}}
+  {{feed.nearby-places.place-card place=place}}
+{{/each}}

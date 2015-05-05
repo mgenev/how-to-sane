@@ -34,9 +34,5 @@
   <div class="page-header">
     <h3>Nearby</h3>
   </div>
-  <div id="mapfeed"></div>
-  {{#each nearbyPlaces as |place|}}
-    <h4><b>{{place.name}}</b></h4>
-    <p>{{place.formatted_address}}</p>
-  {{/each}}
+  {{feed.nearby-places nearbyPlaces=nearbyPlaces}}
 </div>
