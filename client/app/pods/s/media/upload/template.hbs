@@ -19,8 +19,25 @@
               {{/unless}}
             {{else if queue.length}}
               {{#each controller.photos as |photo|}}
-                <div class="dropzone-photo-preview">
-                  <img src={{photo.preview}} style="max-width: 100%; max-height: 160px">
+                <div class="dropzone-photo-preview file-preview-frame">
+                  <img src={{photo.preview}} title={{photo.name}} style="max-width: 100%; max-height: 160px">
+                  <div class="file-thumbnail-footer">
+                    <div class="file-caption-name" title={{photo.name}}>{{photo.name}}</div>
+
+                    <div class="file-actions">
+                      <div class="file-footer-buttons">
+                        <button type="button" class="kv-file-upload btn btn-xs btn-default" title="Upload file">
+                          <i class="glyphicon glyphicon-upload text-info"></i>
+                        </button>
+                        <button type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file">
+                          <i class="glyphicon glyphicon-trash text-danger"></i>
+                        </button>
+                      </div>
+                      <div class="file-upload-indicator" tabindex="-1" title="Not uploaded yet">
+                        <i class="glyphicon glyphicon-hand-down text-warning"></i>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               {{/each}}
             {{else}}
@@ -37,8 +54,6 @@
           {{/if}}
         {{/if}}
       {{/pl-uploader}}
-
-
 
 
 
