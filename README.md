@@ -20,6 +20,7 @@ Currently demonstrated features:
 + Server connected UI components
 + Data bound modals
 + Basic CMS
++ Geo data and mapping
 + Many more coming
 
 Open to contributors
