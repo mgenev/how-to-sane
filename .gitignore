@@ -14,5 +14,6 @@ sitemap.xml
 ehthumbs.db
 Thumbs.db
 
-#webstorm/phpstorm files
+# Text Editor Files
 .idea
+*.sublime-*
