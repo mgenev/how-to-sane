@@ -9,6 +9,39 @@
 			<h4>Select Album</h4>
 			{{album-picker albums=model selectedAlbum=selectedAlbum}}
 			{{bootstrap-fileinput url="/api/v1/uploads/photo" associationType="album" extraData=selectedAlbum.id}}
+
+      {{#pl-uploader extensions="jpg jpeg png gif" action="http://localhost:1337/api/v1/uploads/photo" for="upload-photo" when-queued="queuePhoto" as |queue features|}}
+        {{#if features.drag-and-drop}}
+          <div class="dropzone" id={{features.drag-and-drop.dropzone-id}}>
+            {{#if features.drag-and-drop.drag-data}}
+              {{#unless features.drag-and-drop.drag-data.valid}}
+                Invalid File
+              {{/unless}}
+            {{else if queue.length}}
+              {{#each controller.photos as |photo|}}
+                <div class="photo-preview">
+                  <img src={{photo.preview}} style="max-width: 100%; max-height: 160px">
+                </div>
+              {{/each}}
+            {{else}}
+              <a id="upload-photo" class="dropzone__link">Add Logo</a>
+            {{/if}}
+          </div>
+        {{else}}
+          <div id="upload-photo" class="btn btn-info">Browse</div>
+          {{#if queue.length}}
+            {{#each events as |event|}}
+              <div><img src={{event.preview}} style="max-width: 100px; max-height: 100px"></div>
+              <div><span>{{event.filename}}</span></div>
+            {{/each}}
+          {{/if}}
+        {{/if}}
+      {{/pl-uploader}}
+
+
+
+
+
 		 </div>
 		<div class="modal-footer">
 			{{#link-to "s.media"}}
