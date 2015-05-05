@@ -33,7 +33,11 @@ export default Ember.Route.extend({
     },
     save: function uploadPhotos() {
 
->>>>>>> Add basic pl-uploader component
+    },
+    delete: function removePhoto(photoFile) {
+      let controller = this.controller;
+      let filteredArray = controller.get('photos').rejectBy('file', photoFile.file);
+      controller.set('photos', filteredArray);
     }
   }
 });
