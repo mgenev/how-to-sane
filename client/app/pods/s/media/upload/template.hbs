@@ -10,7 +10,7 @@
 			{{album-picker albums=model selectedAlbum=selectedAlbum}}
 			{{bootstrap-fileinput url="/api/v1/uploads/photo" associationType="album" extraData=selectedAlbum.id}}
 
-      {{#pl-uploader extensions="jpg jpeg png gif" action="http://localhost:1337/api/v1/uploads/photo" for="upload-photo" when-queued="queuePhoto" as |queue features|}}
+      {{#pl-uploader extensions="jpg jpeg png gif" action="http://localhost:1337/api/v1/uploads/photo" for="upload-photo" when-queued="queuePhoto" file-key="file_data" headers=requestHeaders as |queue features|}}
         {{#if features.drag-and-drop}}
           <div class="dropzone" id={{features.drag-and-drop.dropzone-id}}>
             {{#if features.drag-and-drop.drag-data}}
@@ -54,6 +54,10 @@
           {{/if}}
         {{/if}}
       {{/pl-uploader}}
+
+      <button class="btn btn-default kv-fileinput-upload" {{action "save" selectedAlbum}}>
+        <i class="glyphicon glyphicon-upload">Upload</i>
+      </button>
 
 
 
