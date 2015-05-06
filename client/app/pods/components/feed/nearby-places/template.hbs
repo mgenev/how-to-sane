@@ -1,7 +1,16 @@
 {{yield}}
 <div id="mapfeed">
-  <div class="placeholder"></div>
+  <div class="animated-background" style="height: 300px">
+    <div class="placeholder"></div>
+  </div>
 </div>
-{{#each nearbyPlaces as |place|}}
-  {{feed.nearby-places.place-card place=place}}
-{{/each}}
+
+{{#if nearbyPlaces}}
+  {{#each nearbyPlaces as |place|}}
+    {{feed.nearby-places.place-card place=place}}
+  {{/each}}
+{{else}}
+  {{feed.placeholder-card}}
+  {{feed.placeholder-card}}
+  {{feed.placeholder-card}}
+{{/if}}
