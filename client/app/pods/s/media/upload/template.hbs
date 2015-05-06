@@ -8,7 +8,6 @@
 		<div  class="bump modal-body">
 			<h4>Select Album</h4>
 			{{album-picker albums=model selectedAlbum=selectedAlbum}}
-			{{bootstrap-fileinput url="/api/v1/uploads/photo" associationType="album" extraData=selectedAlbum.id}}
 
       {{#pl-uploader extensions="jpg jpeg png gif" action="http://localhost:1337/api/v1/uploads/photo" for="upload-photo" when-queued="queuePhoto" file-key="file_data" headers=requestHeaders as |queue features|}}
         {{#if features.drag-and-drop}}
@@ -54,20 +53,15 @@
           {{/if}}
         {{/if}}
       {{/pl-uploader}}
-
-      <button class="btn btn-default kv-fileinput-upload" {{action "save" selectedAlbum}}>
-        <i class="glyphicon glyphicon-upload">Upload</i>
-      </button>
-
-
-
 		 </div>
 		<div class="modal-footer">
 			{{#link-to "s.media"}}
-				<div class="btn btn-info">
-					<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-					Back to gallery
-				</div>
+				<button class="btn btn-info pull-left">
+					<i class="glyphicon glyphicon-arrow-left" aria-hidden="true">&nbsp;Back</i>
+				</button>
+				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "save" selectedAlbum}}>
+					<i class="glyphicon glyphicon-upload">Upload</i>
+				</button>
 			{{/link-to}}
 		</div>
 	</div>
