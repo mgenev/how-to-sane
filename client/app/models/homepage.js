@@ -1,4 +1,7 @@
 import DS from 'ember-data';
+import Ember from 'ember';
+
+const { computed } = Ember;
 
 export default DS.Model.extend({
 
@@ -12,9 +15,9 @@ export default DS.Model.extend({
     homepageTemplate: DS.attr(),
 
     // computed
-    slug: function() {
+    slug: computed('name', function() {
         var slug = this.get('name').toString().toLowerCase().replace(/[^a-z0-9]+/g, '-');
         this.set('urlSegment', slug);
         return slug;
-    }.property('name')
+    })
 });

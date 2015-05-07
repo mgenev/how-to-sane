@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { on } = Ember;
+
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   steps: [{
@@ -12,7 +14,8 @@ export default Ember.Component.extend({
       caption: 'Tell us how you feel',
       component: 'status-state-picker'
   }],
-  createStatusModel: Ember.on('init', function () {
+
+  createStatusModel: on('init', function () {
     this.set('status', this.get('store').createRecord('status'));
   }),
   actions: {

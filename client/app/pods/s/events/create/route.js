@@ -2,13 +2,13 @@ import Ember from 'ember';
 import DestroyNew from 'client/mixins/destroy-new-model';
 
 export default Ember.Route.extend(DestroyNew, {
-    model: function() {
+    model() {
         return this.store.createRecord('event');
     },
-    actions: {
-        createEvent: function(model) {
 
-        	var userId = this.session.get('user.id');
+    actions: {
+        createEvent(model) {
+            var userId = this.session.get('user.id');
             this.store.find('vendor', {user: userId} ).then(result => {
 
                 model.set('vendor', result.get('content')[0]);
