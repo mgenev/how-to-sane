@@ -1,16 +1,19 @@
 import Ember from 'ember';
 
+const { observer, computed } = Ember;
+
 export default Ember.Service.extend({
   max: 20,
   cursor: 0,
   log: [],
-  enforceMaxLength: Ember.observer('log.[]', function () {
+  // TODO: this observer is dubious
+  enforceMaxLength: observer('log.length', 'max', function () {
     let log = this.get('log');
     if ( log.length > this.get('max')) {
         log.shift();
     }
   }),
-  currentRoute: Ember.computed('log.[]', function () {
+  currentRoute: computed('log.[]', function () {
     return this.get('log')[this.get('cursor')-1];
   }),
   back() {
@@ -28,10 +31,10 @@ export default Ember.Service.extend({
   go(index) {
     this.container.lookup('router:main').router.replaceWith(this.get('log')[index-1]);
   },
-  cursorAtEnd: Ember.computed('log.[]', 'cursor', function () {
+  cursorAtEnd: computed('log.length', 'cursor', function () {
     return this.get('log').length === this.get('cursor');
   }),
-  cursorAtStart: Ember.computed('log.[]', 'cursor', function () {
+  cursorAtStart: computed('log.[]', 'cursor', function () {
     return this.get('cursor') === 1;
   })
 

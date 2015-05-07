@@ -16,24 +16,22 @@ export default Ember.Object.extend(Ember.Evented, {
      */
     type: 'POST',
 
-    upload: function(files, record) {
+    upload(files, record) {
         var data;
         var url = get(this, 'url');
         var type = get(this, 'type');
-        var self = this;
 
         set(this, 'isUploading', true);
-        $.each(files, function(index, value) {
+        $.each(files, (index, value) => {
 
-            data = self.setupFormData(value, record);
-            self.ajax(url, data, type).then(function(respData) {
-
-                self.didUpload(respData);
+            data = this.setupFormData(value, record);
+            this.ajax(url, data, type).then((respData) => {
+                this.didUpload(respData);
             });
         });
     },
 
-    setupFormData: function(file, extra) {
+    setupFormData(file, extra) {
         var formData = new FormData();
 
         for (var prop in extra) {
@@ -47,7 +45,7 @@ export default Ember.Object.extend(Ember.Evented, {
         return formData;
     },
 
-    toNamespacedParam: function(name) {
+    toNamespacedParam(name) {
         if (this.paramNamespace) {
             return this.paramNamespace + '[' + name + ']';
         }
@@ -55,32 +53,31 @@ export default Ember.Object.extend(Ember.Evented, {
         return name;
     },
 
-    didUpload: function(data) {
+    didUpload(data) {
         set(this, 'isUploading', false);
 
         this.trigger('didUpload', data);
     },
 
-    didProgress: function(e) {
+    didProgress(e) {
         e.percent = e.loaded / e.total * 100;
         this.trigger('progress', e);
     },
 
-    ajax: function(url, params, method) {
-        var self = this;
+    ajax(url, data, method) {
         var settings = {
-            url: url,
+            url,
             type: method || 'POST',
             contentType: false,
             processData: false,
-            xhr: function() {
+            xhr: () => {
                 var xhr = Ember.$.ajaxSettings.xhr();
-                xhr.upload.onprogress = function(e) {
-                    self.didProgress(e);
+                xhr.upload.onprogress = (e) => {
+                    this.didProgress(e);
                 };
                 return xhr;
             },
-            data: params
+            data
         };
 
         return this._ajax(settings);

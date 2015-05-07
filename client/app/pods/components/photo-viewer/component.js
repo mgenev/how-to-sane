@@ -3,8 +3,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    keyDown: function(event) {
-        // escape 
+    keyDown(event) {
+        // escape
         if (event.keyCode === 27) {
             this.send('closeViewer', this.get('currentPhoto'));
         }
@@ -20,46 +20,40 @@ export default Ember.Component.extend({
 
     },
 
-    didInsertElement: function() {
+    didInsertElement() {
+        this._super(...arguments);
         //fix for catching key events
         this.$().attr('tabindex', 0);
         this.$().focus();
 
         this.setViewerHeight();
-        $('.photo').imagesLoaded(function() {
+        $('.photo').imagesLoaded(() => {
             $('.full-size-photo-viewer').css('opacity', 1);
         });
 
-        var self = this;
-        $(window).resize(function() {
-            self.setViewerHeight();
-        });
+        $(window).resize(() => this.setViewerHeight());
 
         var modal = $('#modalDialog');
         // TODO: Check to see if we need to cleanup this on event upon destroy
-        modal.on('hidden.bs.modal', function() {
-            self.send('closeViewer');
-        });
+        modal.on('hidden.bs.modal', () => this.send('closeViewer'));
     },
 
-    setViewerHeight: function() {
+    setViewerHeight() {
         var height = $(window).height() - 50;
         $('.photo').height(height);
         $('.side-panel').height(height);
     },
 
-    getPhotoIdList: function() {
+    getPhotoIdList() {
 
         var photos = this.get('photos');
         if (!Ember.isEmpty(photos)) {
-            return photos.map(function(record) {
-                return record.get('id');
-            });
+            return photos.mapBy('id');
         }
         return [];
     },
 
-    getNextId: function(direction, model) {
+    getNextId(direction, model) {
 
         var currentId = model.get('id');
 
@@ -85,16 +79,16 @@ export default Ember.Component.extend({
     },
 
     actions: {
-        forward: function(photoId) {
+        forward(photoId) {
             this.sendAction('nextPhoto', this.getNextId('forward', photoId));
         },
-        backwards: function(photoId) {
+        backwards(photoId) {
             this.sendAction('nextPhoto', this.getNextId('backwards', photoId));
         },
-        closeViewer: function(album) {
+        closeViewer(album) {
             this.sendAction('closeViewer');
         },
-        closeModal: function() {
+        closeModal() {
             this.sendAction('closeModal');
         }
     },

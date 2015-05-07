@@ -1,8 +1,9 @@
 /* jshint ignore:start */
 import Ember from 'ember';
 
+const { on } = Ember;
 export default Ember.Component.extend({
-  drawVendorMap: Ember.on('init', async function() {
+  drawVendorMap: on('init', async function() {
     try {
       let geo = await this.geoGoogleService.getGeoposition();
       this.geoGoogleService.drawMap(geo, 'mapfeed');

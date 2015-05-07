@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-    dragOver: function(ev) {
+    dragOver(ev) {
         $('.basket').addClass('drag-enter');
         return ev.preventDefault();
     },
-    dragLeave: function() {
+    dragLeave() {
         return $('.basket').removeClass('drag-enter');
     }
 });

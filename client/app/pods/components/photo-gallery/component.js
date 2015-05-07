@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     didInsertElement: function() {
+        this._super(...arguments);
+
         $('#tiles').imagesLoaded(function() {
             $('.loader').hide();
             // Prepare layout options.
@@ -18,7 +20,7 @@ export default Ember.Component.extend({
             var handler = $('#tiles li');
 
             var $window = $(window);
-            $window.resize(function() {
+            $window.resize(() => {
                 var windowWidth = $window.width(),
                     newOptions = {
                         flexibleWidth: '50%'
@@ -36,10 +38,10 @@ export default Ember.Component.extend({
             handler.wookmark(options);
         });
 
-        $('#tiles img').mouseenter(function(e) {
+        $('#tiles img').mouseenter(e => {
             $(e.target).siblings('p').show();
         });
-        $('#tiles img').mouseleave(function(e) {
+        $('#tiles img').mouseleave(e => {
             $(e.target).siblings('p').hide();
         });
     }

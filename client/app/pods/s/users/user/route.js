@@ -1,12 +1,12 @@
 import Ember from 'ember';
 
 /*
-/ Module Name: 
+/ Module Name:
 / app/pods/users/user/route
 */
 
 export default Ember.Route.extend({
-	model: function (params) {
+	model(params) {
 		return this.store.find('user', params.user_id);
     }
 });
