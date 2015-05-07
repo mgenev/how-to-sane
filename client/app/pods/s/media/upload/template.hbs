@@ -28,7 +28,7 @@
                         <button type="button" class="kv-file-upload btn btn-xs btn-default" title="Upload file">
                           <i class="glyphicon glyphicon-upload text-info"></i>
                         </button>
-                        <button {{action "delete" photo}} type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file">
+                        <button {{action "deletePhoto" photo}} type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file">
                           <i class="glyphicon glyphicon-trash text-danger"></i>
                         </button>
                       </div>
@@ -59,7 +59,7 @@
 				<button class="btn btn-info pull-left">
 					<i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i>&nbsp;Back
 				</button>
-				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "save" selectedAlbum}}>
+				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "uploadPhotos" selectedAlbum}}>
 					<i class="glyphicon glyphicon-upload"></i>&nbsp;Upload
 				</button>
 			{{/link-to}}

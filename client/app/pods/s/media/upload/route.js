@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     });
   },
 
-  setupController: function (controller, album) {
+  setupController(controller, album) {
     let accessToken = this.container.lookup('simple-auth-authorizer:oauth2-bearer').session.content.access_token;
     let headers = {
       Authorization: 'bearer ' + accessToken
@@ -36,27 +36,25 @@ export default Ember.Route.extend({
       });
     },
 
-    save(selectedAlbum) {
+    uploadPhotos(selectedAlbum) {
       let controller = this.controller;
       let remainingPhotos = Ember.A({});
       let photos = controller.get('photos');
       if (photos) {
-        photos.forEach(function(photo) {
+        photos.forEach(function uploadPhoto(photo) {
           photo.uploader.settings.multipart_params = {'albumId': selectedAlbum.id};
-          photo.upload().then(function (response) {
+          photo.upload().then(function removePhotoFromController(response) {
             if (response.status === 200) {
-              // successfulUploads.pushObject(photo);
+              // Remove photo from the photos array on the controller
               remainingPhotos = controller.get('photos').without(photo);
               controller.set('photos', remainingPhotos);
-            } //todo: Alert message if upload failed
+            } //todo: Add alert message if upload failed
           });
-          // let filteredArray = controller.get('photos').reject(function (){
-          //   'file', photoFile.file);
         });
       }
     },
 
-    delete(photoFile) {
+    deletePhoto(photoFile) {
       let controller = this.controller;
       let filteredArray = controller.get('photos').rejectBy('file', photoFile.file);
       controller.set('photos', filteredArray);
