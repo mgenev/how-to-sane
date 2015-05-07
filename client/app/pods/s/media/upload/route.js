@@ -38,11 +38,20 @@ export default Ember.Route.extend({
 
     save(selectedAlbum) {
       let controller = this.controller;
+      let remainingPhotos = Ember.A({});
       let photos = controller.get('photos');
       if (photos) {
         photos.forEach(function(photo) {
           photo.uploader.settings.multipart_params = {'albumId': selectedAlbum.id};
-          photo.upload();
+          photo.upload().then(function (response) {
+            if (response.status === 200) {
+              // successfulUploads.pushObject(photo);
+              remainingPhotos = controller.get('photos').without(photo);
+              controller.set('photos', remainingPhotos);
+            } //todo: Alert message if upload failed
+          });
+          // let filteredArray = controller.get('photos').reject(function (){
+          //   'file', photoFile.file);
         });
       }
     },
@@ -51,6 +60,7 @@ export default Ember.Route.extend({
       let controller = this.controller;
       let filteredArray = controller.get('photos').rejectBy('file', photoFile.file);
       controller.set('photos', filteredArray);
+      photoFile.destroy();
     }
   }
 });
