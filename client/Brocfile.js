@@ -5,7 +5,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var app = new EmberApp({
   babel: {
     optional: [
-      'asyncToGenerator',
+      'es7.asyncFunctions',
       'es7.decorators'
    ]
   }
