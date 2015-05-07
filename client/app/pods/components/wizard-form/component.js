@@ -1,18 +1,20 @@
 import Ember from 'ember';
 
+const { computed } = Ember;
+
 export default Ember.Component.extend({
   activeStep: 0,
 
-  type: Ember.computed('activeStep', function () {
+  type: computed('activeStep', function () {
     var steps = this.get('steps');
     return steps[this.get('activeStep')].component;
   }),
 
-  firstStep: Ember.computed('activeStep', function () {
+  firstStep: computed('activeStep', function () {
     return (this.get('activeStep') === 0);
   }),
 
-  lastStep: Ember.computed('activeStep', function () {
+  lastStep: computed('activeStep', function () {
     return (this.get('activeStep') === this.get('steps').length - 1);
   }),
 
@@ -24,6 +26,7 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
+    this._super(...arguments);
     this.addActiveClass();
   },
 

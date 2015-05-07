@@ -5,22 +5,22 @@ export default Ember.Component.extend({
 	currentUser: true,
 	isVendor: false,
 
-	actions: {
-		editProfile: function () {
-			this.set('isEditing', true);
-		},
-		
-        saveEdit: function() {
-            this.set('isEditing', false);
+  actions: {
+    editProfile() {
+      this.set('isEditing', true);
+    },
 
-            var user = this.get('user');
-            user.save();
+    saveEdit() {
+      this.set('isEditing', false);
 
-            this.transitionToRoute('s.users.user', user);
-        },
+      var user = this.get('user');
+      user.save();
 
-        cancelEdit: function () {
-			this.set('isEditing', false);        	
-        }
-	}   
+      this.transitionToRoute('s.users.user', user);
+    },
+
+    cancelEdit() {
+      this.set('isEditing', false);
+    }
+  }
 });

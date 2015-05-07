@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function () {
+  model() {
 
-    let userId = this.session.get('user.id');
+    let user = this.session.get('user.id');
 
     let near = {
       fieldName: 'location',
@@ -12,8 +12,8 @@ export default Ember.Route.extend({
     };
 
     return this.store.find('vendor', {
-      user: userId,
-      near: near
+      user,
+      near
     });
   }
 });

@@ -67,23 +67,23 @@ export default Ember.Component.extend({
       //         'link': 's.homepages.create'
       //     }, ]
   }],
-  didInsertElement: function () {
-    var _this = this;
+  didInsertElement() {
     $('.mobile-menu').css('padding-right', "15px");
-    $('.mobile-menu').on('shown.bs.collapse', function () {
-      $(document).on('click', _this.hideMenu);
+    $('.mobile-menu').on('shown.bs.collapse', () => {
+      $(document).on('click', this.hideMenu);
     });
 
-    $('.mobile-menu').on('hidden.bs.collapse', function () {
-      $(document).unbind("click", _this.hideMenu);
+    $('.mobile-menu').on('hidden.bs.collapse', () => {
+      $(document).unbind("click", this.hideMenu);
     });
-
   },
-  hideMenu: function () {
+
+  hideMenu() {
     $('.mobile-menu').collapse('hide');
   },
+
   actions: {
-    invalidateSession: function () {
+    invalidateSession() {
       this.sendAction('invalidateSession');
     },
     back() {

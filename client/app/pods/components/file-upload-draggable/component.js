@@ -1,19 +1,20 @@
 import Ember from 'ember';
 import DroppableMixin from 'client/mixins/droppable';
 
+const { computed } = Ember;
 export default Ember.Component.extend(DroppableMixin, {
 
     files: [],
     progress: '',
 
-    filesPresent: function() {
-        return 'You have ' + this.get('files').length + ' file(s) ready to upload.';
-    }.property('files'),
+    filesPresent: computed('files.length', function() {
+        return `You have ${this.get('files.length')} file(s) ready to upload.`;
+    }).readOnly(),
 
     total: 0,
 
     // expand this module so that it waits
-    uploadFiles: function() {
+    uploadFiles() {
         var uploaded = 0;
         var files = this.get('files');
         var total = this.get('total') + files.length;
@@ -31,7 +32,7 @@ export default Ember.Component.extend(DroppableMixin, {
             uploader.upload(files, uploadRecord);
         }
 
-        // uploader.on('progress', function(e) {            
+        // uploader.on('progress', function(e) {
         // Handle progress changes
         // Use `e.percent` to get percentag
 
@@ -39,20 +40,19 @@ export default Ember.Component.extend(DroppableMixin, {
         // $('.upload-progress').html(e.percent + '%');
         // });
 
-        var _this = this;
-        uploader.on('didUpload', function(e) {
+        uploader.on('didUpload', (e) => {
             // Handle finished upload
             uploaded++;
 
             console.log('total down', total);
             console.log(e);
 
-            _this.set('progress', 'Upload ' + uploaded + ' of ' + total + ' finished');
-            _this.set('files', []);
+            this.set('progress', `Upload ${uploaded} of ${total} finished`);
+            this.set('files', []);
         });
     },
 
-    drop: function(e) {
+    drop(e) {
         e.stopPropagation(); // Stops some browsers from redirecting.
         e.preventDefault();
 
@@ -61,7 +61,7 @@ export default Ember.Component.extend(DroppableMixin, {
     },
 
     actions: {
-        upload: function() {
+        upload() {
             this.uploadFiles();
         }
     }

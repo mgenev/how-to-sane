@@ -2,16 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    didInsertElement: function() {
-    	var _this = this;
+    didInsertElement() {
+        this._super(...arguments);
         $("#input-id").fileinput({
             uploadUrl: this.get('url'),
-            uploadExtraData: function() {
+            uploadExtraData:() => {
 
-            	var obj = {};
-            	var tempObj = {};
+              var obj = {};
+              var tempObj = {};
 
-            	tempObj[_this.get('associationType')] = _this.get('extraData');
+              tempObj[this.get('associationType')] = this.get('extraData');
                 obj['extra'] = JSON.stringify(tempObj);
 
                 return obj;

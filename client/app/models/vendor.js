@@ -1,12 +1,15 @@
 import DS from 'ember-data';
+import Ember from 'ember';
+
+const { computed } = Ember;
 
 export default DS.Model.extend({
     //relationships
-	user: DS.belongsTo('user'),
-	homepages: DS.hasMany('homepage'),
-	templates: DS.hasMany('template'),
-	services: DS.hasMany('service'),
-	events: DS.hasMany('event'),
+    user: DS.belongsTo('user'),
+    homepages: DS.hasMany('homepage'),
+    templates: DS.hasMany('template'),
+    services: DS.hasMany('service'),
+    events: DS.hasMany('event'),
 
     // attr
     name: DS.attr('string'),
@@ -16,9 +19,9 @@ export default DS.Model.extend({
     location: DS.attr(),
 
     // computed
-    slug: function() {
-        var slug = this.get('name').toString().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    slug: computed('name', function() {
+        let slug = this.get('name').toString().toLowerCase().replace(/[^a-z0-9]+/g, '-');
         this.set('urlSegment', slug);
         return slug;
-    }.property('name')
+    })
 });

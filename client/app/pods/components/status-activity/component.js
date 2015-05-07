@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
+const { on } = Ember;
+
 export default Ember.Component.extend({
-	focusForSubmit: Ember.on('didInsertElement', function () {
+	focusForSubmit: on('didInsertElement', function () {
 		this.$().attr('tabindex', 0);
 		this.$('input').focus();
 	})
