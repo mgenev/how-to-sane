@@ -18,5 +18,5 @@ export default DS.Model.extend({
       this.set('urlSegment', slug);
       return slug;
     }
-  },
+  }
 });
