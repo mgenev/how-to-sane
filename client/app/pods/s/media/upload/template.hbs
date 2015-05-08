@@ -59,7 +59,7 @@
 				<button class="btn btn-info pull-left">
 					<i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i>&nbsp;Back
 				</button>
-				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "uploadPhotos" selectedAlbum}}>
+				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "uploadPhotos" selectedAlbum}} disabled={{unless selectedAlbum "true"}}>
 					<i class="glyphicon glyphicon-upload"></i>&nbsp;Upload
 				</button>
 			{{/link-to}}
