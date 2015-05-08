@@ -3,6 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
     //relationships
     user: DS.belongsTo('user'),
+    likes: DS.hasMany('user'),
 
     note: DS.attr('string'),
     state: DS.attr('string'),
