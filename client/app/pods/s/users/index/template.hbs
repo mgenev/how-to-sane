@@ -7,6 +7,6 @@
 
 	{{#each model as |user|}}
 		<h4>{{#link-to 's.users.user' user.id}}{{user.email}}{{/link-to}}</h4>
-		<p>{{user.firstName}}&nbsp;{{user.lastName}}</p>
+		<p>{{user.fullName}}</p>
 	{{/each}}
 </div>
