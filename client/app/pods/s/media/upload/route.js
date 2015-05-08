@@ -15,6 +15,7 @@ export default Ember.Route.extend({
       Authorization: 'bearer ' + accessToken
     };
     controller.set('requestHeaders', headers);
+    controller.set('selectedAlbum', null);
     controller.set('model', album);
   },
 
