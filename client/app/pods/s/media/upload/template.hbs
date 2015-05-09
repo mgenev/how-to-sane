@@ -10,48 +10,42 @@
 			{{album-picker albums=model selectedAlbum=selectedAlbum}}
 
       {{#pl-uploader extensions="jpg jpeg png gif" action="http://localhost:1337/api/v1/uploads/photo" for="upload-photo" when-queued="queuePhoto" file-key="file_data" headers=requestHeaders as |queue features|}}
-        {{#if features.drag-and-drop}}
-          <div class="dropzone" id={{features.drag-and-drop.dropzone-id}}>
+        <div class="photo-preview {{if features.drag-and-drop dropzone}}" id="{{if features.drag-and-drop features.drag-and-drop.dropzone-id}}">
+          {{#if features.drag-and-drop}}
             {{#if features.drag-and-drop.drag-data}}
               {{#unless features.drag-and-drop.drag-data.valid}}
-                Invalid File
+                <span class="dropzone-instructions dropzone-file-invalid">Invalid File</span>
               {{/unless}}
-            {{else if queue.length}}
-              {{#each controller.photos as |photo|}}
-                <div class="dropzone-photo-preview file-preview-frame">
-                  <img src={{photo.preview}} title={{photo.name}} style="max-width: 100%; max-height: 160px">
-                  <div class="file-thumbnail-footer">
-                    <div class="file-caption-name" title={{photo.name}}>{{photo.name}}</div>
-
-                    <div class="file-actions">
-                      <div class="file-footer-buttons">
-                        <button type="button" class="kv-file-upload btn btn-xs btn-default" title="Upload file">
-                          <i class="glyphicon glyphicon-upload text-info"></i>
-                        </button>
-                        <button {{action "deletePhoto" photo}} type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file">
-                          <i class="glyphicon glyphicon-trash text-danger"></i>
-                        </button>
-                      </div>
-                      <div class="file-upload-indicator" tabindex="-1" title="Not uploaded yet">
-                        <i class="glyphicon glyphicon-hand-down text-warning"></i>
-                      </div>
+            {{else}}
+              {{#unless queue.length}}
+                <span class="dropzone-instructions">Drag & drop files here …</span>
+              {{/unless}}
+            {{/if}}
+          {{/if}}
+          {{#if queue.length}}
+            {{#each controller.photos as |photo|}}
+              <div class="photo-preview-frame file-preview-frame">
+                <img src={{photo.preview}} title={{photo.name}} class="photo-preview-img">
+                <div class="file-thumbnail-footer">
+                  <div class="file-caption-name" title={{photo.name}}>{{photo.name}}</div>
+                  <div class="file-actions">
+                    <div class="file-footer-buttons">
+                      <button type="button" class="kv-file-upload btn btn-xs btn-default" title="Upload file">
+                        <i class="glyphicon glyphicon-upload text-info"></i>
+                      </button>
+                      <button {{action "deletePhoto" photo}} type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file">
+                        <i class="glyphicon glyphicon-trash text-danger"></i>
+                      </button>
+                    </div>
+                    <div class="file-upload-indicator" tabindex="-1" title="Not uploaded yet">
+                      <i class="glyphicon glyphicon-hand-down text-warning"></i>
                     </div>
                   </div>
                 </div>
-              {{/each}}
-            {{else}}
-              <div id="upload-photo" class="dropzone-instructions">Drag & drop files here …</div>
-            {{/if}}
-          </div>
-        {{else}}
-          <div id="upload-photo" class="btn btn-info">Browse</div>
-          {{#if queue.length}}
-            {{#each events as |event|}}
-              <div><img src={{event.preview}} style="max-width: 100px; max-height: 100px"></div>
-              <div><span>{{event.filename}}</span></div>
+              </div>
             {{/each}}
           {{/if}}
-        {{/if}}
+        </div>
       {{/pl-uploader}}
 		 </div>
 		<div class="modal-footer">
@@ -59,7 +53,14 @@
 				<button class="btn btn-info pull-left">
 					<i class="glyphicon glyphicon-arrow-left" aria-hidden="true"></i>&nbsp;Back
 				</button>
-				<button class="btn btn-default kv-fileinput-upload pull-right" {{action "uploadPhotos" selectedAlbum}} disabled={{unless selectedAlbum "true"}}>
+      {{/link-to}}
+
+        <button id="upload-photo" class="btn btn-primary btn-file kv-fileinput-browse ">
+          <i class="glyphicon glyphicon-folder-open"></i>&nbsp;Browse
+        </button>
+
+      {{#link-to "s.media"}}
+        <button class="btn btn-default kv-fileinput-upload pull-right" {{action "uploadPhotos" selectedAlbum}} disabled={{unless selectedAlbum "true"}}>
 					<i class="glyphicon glyphicon-upload"></i>&nbsp;Upload
 				</button>
 			{{/link-to}}
