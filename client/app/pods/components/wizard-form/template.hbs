@@ -1,10 +1,10 @@
 <div class="wizard-wrapper row">
 
-    {{!-- <div class="wizard">
+    <div class="wizard">
         {{#each steps as |step index|}}
             <div {{action 'goToStep' index}} class="wizard-step pull-left">{{index}}. {{step.caption}}</div>
         {{/each}}
-    </div> --}}
+    </div>
 
     <div class="clear wizard-form">
         <form role="form" {{action 'submitAction' status on='submit'}}>

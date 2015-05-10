@@ -1,22 +1,23 @@
 import Ember from 'ember';
-
-const { computed } = Ember;
+import computed from 'ember-computed-decorators';
 
 export default Ember.Component.extend({
   activeStep: 0,
 
-  type: computed('activeStep', function () {
-    var steps = this.get('steps');
-    return steps[this.get('activeStep')].component;
-  }),
+  @computed('activeStep', 'steps')
+  type(a, s) {
+    return s[a].component;
+  },
 
-  firstStep: computed('activeStep', function () {
-    return (this.get('activeStep') === 0);
-  }),
+  @computed('activeStep')
+  firstStep(a) {
+    return a === 0;
+  },
 
-  lastStep: computed('activeStep', function () {
-    return (this.get('activeStep') === this.get('steps').length - 1);
-  }),
+  @computed('activeStep', 'steps')
+  lastStep(a, s) {
+    return a === s.length - 1;
+  },
 
   addActiveClass() {
     $('.wizard-active').removeClass('wizard-active');
