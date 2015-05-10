@@ -8,6 +8,8 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {  
+  "dependencies": {},
+  "devDependencies": {
+    "ember-computed-decorators": "^0.1.3"
   }
 }
