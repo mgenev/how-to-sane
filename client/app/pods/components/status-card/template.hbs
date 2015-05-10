@@ -10,11 +10,7 @@
         <div class="clear"></div>
 
         <div class="content">{{status.note}}</div>
-        <div class="likes">
-          {{#each status.likes as |like|}}
-            {{like.fullName}}
-          {{/each}}
-        </div>
+        {{feed.likes-list likes=status.likes}}
         <!--/main -->
     </div>
     <div class="buttons">
