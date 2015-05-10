@@ -10,12 +10,16 @@
         <div class="clear"></div>
 
         <div class="content">{{status.note}}</div>
-        <div class="likes">1 like 1 comment</div>
+        <div class="likes">
+          {{#each status.likes as |like|}}
+            {{like.fullName}}
+          {{/each}}
+        </div>
         <!--/main -->
     </div>
     <div class="buttons">
         <div class="border-right">
-            <div class="like">Like</div>
+            <div {{action 'likeStatus' status}} class="like">Like</div>
         </div>
         <div class="border-right">
             <div class="comment">Comment</div>

@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 import computed from 'ember-computed-decorators';
 
 export default DS.Model.extend({
@@ -9,7 +8,9 @@ export default DS.Model.extend({
   photos: DS.hasMany('photo'),
   albums: DS.hasMany('album'),
   posts: DS.hasMany('post'),
-  statuses: DS.hasMany('status'),
+  statuses: DS.hasMany('status', {
+    inverse: 'likes'
+  }),
   events: DS.hasMany('event'),
 
   // attributes
