@@ -18,7 +18,7 @@ module.exports = function(environment) {
           // when it is created
       }
   };
-
+  ENV.EXTEND_PROTOTYPES = false;
   ENV.contentSecurityPolicy =  {
           'default-src': "'self' https://maps.googleapis.com",
           'font-src': "*",

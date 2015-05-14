@@ -2,5 +2,5 @@
 I am the component
 
 {{#each stocks as |stock|}}
-  <p>Date: {{stock.createdAt}}</p>
+  <p>Date: {{moment stock.createdAt}}</p>
 {{/each}}

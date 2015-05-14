@@ -9,7 +9,7 @@ export default Ember.Component.extend({
     // });
     var _this = this;
     io.socket.on('stock', function (message) {
-      debugger;
+      console.log('NEW', message);
       if (message.verb === "created") {
         _this.get('stocks').pushObject(message.data);
       }
@@ -19,5 +19,9 @@ export default Ember.Component.extend({
       _this.get('stocks').pushObjects(resData.stocks);
     });
 
+    // setInterval(function () {
+    //   io.socket.post('/api/v1/stocks', {stock: {name: 'NBC', price: 20}}, function () {
+    //   })
+    // }, 1000);
   })
 });

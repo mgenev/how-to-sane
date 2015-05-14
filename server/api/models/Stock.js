@@ -8,9 +8,7 @@
 module.exports = {
 
   attributes: {
-
     name : { type: 'string' },
-    title : { type: 'string' },
     price: {type: 'float'}
   }
 };
