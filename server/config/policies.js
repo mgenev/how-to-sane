@@ -25,19 +25,22 @@ module.exports.policies = {
      *                                                                          *
      ***************************************************************************/
 
-    '*': "hasToken",
-    AppController: {
-        'serve': true
-    },
-    PageController: {
-        "find": true,
-    },
-    UserController: {
-        "create": true,
-    },
-    AuthController: {
-        '*': true,
-    }
+     '*': true
+
+    //
+    // '*': "hasToken",
+    // AppController: {
+    //     'serve': true
+    // },
+    // PageController: {
+    //     "find": true,
+    // },
+    // UserController: {
+    //     "create": true,
+    // },
+    // AuthController: {
+    //     '*': true,
+    // }
 
     /***************************************************************************
      *                                                                          *
