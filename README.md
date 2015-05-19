@@ -47,7 +47,7 @@ Installation:
 ==========================
 1. Follow the steps to install and run the SANE stack - https://github.com/artificialio/sane
 2. Install and run MongoDB - http://docs.mongodb.org/manual/installation/
-3. Install imagemagic and graphicmagic like shown: https://github.com/aheckmann/gm
+3. Install imagemagick and graphicmagick like shown: https://github.com/aheckmann/gm
 4. Clone repo
 5. bower install on client and npm install  on both the client and the server directories
 6. 'sane up' to start both the client and the server
