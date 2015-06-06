@@ -1,7 +1,41 @@
-.upload-wrapper {
-	background-color: #fff;
+.photo-preview{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: space-around;
+
+  border: 2px solid #888;
+  border-radius: 20px;
+  color: #888;
+  background-color: #FFF;
+  font: bold;
+  min-height: 200px;
+  width: 100%;
+  margin-top: 30px;
 }
 
-.file-drop-zone {
-	border: none;
+.photo-preview-frame {
+  margin: 16px;
+}
+
+.photo-preview-img {
+  max-width: 100%;
+  max-height: 160px
+}
+
+.dropzone {
+  min-height: 100%;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.dropzone-instructions {
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+}
+
+.dropzone-file-invalid {
+  color: #A00F;
 }

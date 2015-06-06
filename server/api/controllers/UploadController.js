@@ -40,8 +40,9 @@ module.exports = {
         });
     },
     photo: function(req, res) {
-
-        var record = JSON.parse(req.body.extra);
+        var record = {};
+        record.album = req.body.albumId;
+        record.name = req.body.name;
         record.user = req.user.id;
 
         var file = req.file('file_data');
