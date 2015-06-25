@@ -7,19 +7,19 @@
     <form {{action 'createUser' model on='submit' }}>
         <div class="form-group">
             <label for="firstName">Name</label>
-            {{input id='firstName' placeholder='Enter First Name' class='form-control' value=firstName}}
+            {{input id='firstName' placeholder='Enter First Name' class='form-control' value=model.firstName}}
         </div>
         <div class="form-group">
             <label for="name">Last Name</label>
-            {{input id='name' placeholder='Enter Last Name' class='form-control' value=lastName}}
+            {{input id='name' placeholder='Enter Last Name' class='form-control' value=model.lastName}}
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            {{input id='email' placeholder='Enter your email' type='email' class='form-control' value=email}}
+            {{input id='email' placeholder='Enter your email' type='email' class='form-control' value=model.email}}
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            {{input id='password' placeholder='Enter password' class='form-control' type='password' value=password}}
+            {{input id='password' placeholder='Enter password' class='form-control' type='password' value=model.password}}
         </div>
         <button type="submit" class="btn btn-default">Register</button>
     </form>
