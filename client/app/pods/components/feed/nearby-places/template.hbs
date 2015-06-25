@@ -5,24 +5,12 @@
   </div>
 </div>
 
-<div class="bump">
-  {{#unless atStart}}
-    <span {{action 'prev'}} class="pull-left btn btn-default">prev</span>
-  {{/unless}}
-  {{#unless atEnd}}
-    <span {{action 'next'}} class="pull-right btn btn-default">next</span>
-  {{/unless}}
-</div>
-<div class="clear">
-  {{#if nearbyPlaces}}
-    {{#each pagedSlice as |place|}}
-      {{feed.nearby-places.place-card place=place}}
-    {{/each}}
-  {{else}}
-    <div class="bump">
-      {{feed.placeholder-card}}
-      {{feed.placeholder-card}}
-      {{feed.placeholder-card}}
-    </div>
-  {{/if}}
-</div>
+{{#if nearbyPlaces}}
+  {{#each nearbyPlaces as |place|}}
+    {{feed.nearby-places.place-card place=place}}
+  {{/each}}
+{{else}}
+  {{feed.placeholder-card}}
+  {{feed.placeholder-card}}
+  {{feed.placeholder-card}}
+{{/if}}
