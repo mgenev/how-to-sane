@@ -116,7 +116,7 @@ Router.map(function() {
   this.route("login");
   this.route("register");
 
-  this.resource('pages', { path: 'pages/*urlSegment' }, function() {});
+  this.resource('pages', { path: 'pages/*slug' }, function() {});
 
 });
 

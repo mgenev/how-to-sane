@@ -1,5 +1,7 @@
 import DS from 'ember-data';
-import computed from 'ember-computed-decorators';
+import Ember from 'ember';
+
+const { computed } = Ember;
 
 export default DS.Model.extend({
 
@@ -21,8 +23,7 @@ export default DS.Model.extend({
   website: DS.attr('string'),
 
   // computed
-  @computed('firstName', 'lastName')
-  fullName(f, l) {
-    return `${f} ${l}`;
-  }
+  fullName: computed('firstName', 'lastName', function () {
+    return this.get('firstName') + ' ' + this.get('lastName');
+  })
 });

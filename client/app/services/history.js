@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import computed from 'ember-computed-decorators';
 
-const { observer } = Ember;
+const { observer, computed } = Ember;
 
 export default Ember.Service.extend({
   max: 20,
@@ -14,10 +13,9 @@ export default Ember.Service.extend({
         log.shift();
     }
   }),
-  @computed('log.[]', 'cursor')
-  currentRoute(log, cursor) {
-    return log[cursor-1];
-  },
+  currentRoute: computed('log.[]', function () {
+    return this.get('log')[this.get('cursor')-1];
+  }),
   back() {
     if (!this.get('cursorAtStart')) {
       this.decrementProperty('cursor');
@@ -33,12 +31,11 @@ export default Ember.Service.extend({
   go(index) {
     this.container.lookup('router:main').router.replaceWith(this.get('log')[index-1]);
   },
-  @computed('log.[]', 'cursor')
-  cursorAtEnd(log, cursor) {
-    return log.length === cursor;
-  },
-  @computed('log.[]', 'cursor')
-  cursorAtStart(log, cursor) {
-    return cursor === 1;
-  }
+  cursorAtEnd: computed('log.length', 'cursor', function () {
+    return this.get('log').length === this.get('cursor');
+  }),
+  cursorAtStart: computed('log.[]', 'cursor', function () {
+    return this.get('cursor') === 1;
+  })
+
 });

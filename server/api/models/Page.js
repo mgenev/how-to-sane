@@ -13,7 +13,7 @@ module.exports = {
 
     title : { type: 'string' },
 
-    urlSegment : { type: 'string' },
+    slug : { type: 'string' },
 
     navLabel : { type: 'string' },
 
@@ -26,3 +26,4 @@ module.exports = {
     order : { type: 'float' }
   }
 };
+
