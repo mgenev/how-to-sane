@@ -4,10 +4,15 @@
   "description": "A blank sane stack project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint client/app client/tests server/api server/tests server/config",
+    "pretest": "npm run lint",
+    "test": "(cd server && node tests/runner.js) && (cd client && node node_modules/.bin/ember test)"
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {  
+  "dependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^3.1.18",
+    "eslint": "^0.23.0"
   }
 }
