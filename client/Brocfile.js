@@ -8,7 +8,8 @@ var app = new EmberApp({
       'es7.asyncFunctions',
       'es7.decorators'
    ]
-  }
+  },
+  hinting: false
 });
 
 app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
